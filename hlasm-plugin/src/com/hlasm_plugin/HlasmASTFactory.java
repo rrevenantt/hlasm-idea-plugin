@@ -1,0 +1,68 @@
+package com.hlasm_plugin;
+
+import com.hlasm_plugin.psi.LabelTokenPSIElement;
+import com.intellij.core.CoreASTFactory;
+import com.intellij.psi.impl.source.tree.CompositeElement;
+import com.intellij.psi.impl.source.tree.LazyParseableElement;
+import com.intellij.psi.impl.source.tree.LeafElement;
+import com.intellij.psi.tree.IElementType;
+import com.intellij.psi.tree.ILazyParseableElementType;
+import hlasm.HlasmLexer;
+import org.antlr.jetbrains.adaptor.lexer.TokenIElementType;
+import org.jetbrains.annotations.NotNull;
+
+/**
+ * Created by anisik on 14.06.2016.
+ */
+public class HlasmASTFactory extends CoreASTFactory {
+    @Override
+    @NotNull
+    public LazyParseableElement createLazy(final ILazyParseableElementType type, final CharSequence text) {
+        /*if (type instanceof IFileElementType){
+            return new FileElement(new IFileElementType(HlasmLanguage.INSTANCE){
+                @Override
+                protected ASTNode doParseContents(@NotNull ASTNode chameleon, @NotNull PsiElement psi) {
+                    Project project = psi.getProject();
+                    Language languageForParser = getLanguageForParser(psi);
+                    PsiBuilder builder = new PsiBuilderImpl(project,((PsiFileBase)psi.getContainingFile()).getParserDefinition(),
+                            ((PsiFileBase)psi.getContainingFile()).getParserDefinition().createLexer(project),chameleon,chameleon.getText()){
+
+                    }; //PsiBuilderFactory.getInstance().createBuilder(project, chameleon, null, languageForParser, chameleon.getChars());
+                    PsiParser parser = LanguageParserDefinitions.INSTANCE.forLanguage(languageForParser).createParser(project);
+                    ASTNode node = parser.parse(this, builder);
+                    return node.getFirstChildNode();
+                }
+            },text);
+        }*/
+//        if (type instanceof RuleLazyIElementType){
+//            System.out.println("create lazy " + text);
+//        }
+        return super.createLazy(type,text);
+    }
+
+    @NotNull
+    @Override
+    public CompositeElement createComposite(IElementType type) {
+
+//        if (((RuleIElementType)type).getRuleIndex() == HlasmParser.RULE_line) {
+        //    System.out.println("lazy reparsable node created ");
+//            return new CommandLazyASTNode(type, null);
+//        }
+
+        return super.createComposite(type);
+    }
+
+    @NotNull
+    @Override
+    public LeafElement createLeaf(@NotNull IElementType type, CharSequence text) {
+        if ( type instanceof TokenIElementType &&
+                (((TokenIElementType) type).getANTLRTokenType()== HlasmLexer.LABEL
+                    || ((TokenIElementType) type).getANTLRTokenType()== HlasmLexer.LABEL_DEF
+                ))
+        {
+        //    System.out.println("leaf created "+ text);
+            return new LabelTokenPSIElement (type, text);
+        }
+        return super.createLeaf(type, text);
+    }
+}

@@ -1,0 +1,4 @@
+* comment 1
+.* comment2
+label csect
+       command  parm1,parm2

@@ -1,0 +1,63 @@
+<idea-plugin version="2">
+  <id>com.hlasm_plugin</id>
+  <name>Hlasm plugin</name>
+  <version>1.0.18</version>
+  <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+
+  <description><![CDATA[
+      Enter short description for your plugin here.<br>
+      <em>most HTML tags may be used</em>
+    ]]></description>
+
+  <change-notes><![CDATA[
+      Add change notes here.<br>
+      <em>most HTML tags may be used</em>
+
+    ]]>
+  </change-notes>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="141.0"/>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <depends>com.intellij.modules.lang</depends>
+
+
+  <extensions defaultExtensionNs="com.intellij">
+    <moduleBuilder builderClass="com.hlasm_plugin.project.ZOSModuleBuilder" />
+    <moduleType implementationClass="com.hlasm_plugin.project.ZOSModuleType" id="ZOS"/>
+    <moduleConfigurationEditorProvider implementation="com.hlasm_plugin.project.ZOSConfigurationEditorProvider"/>
+    <projectImportBuilder implementation="com.hlasm_plugin.project.ZOSProjectBuilder"/>
+    <projectImportProvider implementation="com.hlasm_plugin.project.ZOSProjectImportProvider"/>
+
+    <fileTypeFactory implementation="com.hlasm_plugin.HlasmFileTypeFactory"/>
+    <lang.parserDefinition language="Hlasm" implementationClass="com.hlasm_plugin.HlasmParserDefenition" />
+    <lang.syntaxHighlighterFactory language="Hlasm" implementationClass="com.hlasm_plugin.HlasmSyntaxHighlighterFactory"/>
+    <lang.ast.factory language="Hlasm" implementationClass="com.hlasm_plugin.HlasmASTFactory" />
+    <colorSettingsPage implementation="com.hlasm_plugin.HlasmColorSettingsPage"/>
+    <lang.findUsagesProvider language="Hlasm" implementationClass="com.hlasm_plugin.HlasmFindUsagesProvider"/>
+    <lang.smartEnterProcessor language="Hlasm" implementationClass="com.hlasm_plugin.HlasmSmartEnterProcessor" />
+    <editorActionHandler action="EditorEnter" implementationClass="com.hlasm_plugin.regex.HlasmEditorEnterActionHandler"/>
+    <lang.commenter language="Hlasm" implementationClass="com.hlasm_plugin.HlasmCommenter" />
+    <!-- JCL -->
+    <findUsagesHandlerFactory implementation="com.hlasm_plugin.HlasmFindUsagesHandlerFactory"/>
+    <completion.contributor language="Hlasm" implementationClass="com.hlasm_plugin.HlasmCompletionContributor" />
+    <lang.braceMatcher language="Hlasm" implementationClass="com.hlasm_plugin.HlasmBraceMatcher"/>
+    <lang.quoteHandler language="Hlasm" implementationClass="com.hlasm_plugin.HlasmQuoteHandler"/>
+    <localInspection displayName="temp" language="Hlasm" implementationClass="com.hlasm_plugin.inspections.HlasmDsectInspections"/>
+    <annotator language="Hlasm" implementationClass="com.hlasm_plugin.inspections.HlasmAnnotator"/>
+    <!--<references-->
+    <!--<customUsageSearcher implementation="com.hlasm_plugin.psi.HlasmUsageSearcher" />-->
+    <!--<lang.fileViewProviderFactory language="Hlasm" implementationClass="com.hlasm_plugin.HlasmFileViewProviderFactory"/>-->
+    <!--<projectService serviceInterface="com.intellij.psi.text.BlockSupport"
+                    serviceImplementation="com.hlasm_plugin.psi.HlasmBlockSupport"/>
+-->
+
+
+    <!-- Add your extensions here -->
+  </extensions>
+
+
+
+</idea-plugin>
