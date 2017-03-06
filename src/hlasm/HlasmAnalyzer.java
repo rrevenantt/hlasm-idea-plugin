@@ -34,15 +34,6 @@ public class HlasmAnalyzer {
 /*
         FTPClient client = new FTPClient();
         client.addProtocolCommandListener(new PrintCommandListener(new PrintWriter(System.out), true));
-        try {
-            client.connect("X102");
-            client.login("KANISI1","KOSTYAN");
-            client.enterLocalPassiveMode();
-        }
-        catch (IOException e){
-            System.out.println(e.toString());
-            return;
-        }
 
         if (!FTPReply.isPositiveCompletion(client.getReplyCode())){
             System.out.println("bad reply code");

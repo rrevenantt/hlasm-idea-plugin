@@ -1,4 +1,4 @@
 
-See wiki for all information
+This is plugin for Intellij Idea for more convinient development under z/OS
 
-http://gitlab.mf.lss.emc.com/aka/hlasm-library-antlr/wikis/home
+It is quite unstable yet, use on your own risk.
