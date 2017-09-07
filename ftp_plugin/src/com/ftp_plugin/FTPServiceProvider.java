@@ -7,13 +7,16 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.fileEditor.FileDocumentManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Computable;
+import com.intellij.openapi.util.Key;
 import com.intellij.openapi.vfs.VirtualFile;
 import org.apache.commons.net.PrintCommandListener;
 import org.apache.commons.net.ftp.*;
 import org.apache.commons.net.ftp.parser.DefaultFTPFileEntryParserFactory;
 import org.stringtemplate.v4.*;
+import sun.net.ftp.FtpProtocolException;
 
 import java.io.*;
+import java.util.Date;
 import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -22,9 +25,11 @@ import java.util.regex.Pattern;
  * Created by anisik on 25.07.2016.
  */
 public class FTPServiceProvider {
-    public static final Pattern jid = Pattern.compile("J([0-9]{7})");
+    public static final Pattern jid = Pattern.compile("J([0-9]{1,7})");
     public static final Pattern stepname = Pattern.compile("(STEPNAME [A-Za-z0-9$#@]+)");
     public static final Pattern elapsedTime = Pattern.compile("(ELAPSED TIME [ 0-9]+\\.[0-9]+)");
+    public static final int RECONNECT_TRIES = 5;
+    public static final Key<Date> FTP_LAST_SYNC = new Key<>("ftp_last_sync");
 
     public static FTPClient createJESFTPClient(VirtualFile virtualFile, LogonSettingsComponent settingsComponent) {
         String lpar = settingsComponent.getHost();
@@ -37,7 +42,7 @@ public class FTPServiceProvider {
 //            if (!virtualFile.isDirectory() && virtualFile.getExtension().equals("jcl")) {
 
 
-                client.site("FILETYPE=JES NOJESGETBYDSN jesjobname=*");
+                client.site("FILETYPE=JES jesjobname=*");
 
 //            }
 //            else {
@@ -69,10 +74,12 @@ public class FTPServiceProvider {
         try {
             //FileInputStream in = new FileInputStream("test.txt");
 
-            client.connect(lpar);
+            client.connect(lpar,Integer.parseInt(settingsComponent.getPort()));
             client.login(username, password);
-            client.enterLocalPassiveMode();
-            client.changeWorkingDirectory(dataset);
+//            client.enterLocalPassiveMode();
+            if (!settingsComponent.getInitDir().equals(""))
+                client.changeWorkingDirectory(settingsComponent.getInitDir());
+             client.changeWorkingDirectory(dataset);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -97,7 +104,6 @@ public class FTPServiceProvider {
                 String job = "";
                 for (String result : client.getReplyStrings()
                         ) {
-
 
                     Matcher matcher = jid.matcher(result);
                     if (matcher.find())
@@ -197,10 +203,15 @@ public class FTPServiceProvider {
                 reader = new BufferedReader(new InputStreamReader(file.getInputStream()));
             }
             OutputStream output = client.storeFileStream(file.getName().substring(0, Math.min(8,file.getName().lastIndexOf('.'))));
+            if (FTPReply.isNegativePermanent(client.getReplyCode())) {
+                System.err.println("error uploading "+file.getName());
+                return;
+            }
             String line;
             //System.out.println("output started");
             while ((line = reader.readLine()) != null) {
-                output.write((line.substring(0, (line.length() > 72) ? 72 : line.length()) + "\r\n").getBytes());
+//                output.write((line.substring(0, (line.length() > 72) ? 72 : line.length()) + "\r\n").getBytes());
+                output.write((line + "\r\n").getBytes());
 
             }
             //wSystem.out.println("output ended");
@@ -215,4 +226,6 @@ public class FTPServiceProvider {
         }
 
     }
+
+
 }

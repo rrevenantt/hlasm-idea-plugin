@@ -5,7 +5,7 @@ JOB_OPTION      :   '/*'  (~[\r\n])* ( '\r'? '\n' | EOF );
 
 LINE_START      :   '//'   -> mode(LBL);
 
-SYSIN           :    ~[\/\r\n] (~[\r\n])*? ( '\r'? '\n' | EOF );
+SYSIN           :    ~[/\r\n] (~[\r\n])*? ( '\r'? '\n' | EOF );
 
 UNKNOWN_SYMBOL4 :   .   -> type(UNCKNOWN_SYMBOL);
 

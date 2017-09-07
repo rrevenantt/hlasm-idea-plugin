@@ -9,17 +9,18 @@ import org.jetbrains.annotations.NotNull;
  */
 public class HlasmCompletionContributor extends CompletionContributor {
     public HlasmCompletionContributor() {
-
+//        extend();
     }
 
     @Override
     public void duringCompletion(@NotNull CompletionInitializationContext context) {
-
+        super.duringCompletion(context);
     }
 
     @Override
     public void beforeCompletion(@NotNull CompletionInitializationContext context) {
         super.beforeCompletion(context);
-        context.setDummyIdentifier("");
+        context.setDummyIdentifier("Z");
     }
+
 }

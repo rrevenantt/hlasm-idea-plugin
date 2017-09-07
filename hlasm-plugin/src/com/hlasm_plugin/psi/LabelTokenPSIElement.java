@@ -1,10 +1,15 @@
 package com.hlasm_plugin.psi;
 
+import com.hlasm_plugin.HlasmASTFactory;
 import com.hlasm_plugin.HlasmLanguage;
 import com.intellij.openapi.util.TextRange;
 import com.intellij.psi.*;
 import com.intellij.psi.impl.PsiFileFactoryImpl;
+import com.intellij.psi.impl.source.tree.LeafElement;
 import com.intellij.psi.impl.source.tree.LeafPsiElement;
+import com.intellij.psi.impl.source.tree.SharedImplUtil;
+import com.intellij.psi.impl.source.tree.TreeUtil;
+import com.intellij.psi.search.SearchScope;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.psi.util.PsiTreeUtil;
 import com.intellij.util.IncorrectOperationException;
@@ -19,7 +24,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Created by anisik on 13.06.2016.
  */
-public class LabelTokenPSIElement extends ANTLRPsiLeafNode implements PsiNamedElement{
+public class LabelTokenPSIElement extends LabelDefTokenPsiElement{
 
     private PsiReference cacheReference;
 
@@ -40,33 +45,15 @@ public class LabelTokenPSIElement extends ANTLRPsiLeafNode implements PsiNamedEl
     }
 
     @Override
-    public PsiElement setName(@NonNls @NotNull String name) throws IncorrectOperationException {
-        System.out.println("name changed"+this.getName()+ " to " + name);
-//        LabelTokenPSIElement newElement = new LabelTokenPSIElement(this.getElementType(),name);
-        PsiFileFactoryImpl psiFactory = (PsiFileFactoryImpl)PsiFileFactory.getInstance(this.getProject());
-        LeafPsiElement newElement;
-        if(((TokenIElementType)this.getElementType()).getANTLRTokenType() == HlasmLexer.LABEL_DEF){
-            newElement = (LeafPsiElement) PsiTreeUtil.getDeepestFirst(
-                    psiFactory.createElementFromText(name + " TEST \n", HlasmLanguage.INSTANCE,
-                            (IElementType) PSIElementTypeFactory.getRuleIElementTypes(HlasmLanguage.INSTANCE).get(HlasmParser.RULE_line_wrapper),
-                            getParent()));
-        }
-        else {
-             newElement= (LeafPsiElement) PsiTreeUtil.getDeepestLast(
-                    psiFactory.createElementFromText(" TEST " + name, HlasmLanguage.INSTANCE,
-                            (IElementType) PSIElementTypeFactory.getRuleIElementTypes(HlasmLanguage.INSTANCE).get(HlasmParser.RULE_line_wrapper),
-                            getParent()));
-        }
-//        this.getNode().getTreeParent().replaceChild(this,newElement);
-
-
+    public PsiElement setName(@NotNull String name) throws IncorrectOperationException {
         cacheReference = null;
-        return this.replace(newElement); //super.replace(newElement);
-//        return newElement;
+        return super.setName(name);
     }
 
     @Override
     public PsiReference getReference(){
+//        if (((TokenIElementType) getElementType()).getANTLRTokenType() == HlasmLexer.LABEL_DEF)
+//            return null;
         if (cacheReference != null && cacheReference.getElement().isValid() && cacheReference.getElement().getText().equals(this.getName())){
 //            System.out.println("reference cache hit");
             return cacheReference;
@@ -91,4 +78,9 @@ public class LabelTokenPSIElement extends ANTLRPsiLeafNode implements PsiNamedEl
         return null;
     }
 
+    @NotNull
+    @Override
+    public SearchScope getUseScope() {
+        return super.getUseScope();
+    }
 }

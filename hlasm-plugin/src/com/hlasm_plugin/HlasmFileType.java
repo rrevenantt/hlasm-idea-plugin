@@ -1,14 +1,16 @@
 package com.hlasm_plugin;
 
+import com.hlasm_plugin.stubs.HlasmPsiFileStub;
 import com.intellij.lang.Language;
 import com.intellij.openapi.fileTypes.LanguageFileType;
+import com.intellij.psi.tree.IStubFileElementType;
 
 import javax.swing.*;
 
 /**
  * Created by anisik on 01.06.2016.
  */
-public class HlasmFileType extends LanguageFileType {
+public class HlasmFileType extends LanguageFileType  {
     public static final HlasmFileType INSTANCE = new HlasmFileType();
 
     private HlasmFileType(){

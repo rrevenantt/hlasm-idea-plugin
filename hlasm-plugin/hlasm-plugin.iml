@@ -12,9 +12,9 @@
     <orderEntry type="jdk" jdkName="IntelliJ IDEA Community Edition IC-162.2228.15" jdkType="IDEA JDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="adaptor" />
-    <orderEntry type="library" name="antlr-4.5.3" level="project" />
     <orderEntry type="library" name="commons-net-3.5" level="project" />
     <orderEntry type="module" module-name="hlasm-library-antlr" />
     <orderEntry type="library" name="log4j-1.2-api-2.6.2" level="project" />
+    <orderEntry type="library" exported="" name="antlr-4.7-complete" level="project" />
   </component>
 </module>

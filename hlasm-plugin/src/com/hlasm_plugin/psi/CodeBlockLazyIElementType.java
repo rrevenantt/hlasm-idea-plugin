@@ -30,10 +30,11 @@ public class CodeBlockLazyIElementType extends IReparseableElementType implement
 
     @Override
     public boolean isParsable(@Nullable ASTNode parent, CharSequence buffer, Language fileLanguage, Project project) {
-        boolean result = HlasmRegexLibrary.match_code_block(buffer);
+//        boolean result = HlasmRegexLibrary.match_code_block(buffer);
 //         TODO: 11.11.2016 check for first command to be function prolog
-        if (!result) System.out.println("notReparsable|"+buffer+"|");
-        return result;
+//        if (!result) System.out.println("notReparsable|"+buffer+"|");
+//        return result;
+        return false;
     }
 
     @Nullable

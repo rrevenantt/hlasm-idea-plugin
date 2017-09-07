@@ -3,9 +3,12 @@ package com.hlasm_plugin;
 import com.intellij.codeInsight.editorActions.smartEnter.SmartEnterProcessor;
 import com.intellij.lang.ASTNode;
 import com.intellij.openapi.editor.Editor;
+import com.intellij.openapi.fileEditor.FileEditorManagerListener;
+import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
+import com.intellij.psi.PsiWhiteSpace;
 import com.intellij.psi.impl.source.tree.LeafPsiElement;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.psi.util.PsiTreeUtil;
@@ -29,9 +32,12 @@ public class HlasmSmartEnterProcessor extends SmartEnterProcessor {
         if ( isUncommited(project)){
             commit(editor);
         }
+
         if (prevType instanceof TokenIElementType
                 && ((TokenIElementType) prevType).getANTLRTokenType() == HlasmLexer.COMMA
-                /*&& ((TokenIElementType) current).getANTLRTokenType() == HlasmLexer.ENDLINE*/){
+                && !(PsiTreeUtil.prevLeaf(prev,true) instanceof PsiWhiteSpace)
+                && current.getNode().getElementType() instanceof TokenIElementType
+                && ((TokenIElementType) current.getNode().getElementType()).getANTLRTokenType() == HlasmLexer.ENDLINE){
 
             String text = current.getText();
             int inLineOffset = current.getTextOffset() -
@@ -52,6 +58,7 @@ public class HlasmSmartEnterProcessor extends SmartEnterProcessor {
                         ).append("               \n")
                         .toString();
             }
+
 
             int startOffset = current.getTextOffset();
             ASTNode newLeaf = HlasmASTFactory.leaf((IElementType) PSIElementTypeFactory.getTokenIElementTypes(HlasmLanguage.INSTANCE).get(HlasmLexer.ARG_SEPARATOR),text);

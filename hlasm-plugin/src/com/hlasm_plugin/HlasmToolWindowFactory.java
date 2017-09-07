@@ -18,7 +18,7 @@ import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.map_dump.controller.HexStringDumpMapper;
 import com.map_dump.model.dsect.*;
 import com.map_dump.model.dump.ControlBlockDump;
-//import com.map_dump.model.log.SnapLog;
+import com.map_dump.model.log.SnapLog;
 import com.map_dump.model.map.MappedDsect;
 import groovy.lang.ExpandoMetaClass;
 import groovy.lang.GroovyClassLoader;

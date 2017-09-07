@@ -11,6 +11,8 @@ class LogonSettingsDialog extends DialogWrapper {
     private final JTextField hostTextField;
     private final JTextField nameTextField;
     private final JPasswordField passTextField;
+    private final JTextField dirTextField;
+    private final JTextField portTextField;
 
     LogonSettingsDialog(Project project, LogonSettingsComponent component) {
         super(project);
@@ -18,8 +20,11 @@ class LogonSettingsDialog extends DialogWrapper {
         hostTextField = new JTextField(component.getHost());
         nameTextField = new JTextField(component.getUsername());
         passTextField = new JPasswordField(component.getPassword());
+        dirTextField = new JTextField(component.getInitDir());
+        portTextField = new JTextField(component.getPort());
 
         init();
+        setSize(300,300);
         setTitle("MF Logon Settings");
     }
 
@@ -31,9 +36,15 @@ class LogonSettingsDialog extends DialogWrapper {
         return nameTextField.getText();
     }
 
+    String getInitDir() {
+        return dirTextField.getText();
+    }
+
     String getPassword() {
         return new String(passTextField.getPassword());
     }
+
+    String getPort() {return  portTextField.getText(); }
 
     @Nullable
     @Override
@@ -44,11 +55,18 @@ class LogonSettingsDialog extends DialogWrapper {
         panel.add(new JLabel("Host:"));
         panel.add(hostTextField);
 
+        panel.add(new JLabel("Port:"));
+        panel.add(portTextField);
+
         panel.add(new JLabel("Username:"));
         panel.add(nameTextField);
 
         panel.add(new JLabel("Password:"));
         panel.add(passTextField);
+
+        panel.add(new JLabel("Initial Dir:"));
+        panel.add(dirTextField);
+
 
         return panel;
     }

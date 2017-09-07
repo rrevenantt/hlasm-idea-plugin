@@ -46,10 +46,10 @@ public class ZOSModuleType extends ModuleType<ZOSModuleBuilder> {
         return "asdfasdfasfafasfasfasdfff";
     }
 
-    @Override
-    public Icon getBigIcon() {
-        return HlasmIcons.HLASM;
-    }
+//    @Override
+//    public Icon getBigIcon() {
+//        return HlasmIcons.HLASM;
+//    }
 
     @Override
     public Icon getNodeIcon(@Deprecated boolean isOpened) {

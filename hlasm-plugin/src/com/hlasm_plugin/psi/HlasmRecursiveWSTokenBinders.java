@@ -37,7 +37,8 @@ public class HlasmRecursiveWSTokenBinders {
             }
         };
     }
-    public static abstract class RecursiveWSBinder implements WhitespacesAndCommentsBinder,WhitespacesAndCommentsBinder.RecursiveBinder{
+    public static abstract class RecursiveWSBinder implements WhitespacesAndCommentsBinder//x   ,WhitespacesAndCommentsBinder.RecursiveBinder
+    {
 
     }
 }

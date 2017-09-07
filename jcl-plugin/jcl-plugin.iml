@@ -9,9 +9,9 @@
     </content>
     <orderEntry type="jdk" jdkName="IntelliJ IDEA Community Edition IC-162.2228.15" jdkType="IDEA JDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="antlr-4.5.3" level="project" />
     <orderEntry type="module" module-name="adaptor" />
     <orderEntry type="module" module-name="hlasm-library-antlr" />
     <orderEntry type="module" module-name="hlasm-plugin" />
+    <orderEntry type="library" name="antlr-4.7-complete" level="project" />
   </component>
 </module>

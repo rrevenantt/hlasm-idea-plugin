@@ -1,7 +1,7 @@
 <idea-plugin version="2">
   <id>com.hlasm_plugin</id>
   <name>Hlasm plugin</name>
-  <version>1.0.18</version>
+  <version>1.2.0</version>
   <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
 
   <description><![CDATA[
@@ -47,6 +47,14 @@
     <lang.quoteHandler language="Hlasm" implementationClass="com.hlasm_plugin.HlasmQuoteHandler"/>
     <localInspection displayName="temp" language="Hlasm" implementationClass="com.hlasm_plugin.inspections.HlasmDsectInspections"/>
     <annotator language="Hlasm" implementationClass="com.hlasm_plugin.inspections.HlasmAnnotator"/>
+    <lang.foldingBuilder language="Hlasm" implementationClass="com.hlasm_plugin.HlasmFoldingBuilder"/>
+    <readWriteAccessDetector implementation="com.hlasm_plugin.HlasmReadWriteDetector" />
+    <stubElementTypeHolder class="com.hlasm_plugin.stubs.HlasmStubElementTypeHolder"/>
+    <stubIndex implementation="com.hlasm_plugin.stubs.HlasmStubIndex" />
+    <!--<xdebugger.debuggerSupport implementation=""-->
+
+
+
     <!--<references-->
     <!--<customUsageSearcher implementation="com.hlasm_plugin.psi.HlasmUsageSearcher" />-->
     <!--<lang.fileViewProviderFactory language="Hlasm" implementationClass="com.hlasm_plugin.HlasmFileViewProviderFactory"/>-->

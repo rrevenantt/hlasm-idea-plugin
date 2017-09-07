@@ -2,6 +2,11 @@ package hlasm; /**
  * Created by anisik on 26.05.2016. main class
  */
 import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.atn.PredictionMode;
+import org.antlr.v4.runtime.tree.ErrorNode;
+import org.antlr.v4.runtime.tree.ParseTreeListener;
+import org.antlr.v4.runtime.tree.ParseTreeWalker;
+import org.antlr.v4.runtime.tree.TerminalNode;
 import org.apache.commons.net.PrintCommandListener;
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
@@ -16,7 +21,7 @@ public class HlasmAnalyzer {
         System.out.println(a);
 
 
-        String preparedFile = "temp.txt";
+        String preparedFile = "test.txt";
 
         ANTLRInputStream input;
         try {
@@ -26,14 +31,54 @@ public class HlasmAnalyzer {
             System.out.println("file read error");
             return;
         }
-        HlasmLexer lexer = new HlasmLexer(input);
+        TestLexer lexer = new TestLexer(input);
         CommonTokenStream tokenStream = new CommonTokenStream(lexer);
-        HlasmParser parser = new HlasmParser(tokenStream);
+        TestParser parser = new TestParser(tokenStream);
         parser.setBuildParseTree(true);
-        RuleContext tree = parser.lines();
+//        parser.setProfile();
+//        parser.getInterpreter().setPredictionMode(PredictionMode.SLL);
+        parser.addParseListener(new ParseTreeListener() {
+            @Override
+            public void visitTerminal(TerminalNode terminalNode) {
+
+            }
+
+            @Override
+            public void visitErrorNode(ErrorNode errorNode) {
+                System.out.println("error really?");
+            }
+
+            @Override
+            public void enterEveryRule(ParserRuleContext parserRuleContext) {
+
+            }
+
+            @Override
+            public void exitEveryRule(ParserRuleContext parserRuleContext) {
+
+            }
+        });
+        parser.addErrorListener(new DiagnosticErrorListener(false));
+        parser.addErrorListener(new BaseErrorListener(){
+            @Override
+            public void syntaxError(Recognizer<?, ?> recognizer, Object offendingSymbol, int line, int charPositionInLine, String msg, RecognitionException e) {
+                System.out.println(msg);
+            }
+        });
+        RuleContext tree = parser.code();
+
 /*
         FTPClient client = new FTPClient();
         client.addProtocolCommandListener(new PrintCommandListener(new PrintWriter(System.out), true));
+        try {
+            client.connect("X102");
+            client.login("KANISI1","KOSTYAN");
+            client.enterLocalPassiveMode();
+        }
+        catch (IOException e){
+            System.out.println(e.toString());
+            return;
+        }
 
         if (!FTPReply.isPositiveCompletion(client.getReplyCode())){
             System.out.println("bad reply code");

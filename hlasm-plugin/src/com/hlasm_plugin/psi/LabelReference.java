@@ -1,5 +1,6 @@
 package com.hlasm_plugin.psi;
 
+import com.intellij.codeInsight.lookup.LookupElementBuilder;
 import com.intellij.openapi.util.TextRange;
 import com.intellij.psi.MultiRangeReference;
 import com.intellij.psi.PsiElement;
@@ -54,6 +55,7 @@ public class LabelReference extends PsiReferenceBase<LabelTokenPSIElement >{
     @NotNull
     @Override
     public Object[] getVariants() {
+//        return new Object[]{"TEST1","TEST2"};
         return new Object[0];
     }
 

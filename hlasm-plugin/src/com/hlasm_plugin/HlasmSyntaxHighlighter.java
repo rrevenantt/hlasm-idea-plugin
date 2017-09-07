@@ -45,17 +45,18 @@ public class HlasmSyntaxHighlighter extends SyntaxHighlighterBase {
                     null, null, null,0));
 
     static {
-        PSIElementTypeFactory.iElementTypesFactory = HlasmIElementTypesFactory.INSTANCE;
+//        PSIElementTypeFactory.iElementTypesFactory = HlasmIElementTypesFactory.INSTANCE;
         PSIElementTypeFactory.defineLanguageIElementTypes(HlasmLanguage.INSTANCE,
                 HlasmParser.tokenNames,
-                HlasmParser.ruleNames);
+                HlasmParser.ruleNames,
+                HlasmIElementTypesFactory.INSTANCE);
     }
 
     @NotNull
     @Override
     public Lexer getHighlightingLexer() {
         HlasmLexer lexer = new HlasmLexer(null);
-        return new ANTLRLexerAdaptor(HlasmLanguage.INSTANCE,lexer);
+        return HlasmParserDefenition.INSTANCE.createLexer(null);
     }
 
     @NotNull
@@ -111,6 +112,18 @@ public class HlasmSyntaxHighlighter extends SyntaxHighlighterBase {
             case HlasmLexer.CSECT:
             case HlasmLexer.RSECT:
             case HlasmLexer.ORG:
+            case HlasmLexer.ANOP:
+            case HlasmLexer.AIF:
+            case HlasmLexer.AGO:
+            case HlasmLexer.GBLA:
+            case HlasmLexer.GBLB:
+            case HlasmLexer.GBLC:
+            case HlasmLexer.LCLA:
+            case HlasmLexer.LCLB:
+            case HlasmLexer.LCLC:
+            case HlasmLexer.SETA:
+            case HlasmLexer.SETB:
+            case HlasmLexer.SETC:
                 attrKey = ASM_KWD;
                 break;
             default:

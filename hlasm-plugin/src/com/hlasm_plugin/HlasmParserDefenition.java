@@ -1,11 +1,9 @@
 package com.hlasm_plugin;
 
-import com.hlasm_plugin.psi.HlasmIElementTypesFactory;
-import com.hlasm_plugin.psi.HlasmPSIFileRoot;
-import com.hlasm_plugin.psi.LabelDefLineSubtree;
-import com.hlasm_plugin.psi.LabelTokenPSIElement;
+import com.hlasm_plugin.psi.*;
 import com.intellij.lang.*;
 import com.intellij.lexer.Lexer;
+import com.intellij.openapi.progress.ProgressIndicatorProvider;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.*;
 import com.intellij.psi.tree.IElementType;
@@ -13,14 +11,15 @@ import com.intellij.psi.tree.IFileElementType;
 import com.intellij.psi.tree.TokenSet;
 import hlasm.HlasmLexer;
 import hlasm.HlasmParser;
-import org.antlr.jetbrains.adaptor.lexer.ANTLRLexerAdaptor;
-import org.antlr.jetbrains.adaptor.lexer.PSIElementTypeFactory;
-import org.antlr.jetbrains.adaptor.lexer.RuleIElementType;
-import org.antlr.jetbrains.adaptor.lexer.TokenIElementType;
+import org.antlr.jetbrains.adaptor.lexer.*;
+import org.antlr.jetbrains.adaptor.parser.ANTLRParseTreeToPSIConverter;
 import org.antlr.jetbrains.adaptor.parser.ANTLRParserAdaptor;
 import org.antlr.jetbrains.adaptor.psi.ANTLRPsiLeafNode;
 import org.antlr.jetbrains.adaptor.psi.ANTLRPsiNode;
+import org.antlr.v4.runtime.CharStream;
+import org.antlr.v4.runtime.IntStream;
 import org.antlr.v4.runtime.Parser;
+import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.jetbrains.annotations.NotNull;
 
@@ -28,14 +27,16 @@ import org.jetbrains.annotations.NotNull;
  * Created by anisik on 01.06.2016.
  */
 public class HlasmParserDefenition implements ParserDefinition {
-    public static final IFileElementType FILE = new IFileElementType(HlasmLanguage.INSTANCE);
+    public static final IFileElementType FILE = new HlasmIFileElementType();
     public static final HlasmParserDefenition INSTANCE = new HlasmParserDefenition();
 
     static {
-        PSIElementTypeFactory.iElementTypesFactory = HlasmIElementTypesFactory.INSTANCE;
+        //PSIElementTypeFactory.iElementTypesFactory.put() = HlasmIElementTypesFactory.INSTANCE;
         PSIElementTypeFactory.defineLanguageIElementTypes(HlasmLanguage.INSTANCE,
                 HlasmParser.tokenNames,
-                HlasmParser.ruleNames);
+                HlasmParser.ruleNames,
+                HlasmIElementTypesFactory.INSTANCE);
+
     }
 
     public static final TokenSet COMMENTS =
@@ -53,7 +54,8 @@ public class HlasmParserDefenition implements ParserDefinition {
     public static final TokenSet STRING =
             PSIElementTypeFactory.createTokenSet(
                     HlasmLanguage.INSTANCE,
-                    HlasmLexer.STRING);
+                    HlasmLexer.STRING,
+                    HlasmLexer.STRING_ERROR);
 
     @NotNull
     @Override
@@ -61,7 +63,30 @@ public class HlasmParserDefenition implements ParserDefinition {
         HlasmLexer lexer = new HlasmLexer(null);
         lexer.prologs.add("RTNBEGIN");
         lexer.prologs.add("PGMBEGIN");
-        return new ANTLRLexerAdaptor(HlasmLanguage.INSTANCE,lexer);
+        return new ANTLRLexerAdaptor(HlasmLanguage.INSTANCE,lexer){
+            @Override
+            public void start(CharSequence buffer, int startOffset, int endOffset, int initialState) {
+//                this.buffer = buffer;
+//                this.endOffset = endOffset;
+
+
+//                CharStream in = new CharSequenceCharStream(buffer, endOffset, IntStream.UNKNOWN_SOURCE_NAME);
+//                in.seek(startOffset);
+                int newStartOffset = startOffset;
+                int prevOffset = startOffset;
+                while (prevOffset > 0 && buffer.charAt(prevOffset) != '\n') {
+                    prevOffset--;
+//                    in.seek(prevOffset+1	);
+                    newStartOffset = prevOffset + 1;
+                }
+
+                super.start(buffer,newStartOffset,endOffset,initialState);
+
+                while (getTokenStart()<startOffset
+                        && endOffset != 0)
+                    advance();
+            }
+        };
     }
 
     @Override
@@ -73,7 +98,7 @@ public class HlasmParserDefenition implements ParserDefinition {
         IElementType elType = node.getElementType();
         // tokens are leafs and are created in AST factory
         // so this should never be true
-        if (elType instanceof TokenIElementType){
+        if (elType instanceof TokenIElementType && !(elType instanceof RuleIElementType)){
             System.out.println("weird reparsing "+node.getText());
             //return new ANTLRPsiLeafNode(elType,node.getText());
             System.out.println(node.getText());
@@ -95,25 +120,35 @@ public class HlasmParserDefenition implements ParserDefinition {
 //                && ((TokenIElementType)node.getFirstChildNode().getElementType()).getANTLRTokenType() == HlasmLexer.LABEL_DEF)
 //            System.out.println(elType);
         //PsiManager.getInstance().getModificationTracker().
-        if ((ruleIElementType.getRuleIndex() == HlasmParser.RULE_line
-                || ruleIElementType.getRuleIndex() == HlasmParser.RULE_function_def
-                /*|| ruleIElementType.getRuleIndex() == HlasmParser.RULE_macro*/)
-                && node.getFirstChildNode() != null
+        switch (ruleIElementType.getRuleIndex() ) {
+            case HlasmParser.RULE_line_wrapper:
+                if (
+//                || ruleIElementType.getRuleIndex() == HlasmParser.RULE_function_def
+                /*|| ruleIElementType.getRuleIndex() == HlasmParser.RULE_macro*/
+                        node.getFirstChildNode() != null
 //                && node.getFirstChildNode().getElementType() instanceof TokenIElementType
 //                && ((TokenIElementType)node.getFirstChildNode().getElementType()).getANTLRTokenType() == HlasmLexer.LABEL_DEF
-                ){
-            LabelDefLineSubtree element = new LabelDefLineSubtree(node,(IElementType) PSIElementTypeFactory.getTokenIElementTypes(HlasmLanguage.INSTANCE).get(HlasmLexer.LABEL_DEF));
-            if (element.getContainingFile() == null || !(element.getContainingFile() instanceof HlasmPSIFileRoot) ){
-                System.out.println("WTF !!!!11111 HlasmParserDefinition.createElement ");
-                System.out.println("              " + element.getText());
-                return element;
-            }
-            if ( node.getFirstChildNode().getElementType() instanceof TokenIElementType
-                && ((TokenIElementType)node.getFirstChildNode().getElementType()).getANTLRTokenType() == HlasmLexer.LABEL_DEF) {
-                System.out.println("label tree saved" + node.getFirstChildNode().getText());
-                ((HlasmPSIFileRoot) element.getContainingFile()).definitions.put(node.getFirstChildNode().getText(), element);
-            }
-            return element;
+                        ) {
+                    LabelDefLineSubtree element = new LabelDefLineSubtree(node, (IElementType) PSIElementTypeFactory.getTokenIElementTypes(HlasmLanguage.INSTANCE).get(HlasmLexer.LABEL_DEF));
+                    if (element.getContainingFile() == null || !(element.getContainingFile() instanceof HlasmPSIFileRoot)) {
+                        System.out.println("WTF !!!!11111 HlasmParserDefinition.createElement ");
+                        System.out.println("              " + element.getText());
+                        return element;
+                    }
+                    if (node.getFirstChildNode().getElementType() instanceof TokenIElementType
+                            && ((TokenIElementType) node.getFirstChildNode().getElementType()).getANTLRTokenType() == HlasmLexer.LABEL_DEF) {
+                        System.out.println("label tree saved" + node.getFirstChildNode().getText());
+                        ((HlasmPSIFileRoot) element.getContainingFile()).definitions.put(node.getFirstChildNode().getText(), element);
+                    }
+                    return element;
+                }
+                break;
+            case HlasmParser.RULE_macro_def_wr:
+                return new HlasmMacroHeaderPsiElement(node);
+            case  HlasmParser.RULE_macro:
+                return new HlasmMacroPsiElement(node);
+            case HlasmParser.RULE_lines:
+                return new HlasmLinesPsiElement(node);
         }
         /*
         switch (ruleIElementType.getRuleIndex()){
@@ -141,54 +176,70 @@ public class HlasmParserDefenition implements ParserDefinition {
 
     public PsiParser createParser(final Project project){
 
-        HlasmParser parser = new HlasmParser(null);
-        return (new ANTLRParserAdaptor(HlasmLanguage.INSTANCE,parser) {
+        /*EditorFactory.getInstance().addEditorFactoryListener(new EditorFactoryListener() {
             @Override
-            protected ParseTree parse(Parser parser, IElementType root) {
-                if (root instanceof IFileElementType){
-                    return ((HlasmParser) parser).lines();
-                }
-                if (root instanceof RuleIElementType) {
-                    switch (((RuleIElementType) root).getRuleIndex()){
-                        case HlasmParser.RULE_line_wrapper:
-                            System.out.println("line reparsing");
-                            return ((HlasmParser) parser).line_wrapper();
-                        case HlasmParser.RULE_function_def_wr:
-                            System.out.println("fn line reparsing");
-                            return ((HlasmParser) parser).function_def_wr();
-                        case HlasmParser.RULE_code_chunks:
-                            System.out.println("code block reparsing");
-                            return ((HlasmParser) parser).code_chunks();
-                        default:
-                            return ((HlasmParser) parser).line_wrapper();
+            public void editorCreated(@NotNull EditorFactoryEvent event) {
+                event.getEditor().getGutter().registerTextAnnotation(new TextAnnotationGutterProvider() {
+                    @Nullable
+                    @Override
+                    public String getLineText(int line, Editor editor) {
+                        return "test1";
                     }
-                }
 
-                if (root instanceof TokenIElementType){
-                    System.out.println("leaf reparsing " + HlasmParser.tokenNames[ ((TokenIElementType) root) .getANTLRTokenType()]);
-                    System.out.println("data " + ((HlasmParser) parser).getInputStream().getText());
-                    return ((HlasmParser) parser).simple_expr();
-                }
-                System.out.println(" parsing of "+HlasmParser.ruleNames[((RuleIElementType)root).getRuleIndex()]);
-                return ((HlasmParser) parser).line_wrapper() ;
+                    @Nullable
+                    @Override
+                    public String getToolTip(int line, Editor editor) {
+                        return "test2";
+                    }
+
+                    @Override
+                    public EditorFontType getStyle(int line, Editor editor) {
+                        return EditorFontType.PLAIN;
+                    }
+
+                    @Nullable
+                    @Override
+                    public ColorKey getColor(int line, Editor editor) {
+                        return ColorKey.createColorKey("red");
+                    }
+
+                    @Nullable
+                    @Override
+                    public Color getBgColor(int line, Editor editor) {
+                        return null;
+                    }
+
+                    @Override
+                    public List<AnAction> getPopupActions(int line, Editor editor) {
+                        return null;
+                    }
+
+                    @Override
+                    public void gutterClosed() {
+
+                    }
+                });
             }
-
-            @NotNull
+//
             @Override
-            public ASTNode parse(IElementType root, PsiBuilder builder) {
-                if (root instanceof IFileElementType) {
-                    System.out.println("-------Full tree reparse");
-                    //Pair.getFirst(chameleon.getUserData(BlockSupport.TREE_TO_BE_REPARSED))
+            public void editorReleased(@NotNull EditorFactoryEvent event) {
 
-
-                    //builder.
-                }
-
-                ASTNode node = super.parse(root, builder);
-
-                return node;
             }
-        });
+        });*/
+//        EditorFactory.getInstance().getEventMulticaster().addDocumentListener(new DocumentAdapter() {
+//            @Override
+//            public void beforeDocumentChange(DocumentEvent e) {
+//                System.out.println("document going to be changed"+ e.getDocument());
+//            }
+//
+//            @Override
+//            public void documentChanged(DocumentEvent e) {
+//                System.out.println("document changed");
+//            }
+//        });
+
+        HlasmParser parser = new HlasmParser(null);
+        return new HlasmANTLRParserAdaptor(parser);
     }
 
     @NotNull
