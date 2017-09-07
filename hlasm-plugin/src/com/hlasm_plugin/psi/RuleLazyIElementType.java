@@ -5,15 +5,19 @@ import com.intellij.lang.*;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.tree.IReparseableElementType;
+import hlasm.HlasmParser;
 import org.antlr.jetbrains.adaptor.lexer.RuleIElementType;
+import org.antlr.jetbrains.adaptor.lexer.TokenIElementType;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.regex.Pattern;
+
 /**
  * Created by anisik on 30.06.2016.
  */
-public class RuleLazyIElementType extends IReparseableElementType implements RuleIElementType{
+public class RuleLazyIElementType extends IReparseableElementType implements RuleIElementType,TokenIElementType{
     private RuleIElementType ruleID;
 
     public RuleLazyIElementType(@NonNls String debugName, Language language, RuleIElementType ruleID) {
@@ -34,16 +38,24 @@ public class RuleLazyIElementType extends IReparseableElementType implements Rul
 //                HlasmASTFactory.composite(this),buffer)).findChildByType(TokenType.ERROR_ELEMENT) == null;
     }
 
+
+    @Override
+    public int getANTLRTokenType() {
+        return HlasmParser.OLD_TOKEN;
+    }
+
     @Override
     public boolean isParsable(@Nullable ASTNode parent, CharSequence buffer, Language fileLanguage, Project project) {
-
 //        HlasmLexer lexer = new HlasmLexer(new CharSequenceCharStream(buffer,-1,"temp"));
 //        SyntaxErrorListener listener =  new SyntaxErrorListener();
 //        CommonTokenStream tokenStream = new CommonTokenStream(lexer);
         long startTime = System.nanoTime();
 //        boolean result = HlasmRegexLibrary.match_statement(buffer);
-        boolean result = HlasmRegexLibrary.asmline.matcher(buffer).matches() || HlasmRegexLibrary.comline.matcher(buffer).matches();
+        boolean result = HlasmRegexLibrary.asmline.matcher(buffer).matches() ;
+//        System.out.println("regex time " +(System.nanoTime() - startTime));
+        result = result|| HlasmRegexLibrary.comline.matcher(buffer).matches();
         System.out.println("regex time " +(System.nanoTime() - startTime));
+        result = result && !HlasmRegexLibrary.macro.matcher(buffer).matches();
 //        HlasmParser parser = new HlasmParser(new CommonTokenStream(lexer));
 //        parser.addErrorListener(listener);
 //        parser.setErrorHandler(new ErrorStrategyAdaptor());
@@ -94,9 +106,10 @@ public class RuleLazyIElementType extends IReparseableElementType implements Rul
             }
 
         });*/
-        PsiParser parser = LanguageParserDefinitions.INSTANCE.forLanguage(languageForParser).createParser(project);
-        ASTNode node = parser.parse(this, builder);
-        return node.getFirstChildNode();
+            PsiParser parser = LanguageParserDefinitions.INSTANCE.forLanguage(languageForParser).createParser(project);
+            ASTNode node = parser.parse(this, builder);
+            return node.getFirstChildNode();
+
     }
 
 }

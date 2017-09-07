@@ -1,7 +1,7 @@
 <idea-plugin version="2">
-  <id>com.zos_ftp_plugin</id>
+  <id>com.ftp_plugin</id>
   <name>FTP plugin</name>
-  <version>1.0.1</version>
+  <version>1.0.3</version>
   <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
 
   <description><![CDATA[
@@ -33,18 +33,25 @@
   <extensions defaultExtensionNs="com.intellij">
     <!-- Add your extensions here -->
     <configurationType implementation="config.HlasmConfigurationType"/>
+    <fileBasedIndex implementation="com.ftp_plugin.FTPLastSyncIndex" />
 
   </extensions>
 
   <actions>
     <!-- Add your actions here -->
     <action id="com.ftp_plugin.HlasmGetRemotePDSAction" class="com.ftp_plugin.HlasmGetRemotePDSAction"
-            text="get members from remote pds" description="get members from remote pds">
+            text="get changed members" description="get members changes since last sync">
       <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
       <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl alt G"/>
     </action>
+    <action id="com.ftp_plugin.HlasmForceGetAction" class="com.ftp_plugin.HlasmForceGetAction"
+            text="get all members" description="get all members/ selected member to remote PDS">
+      <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+      <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl alt F"/>
+    </action>
+
     <action id="com.hlasm-plugin.PutRemotePDS" class="com.ftp_plugin.HlasmPutRemotePDSAction"
-            text="put  to remote PDS" description="put memebers of folder to remote PDS">
+            text="put to remote PDS" description="put memebers of folder to remote PDS">
       <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
       <add-to-group group-id="EditorPopupMenu" anchor="last"/>
       <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl alt P"/>

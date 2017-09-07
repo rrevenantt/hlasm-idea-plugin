@@ -45,7 +45,7 @@ class BuildProcess extends Process {
 
                         for (String job : jobs) {
                                 handler.notifyTextAvailable("Submit job " + job + "\n", ProcessOutputTypes.STDOUT);
-                            Matcher datasetMatcher = HlasmRegexLibrary.jobname.matcher(job);
+                            Matcher datasetMatcher = RemoteHlasmConfiguration.jobname.matcher(job);
                             if (datasetMatcher.find()) {
                                 //TODO properly find file
                                 VirtualFile virtualFile = null;

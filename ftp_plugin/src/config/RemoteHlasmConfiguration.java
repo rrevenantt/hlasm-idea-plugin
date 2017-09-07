@@ -16,8 +16,11 @@ import org.jdom.Element;
 
 import java.util.Collections;
 import java.util.LinkedList;
+import java.util.regex.Pattern;
 
 class RemoteHlasmConfiguration extends RunConfigurationBase {
+    public static final Pattern jobname = Pattern.compile("(?:([A-Za-z0-9]+):)?(((?:[A-Za-z#@$][\\w#@$\\-]{1,7}\\.)*[A-Za-z#@$][\\w#@$\\-]{1,7})\\(([A-Za-z#@$][\\w#@$\\-]{1,7})\\))");
+
 
     private LinkedList<String> buildJobs = new LinkedList<>();
 
@@ -73,7 +76,7 @@ class RemoteHlasmConfiguration extends RunConfigurationBase {
     public void checkConfiguration() throws RuntimeConfigurationException {
         for (String dataset: buildJobs
              ) {
-            if (!HlasmRegexLibrary.jobname.matcher(dataset).matches()){
+            if (!jobname.matcher(dataset).matches()){
                 throw new RuntimeConfigurationError("invalid dataset name");
             }
         }

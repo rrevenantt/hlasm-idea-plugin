@@ -28,7 +28,7 @@ named_argument:
     ;
 
 expression:
-    simple_expr*?
+    simple_expr+
     | simple_expr? LEFT_ROUND_PAR arguments RIGHT_ROUND_PAR
 //    | simple_expr '(' simple_expr COMMA simple_expr ')'
 //    | '=' simple_expr

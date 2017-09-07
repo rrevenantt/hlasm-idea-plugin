@@ -1,5 +1,7 @@
-// Generated from C:/Users/anisik/IdeaProjects/hlasm-library-antlr/src/hlasm\HlasmParser.g4 by ANTLR 4.5.3
+// Generated from C:/Users/anisik/IdeaProjects/hlasm-library-antlr/src/hlasm\HlasmParser.g4 by ANTLR 4.7
 package hlasm;
+
+import org.antlr.jetbrains.adaptor.*;
 
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -12,17 +14,23 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  */
 public interface HlasmParserVisitor<T> extends ParseTreeVisitor<T> {
 	/**
+	 * Visit a parse tree produced by {@link HlasmParser#lines2}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLines2(HlasmParser.Lines2Context ctx);
+	/**
 	 * Visit a parse tree produced by {@link HlasmParser#lines}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitLines(HlasmParser.LinesContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link HlasmParser#code_chunks}.
+	 * Visit a parse tree produced by {@link HlasmParser#statement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitCode_chunks(HlasmParser.Code_chunksContext ctx);
+	T visitStatement(HlasmParser.StatementContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link HlasmParser#macro}.
 	 * @param ctx the parse tree
@@ -35,18 +43,6 @@ public interface HlasmParserVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitMacro_def_wr(HlasmParser.Macro_def_wrContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link HlasmParser#function_def_wr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitFunction_def_wr(HlasmParser.Function_def_wrContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link HlasmParser#function_def}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitFunction_def(HlasmParser.Function_defContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link HlasmParser#line_wrapper}.
 	 * @param ctx the parse tree

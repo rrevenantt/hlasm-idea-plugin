@@ -7,12 +7,12 @@ import java.util.regex.Pattern;
  * Created by anisik on 27.07.2016.
  */
 public class HlasmRegexLibrary { //                      0   1                23                                                                  4
-    public static final Pattern jobname = Pattern.compile("(?:([A-Za-z0-9]+):)?(((?:[A-Za-z#@$][\\w#@$\\-]{1,7}\\.)*[A-Za-z#@$][\\w#@$\\-]{1,7})\\(([A-Za-z#@$][\\w#@$\\-]{1,7})\\))");
-    private static final String comment_pattern = "^((?:\\*[^\\n]{0,70} *\\n)|(?:\\.\\*[^\\n]{0,69} *\\n)|(?: *\\n)|(?:(?:\\*[^\\n]{0,70}[^ ]\\n)(?: [^\\n]{0,70}[^ ]\\n)*)(?: [^\\n]{0,70}))*";
+    private static final String comment_pattern = "^(?:\\*[^\\n]{0,70} *\\n)|(?:\\.\\*[^\\n]{0,69} *\\n)|(?: *\\n)|(?:(?:\\*[^\\n]{0,70}[^ ]\\n)(?: [^\\n]{0,70}[^ ]\\n)*)(?: [^\\n]{0,70})$";
     private static final String line_pattern = "^(?! *\\n)((?:[^*][^\\n]{70}[^ ]\\n)*(?:(?:[^*][^\\n]{0,70} *)\\n))";
-    public static final Pattern asmline = Pattern.compile("^(?! *\\n)((?:[^*][^\\n]{70}[^ ]\\n)*(?:(?:[^*][^\\n]{0,70} *)\\n))");
+    public static final Pattern asmline = Pattern.compile("\\A(?! *\\n)((?:[^*][^\\n]{70}[^ \\n]\\n)*(?:(?:[^*][^\\n]{0,70} *)\\n))\\z");
     public static final Pattern comline = Pattern.compile(comment_pattern);
     public static final Pattern ds_statement = Pattern.compile("\\A([0-9]*)([CGXBFHEDLPZAYSVJQR])([LSE]([0-9]+))?\\z");
+    public static final Pattern macro = Pattern.compile("\\A.* (MACRO|MEND)[ \\n].*\\z",Pattern.DOTALL);
 
     //public static final Pattern code_block = Pattern.compile("\\A(" + line_pattern + ")*");
     public static boolean match_statement(CharSequence buffer){

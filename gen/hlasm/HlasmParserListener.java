@@ -1,5 +1,7 @@
-// Generated from C:/Users/anisik/IdeaProjects/hlasm-library-antlr/src/hlasm\HlasmParser.g4 by ANTLR 4.5.3
+// Generated from C:/Users/anisik/IdeaProjects/hlasm-library-antlr/src/hlasm\HlasmParser.g4 by ANTLR 4.7
 package hlasm;
+
+import org.antlr.jetbrains.adaptor.*;
 
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -8,6 +10,16 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  * {@link HlasmParser}.
  */
 public interface HlasmParserListener extends ParseTreeListener {
+	/**
+	 * Enter a parse tree produced by {@link HlasmParser#lines2}.
+	 * @param ctx the parse tree
+	 */
+	void enterLines2(HlasmParser.Lines2Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link HlasmParser#lines2}.
+	 * @param ctx the parse tree
+	 */
+	void exitLines2(HlasmParser.Lines2Context ctx);
 	/**
 	 * Enter a parse tree produced by {@link HlasmParser#lines}.
 	 * @param ctx the parse tree
@@ -19,15 +31,15 @@ public interface HlasmParserListener extends ParseTreeListener {
 	 */
 	void exitLines(HlasmParser.LinesContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link HlasmParser#code_chunks}.
+	 * Enter a parse tree produced by {@link HlasmParser#statement}.
 	 * @param ctx the parse tree
 	 */
-	void enterCode_chunks(HlasmParser.Code_chunksContext ctx);
+	void enterStatement(HlasmParser.StatementContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link HlasmParser#code_chunks}.
+	 * Exit a parse tree produced by {@link HlasmParser#statement}.
 	 * @param ctx the parse tree
 	 */
-	void exitCode_chunks(HlasmParser.Code_chunksContext ctx);
+	void exitStatement(HlasmParser.StatementContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link HlasmParser#macro}.
 	 * @param ctx the parse tree
@@ -48,26 +60,6 @@ public interface HlasmParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitMacro_def_wr(HlasmParser.Macro_def_wrContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link HlasmParser#function_def_wr}.
-	 * @param ctx the parse tree
-	 */
-	void enterFunction_def_wr(HlasmParser.Function_def_wrContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link HlasmParser#function_def_wr}.
-	 * @param ctx the parse tree
-	 */
-	void exitFunction_def_wr(HlasmParser.Function_def_wrContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link HlasmParser#function_def}.
-	 * @param ctx the parse tree
-	 */
-	void enterFunction_def(HlasmParser.Function_defContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link HlasmParser#function_def}.
-	 * @param ctx the parse tree
-	 */
-	void exitFunction_def(HlasmParser.Function_defContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link HlasmParser#line_wrapper}.
 	 * @param ctx the parse tree

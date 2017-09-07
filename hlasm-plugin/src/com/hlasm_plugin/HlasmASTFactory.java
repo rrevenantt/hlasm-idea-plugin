@@ -1,7 +1,12 @@
 package com.hlasm_plugin;
 
+import com.hlasm_plugin.psi.LabelDefTokenPsiElement;
 import com.hlasm_plugin.psi.LabelTokenPSIElement;
+import com.hlasm_plugin.psi.MacroCallTokenPsiElement;
+import com.hlasm_plugin.stubs.HlasmStubIndex;
 import com.intellij.core.CoreASTFactory;
+import com.intellij.openapi.project.ProjectManager;
+import com.intellij.openapi.project.ex.ProjectManagerEx;
 import com.intellij.psi.impl.source.tree.CompositeElement;
 import com.intellij.psi.impl.source.tree.LazyParseableElement;
 import com.intellij.psi.impl.source.tree.LeafElement;
@@ -55,14 +60,16 @@ public class HlasmASTFactory extends CoreASTFactory {
     @NotNull
     @Override
     public LeafElement createLeaf(@NotNull IElementType type, CharSequence text) {
-        if ( type instanceof TokenIElementType &&
-                (((TokenIElementType) type).getANTLRTokenType()== HlasmLexer.LABEL
-                    || ((TokenIElementType) type).getANTLRTokenType()== HlasmLexer.LABEL_DEF
-                ))
-        {
-        //    System.out.println("leaf created "+ text);
-            return new LabelTokenPSIElement (type, text);
-        }
+        if ( type instanceof TokenIElementType)
+            switch (((TokenIElementType) type).getANTLRTokenType()){
+//                case HlasmLexer.LABEL_DEF:
+//                    return new LabelDefTokenPsiElement(type, text);
+                case HlasmLexer.LABEL:
+                    return new LabelTokenPSIElement (type, text);
+                case HlasmLexer.COMMAND:
+                    return new MacroCallTokenPsiElement(type,text);
+            }
+
         return super.createLeaf(type, text);
     }
 }

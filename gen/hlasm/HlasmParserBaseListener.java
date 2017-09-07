@@ -1,5 +1,7 @@
-// Generated from C:/Users/anisik/IdeaProjects/hlasm-library-antlr/src/hlasm\HlasmParser.g4 by ANTLR 4.5.3
+// Generated from C:/Users/anisik/IdeaProjects/hlasm-library-antlr/src/hlasm\HlasmParser.g4 by ANTLR 4.7
 package hlasm;
+
+import org.antlr.jetbrains.adaptor.*;
 
 
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -17,6 +19,18 @@ public class HlasmParserBaseListener implements HlasmParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterLines2(HlasmParser.Lines2Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitLines2(HlasmParser.Lines2Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterLines(HlasmParser.LinesContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -29,13 +43,13 @@ public class HlasmParserBaseListener implements HlasmParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCode_chunks(HlasmParser.Code_chunksContext ctx) { }
+	@Override public void enterStatement(HlasmParser.StatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCode_chunks(HlasmParser.Code_chunksContext ctx) { }
+	@Override public void exitStatement(HlasmParser.StatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -60,30 +74,6 @@ public class HlasmParserBaseListener implements HlasmParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitMacro_def_wr(HlasmParser.Macro_def_wrContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterFunction_def_wr(HlasmParser.Function_def_wrContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitFunction_def_wr(HlasmParser.Function_def_wrContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterFunction_def(HlasmParser.Function_defContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitFunction_def(HlasmParser.Function_defContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

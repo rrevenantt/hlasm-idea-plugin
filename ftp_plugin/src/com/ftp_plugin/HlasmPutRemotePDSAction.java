@@ -15,6 +15,8 @@ import org.jetbrains.annotations.NotNull;
 import java.io.*;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Created by anisik on 09.06.2016.
@@ -37,20 +39,12 @@ public class HlasmPutRemotePDSAction extends AnAction {
             return;
         }
 
-
-        //FileInputStream in = new FileInputStream("test.txt");
         Semaphore s = new Semaphore(SIMULT_FTP_CONN);
-        //client.storeFile("EIPINIT",in);
-        try {
-            s.acquire();
-        }
-        catch (InterruptedException e){
-            System.out.println(e.getMessage());
-        }
+
         if (virtualFile != null && virtualFile.isDirectory()) {
             //FTPFile[] files = client.listFiles();
             virtualFiles = virtualFile.getChildren();
-        } else if (virtualFile != null ) {
+        } else if (virtualFile != null) {
             virtualFiles = new VirtualFile[]{virtualFile};
         } else {
             virtualFiles = new VirtualFile[]{};
@@ -72,17 +66,20 @@ public class HlasmPutRemotePDSAction extends AnAction {
                     public void run(@NotNull ProgressIndicator indicator) {
                         try {
                             s.acquire();
-                            FTPClient client = FTPServiceProvider.createFTPClient(virtualFile, settingsComponent,settingsComponent.getHost());
-                            FTPServiceProvider.uploadFile(client, virtualFile);
+                            FTPClient client = FTPServiceProvider.createFTPClient(file, settingsComponent, settingsComponent.getHost());
+                            FTPServiceProvider.uploadFile(client, file);
 
                             indicator.setFraction(1.0);
 
                             client.disconnect();
                             System.out.println("upload finished");
-                            s.release();
+
 
                         } catch (IOException | InterruptedException e) {
                             e.printStackTrace();
+                        }
+                        finally {
+                            s.release();
                         }
 
                     }
@@ -95,34 +92,33 @@ public class HlasmPutRemotePDSAction extends AnAction {
             @Override
             public void run() {
                 try {
+                    Thread.sleep(100);
                     String text = "";
-                    if (!s.tryAcquire(SIMULT_FTP_CONN,virtualFiles.length * 10, TimeUnit.SECONDS)){
+                    if (!s.tryAcquire(SIMULT_FTP_CONN, virtualFiles.length * 10, TimeUnit.SECONDS)) {
                         text = "Upload failed";
-                    }
-                    else {
+                    } else {
                         text = "Upload finished";
+                        s.release(SIMULT_FTP_CONN);
                     }
 
                     NotificationGroup group = NotificationGroup.findRegisteredGroup("MF-UI Information LogOnly");
-                    if (group == null){
+                    if (group == null) {
                         group = NotificationGroup.logOnlyGroup("MF-UI Information LogOnly");
                     }
 
-                    Notifications.Bus.notify(group.createNotification(text,NotificationType.INFORMATION));
-                    s.release();
+                    Notifications.Bus.notify(group.createNotification(text, NotificationType.INFORMATION));
 
-                }
-                catch (InterruptedException e){
+                } catch (InterruptedException e) {
                     System.err.println(e.getMessage());
                 }
+
             }
         });
         thread.start();
-        s.release();
     }
 
     @Override
-    public void update(AnActionEvent e){
+    public void update(AnActionEvent e) {
         VirtualFile virtualFile = e.getData(PlatformDataKeys.VIRTUAL_FILE);
         e.getPresentation().setVisible(virtualFile != null /*&& (virtualFile.isDirectory()
                 || virtualFile.getExtension().equals("asm"))*/);

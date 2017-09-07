@@ -14,9 +14,12 @@ public class LogonSettingsComponent implements ProjectComponent, PersistentState
     private String host;
     private String username;
     private String password;
+    private String initDir;
+    private String port;
 
     public LogonSettingsComponent() {
-        host = username = password = "";
+        initDir = host = username = password = "" ;
+        port = "21";
     }
 
     public String getUsername() {
@@ -42,6 +45,23 @@ public class LogonSettingsComponent implements ProjectComponent, PersistentState
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String getInitDir() {
+        return initDir;
+    }
+
+    public void setInitDir(String initDir) {
+        this.initDir = initDir;
+    }
+
+    public String getPort() {
+        return port;
+    }
+
+    public void setPort(String port) {
+        this.port = port;
+    }
+
 
     @Nullable
     @Override

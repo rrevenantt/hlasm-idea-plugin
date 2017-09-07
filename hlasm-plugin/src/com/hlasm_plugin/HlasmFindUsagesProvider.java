@@ -5,6 +5,7 @@ import com.hlasm_plugin.psi.HlasmPSIFileRoot;
 import com.intellij.lang.cacheBuilder.DefaultWordsScanner;
 import com.intellij.lang.cacheBuilder.WordsScanner;
 import com.intellij.lang.findUsages.FindUsagesProvider;
+import com.intellij.openapi.project.ex.ProjectEx;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiNamedElement;
 import com.intellij.psi.tree.TokenSet;
@@ -21,17 +22,18 @@ import org.jetbrains.annotations.Nullable;
  */
 public class HlasmFindUsagesProvider implements FindUsagesProvider {
     static {
-        PSIElementTypeFactory.iElementTypesFactory = HlasmIElementTypesFactory.INSTANCE;
+//        PSIElementTypeFactory.iElementTypesFactory = HlasmIElementTypesFactory.INSTANCE;
         PSIElementTypeFactory.defineLanguageIElementTypes(HlasmLanguage.INSTANCE,
                 HlasmParser.tokenNames,
-                HlasmParser.ruleNames);
+                HlasmParser.ruleNames,
+                HlasmIElementTypesFactory.INSTANCE);
     }
 
     @Nullable
     @Override
     public WordsScanner getWordsScanner() {
-        return new DefaultWordsScanner(new ANTLRLexerAdaptor(HlasmLanguage.INSTANCE,new HlasmLexer(null)),
-                PSIElementTypeFactory.createTokenSet(HlasmLanguage.INSTANCE, HlasmLexer.LABEL_DEF,HlasmLexer.LABEL),
+        return new DefaultWordsScanner(HlasmParserDefenition.INSTANCE.createLexer(null),
+                PSIElementTypeFactory.createTokenSet(HlasmLanguage.INSTANCE, HlasmLexer.LABEL_DEF,HlasmLexer.LABEL, HlasmLexer.COMMAND),
                 HlasmParserDefenition.COMMENTS,
                 TokenSet.EMPTY);
     }
@@ -66,7 +68,7 @@ public class HlasmFindUsagesProvider implements FindUsagesProvider {
         PsiElement el = element;
         while (!(el instanceof HlasmPSIFileRoot)){
             if (el.getNode().getElementType() instanceof RuleIElementType
-                &&((RuleIElementType)el.getNode().getElementType()).getRuleIndex() == HlasmParser.RULE_line){
+                &&((RuleIElementType)el.getNode().getElementType()).getRuleIndex() == HlasmParser.RULE_line_wrapper){
                 return el.getText();
             }
             el = el.getParent();

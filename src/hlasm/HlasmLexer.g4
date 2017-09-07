@@ -10,18 +10,19 @@ import java.util.*;
     int spaces  = 0;
     int parenth = 0;
     int inAIF   = 0;
+    StringBuilder lineEnd = new StringBuilder();
 }
 
 tokens {
-PROLOG_MACRO, ENDLINE,COMMENT,ENDLINE_COMM
+PROLOG_MACRO, ENDLINE,COMMENT,ENDLINE_COMM,OLD_TOKEN,STRING_ERROR
 }
 
 
 //default mode
 
-COMMENT_sasdf:
-    'ASDFASDFASDFASDFSTRING THAT NEVER EXISTSASDFASDFASDFASDFASDFASDFASDF'
-    ;
+//COMMENT_sasdf:
+//    'ASDFASDFASDFASDFSTRING THAT NEVER EXISTSASDFASDFASDFASDFASDFASDFASDF'
+//    ;
 
 LONG_COMMENT:
     '.'? '*' /*(~[\r\n])*?*/ -> more,pushMode(COMMENT_MODE)//{(_input.index()-_tokenStartCharIndex)<72}?
@@ -41,7 +42,7 @@ SPACES1:
     ;
 
 ENDLINE:
-     ( '\r'? '\n' ) {spaces = 0; parenth = 0; inAIF=0;}  //-> type(COMMENT)//-> mode(DEFAULT_MODE)
+     ( '\r'? '\n' ) {spaces = 0; parenth = 0; inAIF=0;_modeStack.clear();}  //-> type(COMMENT)//-> mode(DEFAULT_MODE)
     ;
 
 //SINGLE_CRLF : '\r'?'\n' ->type(SPACES1),channel(HIDDEN);
@@ -70,25 +71,34 @@ LTORG       :  'LTORG';
 OPSYN       :  'OPSYN';
 ORG         :  'ORG';
 CCW         :  'CCW';
+AGO         :  'AGO';
 MACRO       :  'MACRO';
 MEND        :  'MEND';
+ANOP        :  'ANOP';
+LCLA        :  'LCLA';
+LCLB        :  'LCLB';
+LCLC        :  'LCLC';
+GBLC        :  'GBLC';
+GBLA        :  'GBLA';
+GBLB        :  'GBLB';
 AIF         :  'AIF'  {inAIF = 1;};
 SETB        :  'SETB' {inAIF = 1;};
 SETA        :  'SETA' {inAIF = 1;};
+SETC        :  'SETC' {inAIF = 1;};
 
 COMMAND :
     ID_START (ID_CONTINUE)*
-    {
-        if (prologs.contains(getText()))
-            setType(PROLOG_MACRO);
-    }
+//    {
+//        if (prologs.contains(getText()))
+//            setType(PROLOG_MACRO);
+//    }
     ;
 //ENDLINE_COMM:
 //    (( (SPACES ';'|SPACES ',')  (SPACES? |SPACES ~[\r\n]*)   ) | ENDLINE_EMPTY)
 //                {spaces = 0; parenth = 0; inAIF=0;}  -> mode(DEFAULT_MODE),type(COMMENT)
 //    ;
 ENDLINE2:
-    ( '\r'? '\n' ) {spaces = 0; parenth = 0; inAIF=0;}   -> type(ENDLINE),mode(DEFAULT_MODE)
+    ( '\r'? '\n' ) {spaces = 0; parenth = 0; inAIF=0;_modeStack.clear();}   -> type(ENDLINE),mode(DEFAULT_MODE)
     ;
 
 SPACES2:
@@ -105,16 +115,16 @@ mode EVERYTHING;
     //;
 
 D0:  // TODO: Temp solution for D'0'
-    'D\'0\'';
-
+    ([DL])'\''~[ +\-()\r\n]+ '\''->type(STRING);
 FIELD_INFO:
     ('L'|'N'|'T'|'K'|'D'|'I'|'O'|'S')'\'';
 
 STRING_QUOTE:
-    '\'' -> more,pushMode(IN_STRING); //.*? '\'';
+    NUMBER?([CGXBFHEDLPZAYSVJQR] [AEUHBDQY]? ('L' NUMBER+)?)?'\'' -> more,pushMode(IN_STRING); //.*? '\'';
+
 
 ENDLINE1:
-    /*(SPACES ';'|SPACES ',')? */ ( '\r'? '\n' )   {spaces = 0; parenth = 0; inAIF=0;}  -> mode(DEFAULT_MODE),type(ENDLINE)
+    /*(SPACES ';'|SPACES ',')? */ ( '\r'? '\n' )   {spaces = 0; parenth = 0; inAIF=0;_modeStack.clear();}  -> mode(DEFAULT_MODE),type(ENDLINE)
     ;
 
 //ARG_SEPARATOR :
@@ -141,12 +151,15 @@ ENDLINE_COMMENT :
 
 	    if(_tokenStartCharPositionInLine < 72 && _tokenStartCharPositionInLine + getText().length() >= 72
 	            && getText().charAt(72-_tokenStartCharPositionInLine-1) != ' '){
-	            more();
+//	            more();
+                setType(ENDLINE_COMM);
+                setChannel(HIDDEN);
 	            pushMode(LINE_CONTINUATION);
 	            ((LexerATNSimulator)this.getInterpreter()).consume(_input);
 	    }
 	    else{
 	        setType(ENDLINE_COMM);
+	        setChannel(HIDDEN);
 //	        mode(DEFAULT_MODE);
 //	        spaces = 0; parenth = 0; inAIF=0;
 	    }
@@ -180,7 +193,7 @@ fragment DIGIT :
 
 
 LABEL :
-	(ID_START_ONLY (ID_CONTINUE)* '.'?
+	(ID_START_ONLY (ID_CONTINUE)*
 	| '<' | '{' )//| ';'         // TEMP WORKAROUND WITH ;
 	{
 //	    if(getCharPositionInLine()==71 && _input.LA(1) != ' '){
@@ -226,7 +239,7 @@ fragment ID_START:
 fragment ID_CONTINUE:
 	ID_START
 	| DIGIT
-	| '%'
+	| '%' | '.'
 	;
 
 
@@ -251,7 +264,7 @@ mode IN_STRING;
 ESCAPE : '\'\'' -> more;
 STRING : '\'' -> popMode;
 
-BAD_STRING : '\r'? '\n' -> type(UNKNOWN_CHAR),mode(DEFAULT_MODE);
+BAD_STRING : '\r'? '\n' -> type(STRING_ERROR),mode(DEFAULT_MODE);
 SPACES_COMM1 : SPACES ->more;
 COMMENT_CONT1 : ~[ \r\n]
  {
@@ -287,12 +300,18 @@ COMMENT_CONT1 : ~[ \r\n]
 
 mode LINE_CONTINUATION;
 
-ARG_SEPARATOR :   '               ' -> popMode;
-ERROR : '\r'? '\n' -> popMode;
+ARG_SEPARATOR :   '               ' -> popMode,channel(HIDDEN);
+ERROR : '\r'? '\n' {
+    _modeStack.clear();
+    mode(DEFAULT_MODE);
+    if (getCharPositionInLine() < 15)
+        setType(ENDLINE);
+    };
 ERROR2 : .
     {
-        if (getCharPositionInLine() < 15){
-            more();
+        if (getCharPositionInLine() < 15 && _input.LA(1) != -1){
+            if ( _input.LA(1) != '\n')
+                more();
         }
         else{
             setType(ERROR);
@@ -337,52 +356,51 @@ COMMENT_ENDLINE3 : '\r'? '\n' -> popMode,type(ENDLINE)
 //SPACES_COMM : SPACES ->more;
 COMMENT_CONT : ~[\r\n]
  {
+
+//        if(_input.LA(1) == '\n'){
+//            System.out.println(getCharPositionInLine());
+//        }
  	    if(getCharPositionInLine()==71)
  	    {
- 	        if(_input.LA(1) == ' '){
- 	            ((LexerATNSimulator)this.getInterpreter()).consume(_input);
- 	            if(getCharPositionInLine()==72 && _input.LA(1) == '\n'){
-// 	                ((LexerATNSimulator)this.getInterpreter()).consume(_input);
- 	                setType(COMMENT);
- 	                break;
- 	                //pushMode(LABEL_CONTINUATION);
- 	            }
- 	            if (_input.LA(1) == ' '){
- 	                more();
- 	                break;
- 	            }
- 	            setType(ERROR);
-// 	            popMode();
- 	            break;
-            }
- 	        else if(_input.LA(1) == '\n'){
- 	            setType(COMMENT);
- 	            break;
+ 	        setType(COMMENT);
+ 	        setChannel(HIDDEN);
+ 	        boolean shouldCancelMore = true;
+ 	        if(_input.LA(1) != ' ' && _input.LA(1) != '\n' && _input.LA(1) != -1){
+ 	            shouldCancelMore = false;
  	        }
- 	        else{
- 	            ((LexerATNSimulator)this.getInterpreter()).consume(_input);
-                if(getCharPositionInLine()==72 && _input.LA(1) == '\n'){
- 	                ((LexerATNSimulator)this.getInterpreter()).consume(_input);
- 	                more();
-// 	                break;
- 	                //pushMode(LABEL_CONTINUATION);
- 	            }
- 	            else{
- 	                setType(ERROR);
- 	            }
+// 	        else{
+//				//popMode();
+				if (_input.LA(1) == '\n')
+				    break;
+//			}
 
+ 	        while (_input.LA(1) != '\n' && _input.LA(1) != -1){
+ 	            //if (_input.LA(1) != ' ') shouldCancelMore = true;
+ 	            ((LexerATNSimulator)this.getInterpreter()).consume(_input);
  	        }
-            break;
+ 	        if (!shouldCancelMore) {
+ 	            more();
+ 	            if (_input.LA(1) != -1)
+ 	                ((LexerATNSimulator)this.getInterpreter()).consume(_input);
+ 	        }
+ 	        break;
         }
-// 	    if (getCharPositionInLine()>=72 && getText().charAt(getText().length()-1) != ' '){
+// 	    if (getCharPositionInLine()>=72 ){
 // 	        setType(ERROR);
+// 	        while (_input.LA(1) != '\n'){
+// 	            ((LexerATNSimulator)this.getInterpreter()).consume(_input);
+// 	        }
 // 	        more();
+// 	        break;
 // 	    }
 
  	    if (_input.LA(1) == '\n'){
  	        setType(COMMENT);
+            break;
         }
         else {
+            if (_input.LA(1) == '\n')
+        	    break;
             more();
         }
 //        if (getCharPositionInLine() < 15){

@@ -43,7 +43,7 @@ public class JclSyntaxHighlighter extends SyntaxHighlighterBase {
 
 
     static {
-        PSIElementTypeFactory.iElementTypesFactory = HlasmIElementTypesFactory.INSTANCE;
+//        PSIElementTypeFactory.iElementTypesFactory = HlasmIElementTypesFactory.INSTANCE;
         PSIElementTypeFactory.defineLanguageIElementTypes(JclLanguage.INSTANCE,
                 JclLexer.tokenNames,
                 JclParser.ruleNames);

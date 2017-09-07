@@ -32,6 +32,8 @@ public class LogonSettingsAction extends AnAction {
             component.setHost(dialog.getHost());
             component.setUsername(dialog.getUsername());
             component.setPassword(dialog.getPassword());
+            component.setInitDir(dialog.getInitDir());
+            component.setPort(dialog.getPort());
 
             sendNotification(project, component);
         }
@@ -42,7 +44,7 @@ public class LogonSettingsAction extends AnAction {
         String text = "It's not the pass you are looking for...<br>" +
                 "<br><b>Host:    </b> '" + component.getHost()       + "'" +
                 "<br><b>Username:</b> '" + component.getUsername()   + "'" +
-                "<br><b>Password:</b> '" + component.getPassword()   + "'";
+                "<br><b>Port:</b> '" + component.getPort()   + "'";
 
         String title = "All changes have been saved";
 

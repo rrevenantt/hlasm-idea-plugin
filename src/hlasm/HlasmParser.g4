@@ -2,20 +2,26 @@ parser grammar HlasmParser;
 options { tokenVocab=HlasmLexer; }
 
 @parser::header {
-import ErrorStrategyAdaptor;
+import org.antlr.jetbrains.adaptor.*;
 }
 
 @parser::members { public boolean isJcl = false;  }
 
-lines :
-	(code_chunks)*
+lines2 : (statement| OLD_TOKEN)* EOF;
+
+lines : //lines_wr EOF;
+
+//lines_wr :
+	(statement| OLD_TOKEN)*
+//	 EOF
 //	| line SPACES 'END'
 	;
-code_chunks :
+//code_chunks :
     //function_def line_wrapper+
-    function_def_wr? (line_wrapper)+ //line_wrappers
-    | macro
-	;
+//    function_def_wr (line_wrapper)* //line_wrappers
+//    line_wrapper //line_wrappers
+//    | macro   `   ``
+//	;
    /* catch [NoViableAltException re] {
     if (_errHandler instanceof ErrorStrategyAdaptor){
         try{
@@ -41,68 +47,81 @@ code_chunks :
     	_errHandler.reportError(this, re);
     	_errHandler.recover(this, re);
     }*/
-
+statement :
+    line_wrapper
+//    | OLD_TOKEN
+    | macro
+    ;
 
 macro :
-    MACRO arguments ENDLINE macro_def_wr (line_wrapper | macro)* LABEL_DEF? MEND arguments ENDLINE;
-
-macro_def_wr : line_wrapper ;
-
-function_def_wr : function_def ;
-
-function_def:
-    (LABEL_DEF)? (PROLOG_MACRO) arguments ENDLINE //(line_wrapper)+
+    MACRO arguments ENDLINE+ macro_def_wr lines LABEL_DEF? MEND arguments ENDLINE
     ;
+
+macro_def_wr : line_wrapper  ;
+
+//function_def_wr : LABEL_DEF line ENDLINE ;
+
+//function_def:
+//    LABEL_DEF line ENDLINE //(line_wrapper)+
+//    ;
 
 //endline: SPACES LABEL ENDLINE EOF;
 //line_wrappers : (line_wrapper)+;
 //    catch [RecognitionException e] {System.out.println("exception "+e.getMessage()); throw e;}
 //    finally {System.out.println("1111 " + e.getMessage());}
 
-line_wrapper : line ;
+line_wrapper :
+    LABEL_DEF? line? ENDLINE
+
+    ;
 
 line :
-	(COMMENT
-	| LABEL_DEF? AMODE (NUMBER|LABEL)
-	| LABEL_DEF? COPY LABEL
-	| LABEL_DEF? EJECT arguments
-	| LABEL_DEF? END LABEL?
-	| LABEL_DEF? ENTRY LABEL+
-	| LABEL_DEF? (LOCTR|LTORG) arguments
-	| LABEL_DEF OPSYN LABEL?
-	| LABEL_DEF? CCW  arguments
+//	COMMENT
+	  AMODE (NUMBER|LABEL)
+	|  COPY LABEL
+	|  EJECT arguments
+	|  END (LABEL|COMMA)?
+	|  ENTRY LABEL+
+	|  (LOCTR|LTORG) arguments
+	|  OPSYN LABEL?
+	|  CCW  arguments
 	//| LABEL_DEF? CCW0
-	| LABEL_DEF? ORG (expression|COMMA?)
-	| LABEL_DEF? (AIF|SETB|SETA) complex_condition LABEL? //LEFT_ROUND_PAR condition ( SPACES LABEL SPACES condition)*? RIGHT_ROUND_PAR LABEL?
-	| LABEL_DEF? (SETB|SETA) (expression)
-	| LABEL_DEF? USING expression (COMMA expression)+
-	| LABEL_DEF? (DC | DS)  arguments
-	| LABEL_DEF ALIAS LABEL
-	| LABEL_DEF EQU arguments
-	| LABEL_DEF (DSECT|RSECT|CSECT) (expression|COMMA?)
+	|  ORG (expression|COMMA?)
+	|  (SETB|SETA|SETC) complex_condition LABEL?  //LEFT_ROUND_PAR condition ( SPACES LABEL SPACES condition)*? RIGHT_ROUND_PAR LABEL?
+	|  (AIF) complex_condition LABEL? (COMMA complex_condition LABEL?)*
+	|  (SETB|SETA|SETC) (expression)
+	|  USING expression (COMMA expression)+
+	|  (DC | DS)  arguments
+	| ALIAS LABEL
+	| EQU arguments
+	| (DSECT|RSECT|CSECT) (expression|COMMA?)
 //	| LABEL_DEF? DROP (NUMBER|LABEL)+
 	| DROP arguments
 	| SPACE arguments
-	| LABEL_DEF?  COMMAND arguments
-	| LABEL_DEF? /*{_errHandler.sync(this);}*/ COMMAND
+	| COMMAND arguments
+	| ANOP arguments
+	| (LCLA|LCLB|LCLC|GBLC|GBLB|GBLA) arguments
+	| AGO LABEL
+//	| LABEL_DEF? /*{_errHandler.sync(this);}*/ COMMAND
 //	| ENDLINE
-	| LABEL_DEF {
-	    if (getCurrentToken().getType() == ENDLINE){
-	        ErrorNode err = _localctx.addErrorNode(_localctx.getStart());
-	        Token currToken = _localctx.getStart();
-	               RecognitionException myex = new InputMismatchException(this){
-		    		@Override
-		    		public Token getOffendingToken() {
-		    			return currToken;
-		    		}
-		    	};
-	        notifyErrorListeners(currToken,"command expected",myex);
-	           if (_localctx != null ) throw myex;
-	    }
-	    else { _errHandler.recoverInline(this);}
-	}  // TODO FIX THIS WORKAROUND
+//	| LABEL_DEF
+//	{
+//	    if (getCurrentToken().getType() == ENDLINE){
+//	        ErrorNode err = _localctx.addErrorNode(_localctx.getStart());
+//	        Token currToken = _localctx.getStart();
+//	               RecognitionException myex = new InputMismatchException(this){
+//		    		@Override
+//		    		public Token getOffendingToken() {
+//		    			return currToken;
+//		    		}
+//		    	};
+//	        notifyErrorListeners(currToken,"command expected",myex);
+//	           if (_localctx != null ) throw myex;
+//	    }
+//	    else { _errHandler.recoverInline(this);}
+//	}  // TODO FIX THIS WORKAROUND
 
-	)? ENDLINE
+//	)? ENDLINE
 //	| EOF
 //	| (LABEL)? SPACES command ENDLINE  //SPACES arguments
 	;
@@ -134,7 +153,7 @@ named_argument:
     ;
 
 expression:
-    simple_expr*?
+    simple_expr*
     | simple_expr? LEFT_ROUND_PAR arguments RIGHT_ROUND_PAR LABEL?
 //    | simple_expr '(' simple_expr COMMA simple_expr ')'
 //    | '=' simple_expr
@@ -148,7 +167,7 @@ expression:
 
 simple_expr:
     LABEL
-    | '='? D0  // TODO: Temp solution for D'0'
+//    | '='? D0  // TODO: Temp solution for D'0'
     | FIELD_INFO '='? LABEL
     | NUMBER
     | '*'
@@ -157,4 +176,5 @@ simple_expr:
     | STRING
     | LEN_TYPE
     | '='
+    | DOT
     ;
