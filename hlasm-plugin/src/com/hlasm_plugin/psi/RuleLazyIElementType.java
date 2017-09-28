@@ -51,7 +51,7 @@ public class RuleLazyIElementType extends IReparseableElementType implements Rul
 //        CommonTokenStream tokenStream = new CommonTokenStream(lexer);
         long startTime = System.nanoTime();
 //        boolean result = HlasmRegexLibrary.match_statement(buffer);
-        boolean result = HlasmRegexLibrary.asmline.matcher(buffer).matches() ;
+        boolean result = HlasmRegexLibrary.asmline.matcher(buffer).matches() && HlasmRegexLibrary.asm_first_line.matcher(buffer).matches() ;
 //        System.out.println("regex time " +(System.nanoTime() - startTime));
         result = result|| HlasmRegexLibrary.comline.matcher(buffer).matches();
         System.out.println("regex time " +(System.nanoTime() - startTime));

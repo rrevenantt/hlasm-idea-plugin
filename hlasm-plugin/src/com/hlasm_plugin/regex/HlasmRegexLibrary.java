@@ -9,7 +9,8 @@ import java.util.regex.Pattern;
 public class HlasmRegexLibrary { //                      0   1                23                                                                  4
     private static final String comment_pattern = "^(?:\\*[^\\n]{0,70} *\\n)|(?:\\.\\*[^\\n]{0,69} *\\n)|(?: *\\n)|(?:(?:\\*[^\\n]{0,70}[^ ]\\n)(?: [^\\n]{0,70}[^ ]\\n)*)(?: [^\\n]{0,70})$";
     private static final String line_pattern = "^(?! *\\n)((?:[^*][^\\n]{70}[^ ]\\n)*(?:(?:[^*][^\\n]{0,70} *)\\n))";
-    public static final Pattern asmline = Pattern.compile("\\A(?! *\\n)((?:[^*][^\\n]{70}[^ \\n]\\n)*(?:(?:[^*][^\\n]{0,70} *)\\n))\\z");
+    public static final Pattern asmline = Pattern.compile("\\A(?! *\\n)((?:[^*][^\\n]{70}[^ \\n]\\n)*(?:(?:[^*\\n][^\\n]{0,70} *)\\n))\\z");
+    public static final Pattern asm_first_line = Pattern.compile("\\A[0-9A-Za-z@#$_()]* +[0-9A-Za-z@#$_]+ +(.*\\n)+");
     public static final Pattern comline = Pattern.compile(comment_pattern);
     public static final Pattern ds_statement = Pattern.compile("\\A([0-9]*)([CGXBFHEDLPZAYSVJQR])([LSE]([0-9]+))?\\z");
     public static final Pattern macro = Pattern.compile("\\A.* (MACRO|MEND)[ \\n].*\\z",Pattern.DOTALL);

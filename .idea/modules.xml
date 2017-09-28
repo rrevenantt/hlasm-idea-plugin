@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://C:\Users\anisik\IdeaProjects\hlasm-library-antlr\adaptor\adaptor.iml" filepath="C:\Users\anisik\IdeaProjects\hlasm-library-antlr\adaptor\adaptor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/adaptor/adaptor.iml" filepath="$PROJECT_DIR$/adaptor/adaptor.iml" />
       <module fileurl="file://$PROJECT_DIR$/ftp_plugin/ftp_plugin.iml" filepath="$PROJECT_DIR$/ftp_plugin/ftp_plugin.iml" />
       <module fileurl="file://$PROJECT_DIR$/hlasm-library-antlr.iml" filepath="$PROJECT_DIR$/hlasm-library-antlr.iml" />
       <module fileurl="file://$PROJECT_DIR$/hlasm-plugin/hlasm-plugin.iml" filepath="$PROJECT_DIR$/hlasm-plugin/hlasm-plugin.iml" />

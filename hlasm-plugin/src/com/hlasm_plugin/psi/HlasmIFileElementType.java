@@ -25,7 +25,7 @@ public class HlasmIFileElementType extends IStubFileElementType<HlasmPsiFileStub
 
     @Override
     public int getStubVersion() {
-        return 5;
+        return 6;
     }
 
     @Override
@@ -35,7 +35,7 @@ public class HlasmIFileElementType extends IStubFileElementType<HlasmPsiFileStub
 
     @Override
     public boolean shouldBuildStubFor(VirtualFile file) {
-        return file.getFileType() == HlasmFileType.INSTANCE;
+        return file.getFileType() == HlasmFileType.INSTANCE && file.getLength() < 2000000;
     }
 
     @Override

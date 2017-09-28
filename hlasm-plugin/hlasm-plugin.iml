@@ -8,10 +8,11 @@
       <sourceFolder url="file://$MODULE_DIR$/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/../src/adaptor/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../src/adaptor" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/testdata" type="java-test-resource" />
     </content>
-    <orderEntry type="jdk" jdkName="IntelliJ IDEA Community Edition IC-162.2228.15" jdkType="IDEA JDK" />
+    <orderEntry type="jdk" jdkName="IntelliJ IDEA Community Edition IC-172.4155.36 (1)" jdkType="IDEA JDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="adaptor" />
     <orderEntry type="library" name="commons-net-3.5" level="project" />
     <orderEntry type="module" module-name="hlasm-library-antlr" />
     <orderEntry type="library" name="log4j-1.2-api-2.6.2" level="project" />

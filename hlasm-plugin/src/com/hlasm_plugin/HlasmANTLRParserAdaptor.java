@@ -13,8 +13,15 @@ import org.antlr.jetbrains.adaptor.lexer.RuleIElementType;
 import org.antlr.jetbrains.adaptor.lexer.TokenIElementType;
 import org.antlr.jetbrains.adaptor.parser.ANTLRParseTreeToPSIConverter;
 import org.antlr.jetbrains.adaptor.parser.ANTLRParserAdaptor;
+import org.antlr.jetbrains.adaptor.parser.ErrorStrategyAdaptor;
 import org.antlr.v4.runtime.Parser;
 import org.antlr.v4.runtime.ParserRuleContext;
+import org.antlr.v4.runtime.RuleContext;
+import org.antlr.v4.runtime.atn.ATN;
+import org.antlr.v4.runtime.atn.ATNState;
+import org.antlr.v4.runtime.atn.ParserATNSimulator;
+import org.antlr.v4.runtime.atn.RuleTransition;
+import org.antlr.v4.runtime.misc.IntervalSet;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.jetbrains.annotations.NotNull;
 
@@ -30,6 +37,49 @@ public class HlasmANTLRParserAdaptor extends ANTLRParserAdaptor {
 
     @Override
     protected ParseTree parse(Parser parser, IElementType root) {
+        parser.setErrorHandler(new ErrorStrategyAdaptor(){
+            @Override
+            protected void consumeUntil(Parser recognizer, IntervalSet set) {
+//                System.out.println("--- recovering in rule " + HlasmParser.ruleNames[ recognizer.getContext().getRuleIndex()]);
+//                System.out.println("--- recovering set:"+set.toString(recognizer.getVocabulary()));
+//                if(	recognizer.getContext().getRuleIndex() == HlasmParser.RULE_line_wrapper
+//                        || recognizer.getContext().getRuleIndex() == HlasmParser.RULE_line
+//                        || recognizer.getContext().getRuleIndex() == HlasmParser.RULE_arguments
+//                        ) {
+//                    super.consumeUntil(recognizer, new IntervalSet(HlasmLexer.ENDLINE));
+//                }
+
+                int posBefore = recognizer.getInputStream().index();
+                super.consumeUntil(recognizer, set);
+                if (posBefore == recognizer.getInputStream().index()){
+                    recognizer.consume();
+                }
+
+            }
+            @Override
+            protected IntervalSet getErrorRecoverySet(Parser recognizer) {
+                ATN atn = ((ParserATNSimulator)recognizer.getInterpreter()).atn;
+                RuleContext ctx = recognizer.getContext();
+
+                IntervalSet recoverSet;
+                for(recoverSet = new IntervalSet(); ctx != null && ((RuleContext)ctx).invokingState >= 0; ctx = ((RuleContext)ctx).parent) {
+                    if (ctx.getRuleIndex() == HlasmParser.RULE_statement){
+                        recoverSet.add(HlasmParser.LABEL_DEF);
+                        recoverSet.add(HlasmParser.EQU,HlasmParser.COMMAND);
+                        continue;
+                    }
+                    ATNState invokingState = (ATNState)atn.states.get(((RuleContext)ctx).invokingState);
+                    RuleTransition rt = (RuleTransition)invokingState.transition(0);
+                    IntervalSet follow = atn.nextTokens(rt.followState);
+                    recoverSet.addAll(follow);
+                }
+
+                recoverSet.remove(-2);
+                return recoverSet;
+            }
+
+        });
+
         if (root instanceof IFileElementType) {
             return ((HlasmParser) parser).lines2();
         }
@@ -40,7 +90,7 @@ public class HlasmANTLRParserAdaptor extends ANTLRParserAdaptor {
                     return ((HlasmParser) parser).line_wrapper();
                 case HlasmParser.RULE_statement:
                     System.out.println("statement line reparsing");
-                    return ((HlasmParser) parser).statement();
+                    return ((HlasmParser) parser).statement2();
                 case HlasmParser.RULE_lines:
                     System.out.println("lines reparsing");
                     return ((HlasmParser) parser).lines2();

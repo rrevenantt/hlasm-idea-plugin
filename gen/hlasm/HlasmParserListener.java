@@ -31,6 +31,16 @@ public interface HlasmParserListener extends ParseTreeListener {
 	 */
 	void exitLines(HlasmParser.LinesContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link HlasmParser#statement2}.
+	 * @param ctx the parse tree
+	 */
+	void enterStatement2(HlasmParser.Statement2Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link HlasmParser#statement2}.
+	 * @param ctx the parse tree
+	 */
+	void exitStatement2(HlasmParser.Statement2Context ctx);
+	/**
 	 * Enter a parse tree produced by {@link HlasmParser#statement}.
 	 * @param ctx the parse tree
 	 */

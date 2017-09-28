@@ -15,6 +15,8 @@ import org.apache.commons.net.ftp.parser.DefaultFTPFileEntryParserFactory;
 import org.stringtemplate.v4.*;
 import sun.net.ftp.FtpProtocolException;
 
+import javax.security.auth.login.CredentialException;
+import javax.security.auth.login.LoginException;
 import java.io.*;
 import java.util.Date;
 import java.util.function.Function;
@@ -63,6 +65,8 @@ public class FTPServiceProvider {
 
         final String dataset = ((Function<VirtualFile, String>) p -> {
             String ds;
+            if(virtualFile == null)
+                return "";
             if (virtualFile.isDirectory()) {
                 ds = virtualFile.getName();
             } else {
@@ -75,7 +79,9 @@ public class FTPServiceProvider {
             //FileInputStream in = new FileInputStream("test.txt");
 
             client.connect(lpar,Integer.parseInt(settingsComponent.getPort()));
-            client.login(username, password);
+            if (!client.login(username, password)){
+//                throw new LoginException("wrong credentials");
+            }
 //            client.enterLocalPassiveMode();
             if (!settingsComponent.getInitDir().equals(""))
                 client.changeWorkingDirectory(settingsComponent.getInitDir());

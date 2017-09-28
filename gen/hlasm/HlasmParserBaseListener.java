@@ -43,6 +43,18 @@ public class HlasmParserBaseListener implements HlasmParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterStatement2(HlasmParser.Statement2Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitStatement2(HlasmParser.Statement2Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterStatement(HlasmParser.StatementContext ctx) { }
 	/**
 	 * {@inheritDoc}

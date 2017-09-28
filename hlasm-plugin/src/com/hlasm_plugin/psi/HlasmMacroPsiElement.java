@@ -57,4 +57,8 @@ public class HlasmMacroPsiElement extends StubBasedPsiElementBase<HlasmMacroStub
         throw new IncorrectOperationException();
     }
 
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "(" + getNode().getElementType().toString() + ")";
+    }
 }

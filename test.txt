@@ -1,4 +1,3 @@
-* comment 1
-.* comment2
-label csect
-       command  parm1,parm2
+LABEL ;
+  PUT arg1;
+LABEL PUT arg2;

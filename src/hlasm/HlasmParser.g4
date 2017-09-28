@@ -47,6 +47,12 @@ lines : //lines_wr EOF;
     	_errHandler.reportError(this, re);
     	_errHandler.recover(this, re);
     }*/
+statement2 :
+    (line_wrapper
+//    | OLD_TOKEN
+    | macro) EOF
+    ;
+
 statement :
     line_wrapper
 //    | OLD_TOKEN
@@ -124,7 +130,8 @@ line :
 //	)? ENDLINE
 //	| EOF
 //	| (LABEL)? SPACES command ENDLINE  //SPACES arguments
-	;
+    | {System.out.println("MyInputMismatch "+ getCurrentToken().getStartIndex()); if (true) throw new InputMismatchException(this);}~(ENDLINE|OLD_TOKEN)
+    ;
 
 complex_condition:
     LEFT_ROUND_PAR complex_condition RIGHT_ROUND_PAR

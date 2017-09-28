@@ -1,7 +1,7 @@
 <idea-plugin version="2">
   <id>com.hlasm_plugin</id>
   <name>Hlasm plugin</name>
-  <version>1.2.0</version>
+  <version>1.2.2</version>
   <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
 
   <description><![CDATA[

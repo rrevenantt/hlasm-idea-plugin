@@ -22,6 +22,14 @@ public class LogonSettingsComponent implements ProjectComponent, PersistentState
         port = "21";
     }
 
+    public LogonSettingsComponent(String host, String password, String username, String port) {
+        this.host = host;
+        this.username = username;
+        this.password = password;
+        this.port = port;
+        initDir = "";
+    }
+
     public String getUsername() {
         return username;
     }
