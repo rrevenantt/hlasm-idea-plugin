@@ -66,6 +66,7 @@ public class HlasmFoldingBuilder extends FoldingBuilderEx {
             @Override
             public void visitElement(PsiElement element) {
                 try {
+
                     if (PsiTreeUtil.getDeepestFirst(element).getNode().getElementType() instanceof TokenIElementType
                             && (((TokenIElementType) ((LeafPsiElement) PsiTreeUtil.getDeepestFirst(element)).getElementType()).getANTLRTokenType()== HlasmLexer.COMMENT
                                 || ((TokenIElementType) ((LeafPsiElement) PsiTreeUtil.getDeepestFirst(element)).getElementType()).getANTLRTokenType()== HlasmLexer.ENDLINE)

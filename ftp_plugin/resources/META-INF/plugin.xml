@@ -1,7 +1,7 @@
 <idea-plugin version="2">
   <id>com.ftp_plugin</id>
   <name>FTP plugin</name>
-  <version>1.0.3</version>
+  <version>1.0.6</version>
   <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
 
   <description><![CDATA[
@@ -25,6 +25,7 @@
   <project-components>
     <component>
       <interface-class>com.intellij.openapi.components.PersistentStateComponent</interface-class>
+      <!--<interface-class>com.ftp_plugin.LogonSettingsComponent</interface-class>-->
       <implementation-class>com.ftp_plugin.LogonSettingsComponent</implementation-class>
     </component>
   </project-components>
@@ -34,6 +35,7 @@
     <!-- Add your extensions here -->
     <configurationType implementation="config.HlasmConfigurationType"/>
     <fileBasedIndex implementation="com.ftp_plugin.FTPLastSyncIndex" />
+    <toolWindow anchor="right" id="z/OS" factoryClass="com.ftp_plugin.HlasmToolWindowFactory"/>
 
   </extensions>
 

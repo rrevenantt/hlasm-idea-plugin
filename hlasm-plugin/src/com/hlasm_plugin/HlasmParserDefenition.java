@@ -137,7 +137,7 @@ public class HlasmParserDefenition implements ParserDefinition {
                     }
                     if (node.getFirstChildNode().getElementType() instanceof TokenIElementType
                             && ((TokenIElementType) node.getFirstChildNode().getElementType()).getANTLRTokenType() == HlasmLexer.LABEL_DEF) {
-                        System.out.println("label tree saved" + node.getFirstChildNode().getText());
+//                        System.out.println("label tree saved" + node.getFirstChildNode().getText());
                         ((HlasmPSIFileRoot) element.getContainingFile()).definitions.put(node.getFirstChildNode().getText(), element);
                     }
                     return element;

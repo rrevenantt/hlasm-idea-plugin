@@ -28,7 +28,6 @@
     <fileTypeFactory implementation="com.jcl_plugin.JCLFileTypeFactory"/>
     <lang.syntaxHighlighterFactory language="JCL" implementationClass="com.jcl_plugin.JclSyntaxHighlighterFactory"/>
     <lang.parserDefinition language="JCL" implementationClass="com.jcl_plugin.JclParserDefenition"/>
-    <!--<toolWindow anchor="right" id="z/OS" factoryClass="com.hlasm_plugin.HlasmToolWindowFactory"/>-->
     <lang.commenter language="JCL" implementationClass="com.jcl_plugin.JCLCommenter" />
   </extensions>
 

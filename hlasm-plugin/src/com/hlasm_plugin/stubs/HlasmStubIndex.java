@@ -30,7 +30,7 @@ public class HlasmStubIndex extends StringStubIndexExtension<HlasmMacroPsiElemen
 
     @Override
     public int getVersion() {
-        return 5;
+        return 6;
     }
 
     @Override

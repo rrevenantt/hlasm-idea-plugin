@@ -26,6 +26,12 @@ public interface HlasmParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitLines(HlasmParser.LinesContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link HlasmParser#statement2}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitStatement2(HlasmParser.Statement2Context ctx);
+	/**
 	 * Visit a parse tree produced by {@link HlasmParser#statement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

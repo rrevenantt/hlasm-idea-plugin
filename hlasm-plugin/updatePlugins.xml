@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugins>
-    <plugin id="com.hlasm_plugin" url="http://gitlab.mf.lss.emc.com/aka/hlasm-library-antlr/raw/master/hlasm-plugin/hlasm-plugin.zip" version="1.2.0"/>
-    <plugin id="com.jcl_plugin" url="http://gitlab.mf.lss.emc.com/aka/hlasm-library-antlr/raw/master/jcl-plugin/jcl-plugin.zip" version="1.0.1"/>
-    <plugin id="com.ftp_plugin" url="http://gitlab.mf.lss.emc.com/aka/hlasm-library-antlr/raw/master/ftp_plugin/ftp_plugin.zip" version="1.0.3"/>
+    <plugin id="com.hlasm_plugin" url="https://github.com/rrevenantt/hlasm-idea-plugin/blob/master/hlasm-plugin/hlasm-plugin.zip" version="1.2.2"/>
+    <plugin id="com.jcl_plugin" url="https://github.com/rrevenantt/hlasm-idea-plugin/blob/master/jcl-plugin/jcl-plugin.zip" version="1.0.1"/>
+    <plugin id="com.ftp_plugin" url="https://github.com/rrevenantt/hlasm-idea-plugin/blob/master/ftp_plugin/ftp_plugin.zip?raw=true" version="1.0.6"/>
 </plugins>

@@ -6,6 +6,8 @@ import com.hlasm_plugin.regex.HlasmRegexLibrary;
 import com.intellij.lang.*;
 import com.intellij.lang.impl.PsiBuilderImpl;
 import com.intellij.lexer.LexerBase;
+import com.intellij.openapi.application.Application;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.project.Project;
@@ -13,6 +15,7 @@ import com.intellij.openapi.util.Pair;
 import com.intellij.openapi.util.TextRange;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.psi.PsiElement;
+import com.intellij.psi.PsiWhiteSpace;
 import com.intellij.psi.TokenType;
 import com.intellij.psi.impl.source.DummyHolder;
 import com.intellij.psi.impl.source.PsiFileImpl;
@@ -182,7 +185,7 @@ public class HlasmStatementsElementType extends IReparseableElementType implemen
                             || beginChild.getElementType() == TokenType.ERROR_ELEMENT
                             || !(TreeUtil.findLastLeaf(beginChild).getElementType() instanceof TokenIElementType)
                             || (TreeUtil.findLastLeaf(beginChild).getElementType() instanceof TokenIElementType
-                            && ((TokenIElementType) TreeUtil.findLastLeaf(beginChild).getElementType()).getANTLRTokenType() != HlasmLexer.ENDLINE)
+                                && ((TokenIElementType) TreeUtil.findLastLeaf(beginChild).getElementType()).getANTLRTokenType() != HlasmLexer.ENDLINE)
                             || beginChild.getFirstChildNode() == null
                             || !(beginChild.getFirstChildNode().getElementType() instanceof RuleIElementType)
                             || oldText.charAt(beginChild.getStartOffsetInParent() - 1) != '\n'))
@@ -192,7 +195,7 @@ public class HlasmStatementsElementType extends IReparseableElementType implemen
                             || endChild.getElementType() == TokenType.ERROR_ELEMENT
                             || !(TreeUtil.findLastLeaf(endChild).getElementType() instanceof TokenIElementType)
                             || (TreeUtil.findLastLeaf(endChild).getElementType() instanceof TokenIElementType
-                            && ((TokenIElementType) TreeUtil.findLastLeaf(endChild).getElementType()).getANTLRTokenType() != HlasmLexer.ENDLINE)
+                                && ((TokenIElementType) TreeUtil.findLastLeaf(endChild).getElementType()).getANTLRTokenType() != HlasmLexer.ENDLINE)
                             || endChild.getFirstChildNode() == null
                             || !(endChild.getFirstChildNode().getElementType() instanceof RuleIElementType))
                             && endChild.getTreeNext() != null)
@@ -232,7 +235,7 @@ public class HlasmStatementsElementType extends IReparseableElementType implemen
 
             System.out.println("actually reparsed range:" + beginChild.getStartOffsetInParent() + " to " +
                     (endChild.getStartOffsetInParent() + endChild.getTextLength()) + " len " + (endChild.getStartOffsetInParent() - beginChild.getStartOffsetInParent() + endChild.getTextLength()));
-            if (oldReparsedText.length() > 10000 && reparsedText.length() > 10000) {
+            if (oldReparsedText.length() > 10000 && reparsedText.length() > 10000 && changedRange.getEndOffset() == oldFullText.length()) {
                 System.err.println("ATTENTION!!! very big reparsing ");
                 System.out.println("diff text" + oldText.subSequence(changedRange.getStartOffset(), changedRange.getEndOffset()));
             } else {
@@ -307,16 +310,20 @@ public class HlasmStatementsElementType extends IReparseableElementType implemen
                         @Nullable
                         @Override
                         public IElementType getTokenType() {
-                            if (currOld == null) {
+                            if (currOld == null && currState != 1) {
                                 System.out.println("old not reparsed statement all:" + count);
                                 return null;
                             }
                             if (currState == 0) {
 //                            return getLexer().getTokenFactory().create(HlasmLexer.OLD_TOKEN,null);
                                 count += 1;
-//                            return (IElementType) PSIElementTypeFactory.getTokenIElementTypes(HlasmLanguage.INSTANCE).get(HlasmLexer.OLD_TOKEN);\
-                                return (IElementType) PSIElementTypeFactory.getRuleIElementTypes(HlasmLanguage.INSTANCE).get(HlasmParser.RULE_statement
-                                );
+//                                if (currOld.getElementType() instanceof TokenIElementType)
+//                                    return currOld.getElementType();
+//                                if (currOld.getElementType() == TokenType.WHITE_SPACE)
+//                                    return (IElementType) PSIElementTypeFactory.getTokenIElementTypes(HlasmLanguage.INSTANCE).get(HlasmLexer.SPACES1);
+
+//                                return (IElementType) PSIElementTypeFactory.getTokenIElementTypes(HlasmLanguage.INSTANCE).get(HlasmLexer.OLD_TOKEN);
+                                return (IElementType) PSIElementTypeFactory.getRuleIElementTypes(HlasmLanguage.INSTANCE).get(HlasmParser.RULE_statement);
                             }
 
                             return delegate.getTokenType();
@@ -344,22 +351,24 @@ public class HlasmStatementsElementType extends IReparseableElementType implemen
                             if (currState == 1) {
                                 delegate.advance();
 
-                                if (delegate.getTokenType() != null
+                                if (delegate.getTokenType() != null && currOld != null
                                         && delegate.getTokenStart() >= currOld.getStartOffsetInParent() + currOld.getTextLength() + changeTextSize)
                                     currOld = currOld.getTreeNext();
 
-                                if (delegate.getTokenType() == null
+                                if ((delegate.getTokenType() == null && currOld == null)
                                         || ((delegate.getTokenStart() > newForceReparsedTextEnd
                                         && ((TokenIElementType) delegate.getTokenType()).getANTLRTokenType() == HlasmLexer.ENDLINE)
                                         && TreeUtil.findLastLeaf(currOld, true).getElementType() instanceof TokenIElementType
-                                        && ((TokenIElementType) TreeUtil.findLastLeaf(currOld, true).getElementType()).getANTLRTokenType() == HlasmLexer.ENDLINE)
-                                        && currOld.getStartOffsetInParent() + currOld.getTextLength() + changeTextSize == delegate.getTokenEnd()
+                                        && ((TokenIElementType) TreeUtil.findLastLeaf(currOld, true).getElementType()).getANTLRTokenType() == HlasmLexer.ENDLINE
+                                        && currOld.getStartOffsetInParent() + currOld.getTextLength() + changeTextSize == delegate.getTokenEnd())
                                         ) {
 
                                     currState = 2;
                                     currTarget = null;
-                                    if (delegate.getTokenEnd() - beginFinal.getStartOffsetInParent() > 1000)
+                                    System.out.println("actual reparsing end:" + delegate.getTokenEnd());
+                                    if (delegate.getTokenEnd() - beginFinal.getStartOffsetInParent() > 1000) {
                                         System.out.println("lulululululul \n" + newText.subSequence(beginFinal.getStartOffsetInParent(), beginFinal.getStartOffsetInParent() + 1000));
+                                    }
                                     //currOld = endFinal.getTreeNext();
                                 }
                             }
@@ -382,21 +391,27 @@ public class HlasmStatementsElementType extends IReparseableElementType implemen
             builder.putUserDataUnprotected(PsiBuilderImpl.CUSTOM_COMPARATOR, new TripleFunction<ASTNode, LighterASTNode, FlyweightCapableTreeStructure<LighterASTNode>, ThreeState>() {
                 @Override
                 public ThreeState fun(ASTNode astNode1, LighterASTNode lighterASTNode, FlyweightCapableTreeStructure<LighterASTNode> lighterASTNodeFlyweightCapableTreeStructure) {
-                    if (lighterASTNode.getTokenType() instanceof RuleIElementType && astNode1 instanceof TreeElement
+                    if (lighterASTNode.getTokenType() instanceof RuleIElementType //&& astNode1 instanceof TreeElement
                             && ((RuleIElementType) lighterASTNode.getTokenType()).getRuleIndex() == HlasmParser.RULE_statement) {
 //                    System.out.println("custom comparator");
 //                    if (lighterASTNode.getStartOffset() < beginFinal.getStartOffset() || lighterASTNode.getEndOffset() > endFinal.getStartOffset()+endFinal.getTextLength() + changeTextSize)
 //                        return ThreeState.YES;
                         TreeElement astNode = (TreeElement) astNode1;
-                        if ((astNode.getStartOffsetInParent() < beginFinal.getStartOffsetInParent() && lighterASTNode.getStartOffset() < beginFinal.getStartOffsetInParent())
-                                || (astNode.getStartOffsetInParent() > endFinal.getStartOffsetInParent() && lighterASTNode.getStartOffset() > endFinal.getStartOffsetInParent() + changeTextSize))
+                        if (lighterASTNode.getTokenType() instanceof TokenIElementType
+                                && ((TokenIElementType) lighterASTNode.getTokenType()).getANTLRTokenType() == HlasmLexer.OLD_TOKEN)
+                            if ((astNode.getStartOffsetInParent() < beginFinal.getStartOffsetInParent()
+//                                      && lighterASTNode.getStartOffset() < beginFinal.getStartOffsetInParent())
+                                        && lighterASTNode.getStartOffset() == astNode.getStartOffsetInParent())
+                                    || (astNode.getStartOffsetInParent() > endFinal.getStartOffsetInParent()
+//                                      && lighterASTNode.getStartOffset() > endFinal.getStartOffsetInParent() + changeTextSize))
+                                        && lighterASTNode.getStartOffset() == astNode.getStartOffsetInParent() + changeTextSize))
 
-                            return ThreeState.YES;
+                                return ThreeState.YES;
 
 //                        if (changedRange.intersects(lighterASTNode.getStartOffset(), lighterASTNode.getEndOffset())) {
                         if (//changedRange.contains(lighterASTNode.getStartOffset()) ||
                                 (lighterASTNode.getStartOffset() <= changedRange.getStartOffset() && lighterASTNode.getEndOffset() >= changedRange.getStartOffset())) {
-                            System.out.println("definite NO  " + lighterASTNode.getStartOffset() + "," + lighterASTNode.getEndOffset());
+                            System.out.println("definite NO "+astNode1.getStartOffset()+","+(astNode1.getStartOffset()+astNode1.getTextLength())+" vs " + lighterASTNode.getStartOffset() + "," + lighterASTNode.getEndOffset());
                             return ThreeState.NO;
                         }
                         return ThreeState.UNSURE;
@@ -414,7 +429,14 @@ public class HlasmStatementsElementType extends IReparseableElementType implemen
             ASTNode node = parser.parse(this, builder);
             return node.getFirstChildNode();
         }
-        catch (BlockSupport.ReparsedSuccessfullyException|ProcessCanceledException e){
+        catch (BlockSupport.ReparsedSuccessfullyException e){
+            if (ApplicationManager.getApplication().isUnitTestMode()){
+//                System.out.println(e.getDiffLog());
+            }
+
+            throw e;
+        }
+        catch (ProcessCanceledException e){
             throw e;
         }
         catch (Exception e){
