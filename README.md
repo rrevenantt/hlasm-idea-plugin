@@ -1,4 +1,6 @@
 
 See wiki for all information
 
-http://gitlab.mf.lss.emc.com/aka/hlasm-library-antlr/wikis/home
+For usage see wiki https://github.com/rrevenantt/hlasm-idea-plugin/wiki
+ 
+It is not very stable yet, use on your own risk.
