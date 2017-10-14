@@ -14,7 +14,7 @@ import org.w3c.dom.ranges.RangeException;
  *   Not use -**** *--- Actual first element
  *    (only zero)     (any data)    
  **/
-public abstract class Operand implements BasicOperand {
+public class Operand implements BasicOperand {
 
     private byte[] data;
     private final byte bits;
@@ -36,7 +36,7 @@ public abstract class Operand implements BasicOperand {
      * return bit's in FIRST byte of data
     **/
     @Override
-    public short getBits() { return bits; }
+    public byte getBits() { return bits; }
     
     /**
      * Set new data if they bit's and bytes equal
