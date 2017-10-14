@@ -43,7 +43,7 @@ public class Operand implements BasicOperand {
      * @param value - new data
      **/
     @Override
-    public void setData(byte[] value) {
+    public void setData(@NotNull byte[] value) {
         if (data.length == value.length && this.isEqualsToBits(value[0]))
             data = value;
     }
@@ -62,9 +62,12 @@ public class Operand implements BasicOperand {
      * @param data - actual data in type of operation
      * @param bits - bits of first byte of data
      */
-    public Operand(byte[] data, byte bits) {
+    public Operand(@NotNull byte[] data, byte bits) throws Exception {
         this.data = data;
+        if (bits > 8 || bits < 0)
+            throw new Exception("Bits can't be more than 8 or less than 0");
         this.bits = bits;
+        
     }
 
     /**
@@ -73,15 +76,15 @@ public class Operand implements BasicOperand {
      * @param bits - bits of first byte of data
      * @throws RangeException - if bytes <= 0
      */
-    public Operand(byte bytes, byte bits) throws RangeException {
+    public Operand(byte bytes, byte bits) throws Exception {
         try{
         data = new byte[bytes];
+        if (bits > 8 || bits < 0)
+            throw new Exception("Bits can't be more than 8 or less than 0");
+        this.bits = bits;
         }
         catch (Exception e) {
             throw e;
-        }
-        finally {
-            this.bits = bits;
         }
     }
 }
