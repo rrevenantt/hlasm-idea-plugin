@@ -61,6 +61,7 @@ public class Operand implements BasicOperand {
      * Standard builder of class
      * @param data - actual data in type of operation
      * @param bits - bits of first byte of data
+     * @throws Exception - if bits > 8 or bits < 0
      */
     public Operand(@NotNull byte[] data, byte bits) throws Exception {
         this.data = data;
@@ -75,6 +76,8 @@ public class Operand implements BasicOperand {
      * @param bytes - bytes of data
      * @param bits - bits of first byte of data
      * @throws RangeException - if bytes <= 0
+     * or
+     * @throws Exception - if bits > 8 or bits < 0
      */
     public Operand(byte bytes, byte bits) throws Exception {
         try{
