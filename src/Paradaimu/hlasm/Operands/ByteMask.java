@@ -1,4 +1,7 @@
 package Paradaimu.hlasm.Operands;
+
+import org.jetbrains.annotations.Contract;
+
 /**
  * @author  Paradaimu
  * 14.10.2017
@@ -9,6 +12,7 @@ public class ByteMask {
     /**
      * @param integer count of zeros from start (0 - 8)
     **/
+    @Contract(pure = true)
     public static byte FirstZero(byte integer) {
         switch (integer) {
             case 0: return -128;    //1111 1111
@@ -25,6 +29,7 @@ public class ByteMask {
     /**
      * @param integer count of zeros from end (0 - 8)
     **/
+    @Contract(pure = true)
     public static byte LastZero(byte integer) {
         switch (integer) {
             case 0: return -128;    //1111 1111
@@ -41,6 +46,7 @@ public class ByteMask {
     /**
      * @param integer count of ones from start (0 - 8)
     **/
+    @Contract(pure = true)
     public static byte FirstOne(byte integer) {
         switch (integer) {
             case 1: return -1;      //1000 0000
@@ -57,6 +63,7 @@ public class ByteMask {
     /**
      * @param integer count of ones from end (0 - 8)
     **/
+    @Contract(pure = true)
     public static byte LastOne(byte integer) {
         switch (integer) {
             case 1: return 1;       //0000 0001
