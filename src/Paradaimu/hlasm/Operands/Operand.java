@@ -1,7 +1,6 @@
 package Paradaimu.hlasm.Operands;
 
 import org.jetbrains.annotations.NotNull;
-import org.w3c.dom.ranges.RangeException;
 
 /**
  * @author  Paradaimu
@@ -20,20 +19,20 @@ public class Operand implements BasicOperand {
     private final byte bits;
    
     /**
-     * return data field 
+     * @return data field 
     **/
     @NotNull
     @Override
     public byte[] getData(){ return data; }
     
     /**
-     * return byte's in data
+     * @return byte's in data
     **/
     @Override
     public int getSize() { return data.length; }
     
     /**
-     * return bit's in FIRST byte of data
+     * @return bit's in FIRST byte of data
     **/
     @Override
     public byte getBits() { return bits; }
@@ -51,43 +50,32 @@ public class Operand implements BasicOperand {
     /**
      * Use to prof equals of first byte of new data and count of bits
      * @param firstByte - first byte of new data
+     * @return true if equal bits else false
     **/
     @Override
     public boolean isEqualsToBits(byte firstByte) {
-        return (Byte.compare(ByteMask.FirstOne(bits), firstByte) >= 0);
+        return (ByteMask.LastOne(bits) < (byte) 0
+                || (firstByte <= ByteMask.LastOne(bits)) && firstByte >= 0);
     }
 
     /**
      * Standard builder of class
      * @param data - actual data in type of operation
      * @param bits - bits of first byte of data
-     * @throws Exception - if bits > 8 or bits < 0
      */
-    public Operand(@NotNull byte[] data, byte bits) throws Exception {
+    public Operand(@NotNull byte[] data, byte bits){
         this.data = data;
-        if (bits > 8 || bits < 0)
-            throw new Exception("Bits can't be more than 8 or less than 0");
         this.bits = bits;
-        
     }
 
     /**
      * Additional builder of class with lazy data initialization
      * @param bytes - bytes of data
      * @param bits - bits of first byte of data
-     * @throws RangeException - if bytes <= 0
-     * or
-     * @throws Exception - if bits > 8 or bits < 0
      */
-    public Operand(byte bytes, byte bits) throws Exception {
-        try{
+    public Operand(byte bytes, byte bits) {
         data = new byte[bytes];
-        if (bits > 8 || bits < 0)
-            throw new Exception("Bits can't be more than 8 or less than 0");
         this.bits = bits;
-        }
-        catch (Exception e) {
-            throw e;
-        }
     }
+    
 }
