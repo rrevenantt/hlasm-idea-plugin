@@ -1,6 +1,5 @@
 package com.hlasm_plugin.tests;
 
-import Paradaimu.hlasm.Operands.ByteMask;
 import Paradaimu.hlasm.Operands.*;
 import Paradaimu.hlasm.Operands.Created.*;
 import com.intellij.testFramework.fixtures.LightPlatformCodeInsightFixtureTestCase;
