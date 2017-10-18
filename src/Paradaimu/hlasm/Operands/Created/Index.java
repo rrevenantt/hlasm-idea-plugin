@@ -4,12 +4,12 @@ import Paradaimu.hlasm.Operands.Operand;
 import org.jetbrains.annotations.NotNull;
 
 public class Index extends Operand {
-    private Index(byte size, byte bits) {
-        super(size,bits);
+    private Index(int size, int bits) {
+        super(size, bits, "X");
     }
 
     @NotNull
     public static Index X4() {
-        return new Index((byte)1,(byte)4);
+        return new Index(1,4);
     }
 }

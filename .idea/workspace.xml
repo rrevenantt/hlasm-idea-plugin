@@ -1,29 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="744cf56a-5470-4ba5-907d-28f9f1c635e9" name="Default" comment="Do not redownload already opened sysout">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hlasm-plugin/tests/com/hlasm_plugin/tests/OperandsTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Base.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Displacement.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/ImmediateData.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Index.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Length.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Mask.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Opcode.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/RXB.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Register.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/SignedBinaryIntegerDesignating.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Unassigned.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/VectorRegister.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+    <list default="true" id="744cf56a-5470-4ba5-907d-28f9f1c635e9" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/ByteMask.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ftp_plugin/ftp_plugin.iml" afterPath="$PROJECT_DIR$/ftp_plugin/ftp_plugin.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hlasm-library-antlr.iml" afterPath="$PROJECT_DIR$/hlasm-library-antlr.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hlasm-plugin/hlasm-plugin.iml" afterPath="$PROJECT_DIR$/hlasm-plugin/hlasm-plugin.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jcl-plugin/jcl-plugin.iml" afterPath="$PROJECT_DIR$/jcl-plugin/jcl-plugin.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/ByteMask.java" afterPath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/ByteMask.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hlasm-plugin/tests/com/hlasm_plugin/tests/OperandsTest.java" afterPath="$PROJECT_DIR$/hlasm-plugin/tests/com/hlasm_plugin/tests/OperandsTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/BasicOperand.java" afterPath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/BasicOperand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Base.java" afterPath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Base.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Displacement.java" afterPath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Displacement.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/ImmediateData.java" afterPath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/ImmediateData.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Index.java" afterPath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Index.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Length.java" afterPath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Length.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Mask.java" afterPath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Mask.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Opcode.java" afterPath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Opcode.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/RXB.java" afterPath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/RXB.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Register.java" afterPath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Register.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/SignedBinaryIntegerDesignating.java" afterPath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/SignedBinaryIntegerDesignating.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Unassigned.java" afterPath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Unassigned.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/VectorRegister.java" afterPath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/VectorRegister.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Operand.java" afterPath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Operand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hlasm/HlasmAnalyzer.java" afterPath="$PROJECT_DIR$/src/hlasm/HlasmAnalyzer.java" />
     </list>
     <ignored path="hlasm-library-antlr.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,60 +38,68 @@
     <favorites_list name="hlasm-library-antlr" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="Opcode.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Opcode.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="13" column="5" lean-forward="true" selection-start-line="5" selection-start-column="20" selection-end-line="13" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Displacement.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Displacement.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="26" lean-forward="false" selection-start-line="5" selection-start-column="26" selection-end-line="18" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Length.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Length.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#284#285#0" expanded="true" />
-                <element signature="e#334#335#0" expanded="true" />
-                <element signature="e#380#381#0" expanded="true" />
-                <element signature="e#430#431#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OperandsTest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/hlasm-plugin/tests/com/hlasm_plugin/tests/OperandsTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-199">
-              <caret line="17" column="31" lean-forward="true" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="BasicOperand.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/BasicOperand.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="311">
+                  <caret line="48" column="4" lean-forward="true" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="4" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="Operand.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Operand.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="493">
+                  <caret line="60" column="50" lean-forward="false" selection-start-line="60" selection-start-column="50" selection-end-line="60" selection-end-column="50" />
+                  <folding>
+                    <element signature="docComment;class#Operand#0" expanded="false" />
+                    <element signature="docComment;method#getData#0;class#Operand#0" expanded="false" />
+                    <element signature="e#568#576#0" expanded="false" />
+                    <element signature="docComment;method#getSize#0;class#Operand#0" expanded="false" />
+                    <element signature="docComment;method#getBits#0;class#Operand#0" expanded="false" />
+                    <element signature="docComment;method#setData#0;class#Operand#0" expanded="false" />
+                    <element signature="method#setData#0;class#Operand#0" expanded="false" />
+                    <element signature="docComment;method#isEqualsToBits#0;class#Operand#0" expanded="false" />
+                    <element signature="method#isEqualsToBits#0;class#Operand#0" expanded="false" />
+                    <element signature="docComment;method#Operand#0;class#Operand#0" expanded="false" />
+                    <element signature="method#Operand#0;class#Operand#0" expanded="false" />
+                    <element signature="docComment;method#Operand#1;class#Operand#0" expanded="false" />
+                    <element signature="method#Operand#1;class#Operand#0" expanded="false" />
+                    <element signature="docComment;method#getSizeOfOperand#0;class#Operand#0" expanded="false" />
+                    <element signature="docComment;method#getName#0;class#Operand#0" expanded="false" />
+                    <element signature="docComment;method#isEqual#0;class#Operand#0" expanded="false" />
+                    <element signature="method#isEqual#0;class#Operand#0" expanded="false" />
+                    <element signature="docComment;method#isEqualTo#0;class#Operand#0" expanded="false" />
+                    <element signature="method#isEqualTo#0;class#Operand#0" expanded="false" />
+                    <element signature="docComment;method#setDataAdaptor#0;class#Operand#0" expanded="false" />
+                    <element signature="method#setDataAdaptor#0;class#Operand#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Opcodes.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/hlasm/Opcodes.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="119">
+                  <caret line="8" column="67" lean-forward="true" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="67" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -167,8 +171,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/hlasm-plugin/src/com/hlasm_plugin/stubs/HlasmStubIndex.java" />
-        <option value="$PROJECT_DIR$/hlasm-plugin/src/com/hlasm_plugin/psi/HlasmIFileElementType.java" />
         <option value="$PROJECT_DIR$/hlasm-plugin/src/com/hlasm_plugin/HlasmToolWindowFactory.java" />
         <option value="$PROJECT_DIR$/jcl-plugin/resources/META-INF/plugin.xml" />
         <option value="$PROJECT_DIR$/ftp_plugin/src/com/ftp_plugin/FTPUpdater.java" />
@@ -199,25 +201,27 @@
         <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/ByteMask.java" />
         <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Opcode4.java" />
         <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Opcode8.java" />
-        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Operand.java" />
         <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Opcode16.java" />
         <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/VectorRegister4.java" />
         <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Opcode4.java" />
         <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Register4.java" />
-        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Opcode.java" />
         <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Unassigned4.java" />
-        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Unassigned.java" />
         <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/RXB4.java" />
-        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/SignedBinaryIntegerDesignating.java" />
-        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/ImmediateData.java" />
-        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Register.java" />
-        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/VectorRegister.java" />
-        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Mask.java" />
-        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Base.java" />
-        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Index.java" />
-        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Displacement.java" />
-        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Length.java" />
         <option value="$PROJECT_DIR$/hlasm-plugin/tests/com/hlasm_plugin/tests/OperandsTest.java" />
+        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Base.java" />
+        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Displacement.java" />
+        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/ImmediateData.java" />
+        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Index.java" />
+        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Length.java" />
+        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Mask.java" />
+        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Opcode.java" />
+        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Register.java" />
+        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/RXB.java" />
+        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/SignedBinaryIntegerDesignating.java" />
+        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Unassigned.java" />
+        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/VectorRegister.java" />
+        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/BasicOperand.java" />
+        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Operand.java" />
       </list>
     </option>
   </component>
@@ -225,9 +229,8 @@
     <treeState />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="479" />
-    <option name="y" value="4" />
-    <option name="width" value="888" />
+    <option name="x" value="-4" />
+    <option name="width" value="893" />
     <option name="height" value="744" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -352,6 +355,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -362,46 +368,24 @@
             <path>
               <item name="hlasm-idea-plugin" type="b2602c69:ProjectViewProjectNode" />
               <item name="hlasm-idea-plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="hlasm-plugin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hlasm-idea-plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hlasm-idea-plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="hlasm-plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hlasm-idea-plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hlasm-idea-plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="hlasm-plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="hlasm-idea-plugin" type="b2602c69:ProjectViewProjectNode" />
               <item name="hlasm-idea-plugin" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="hlasm" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="hlasm-idea-plugin" type="b2602c69:ProjectViewProjectNode" />
               <item name="hlasm-idea-plugin" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Operands" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hlasm-idea-plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hlasm-idea-plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Operands" type="462c0819:PsiDirectoryNode" />
-              <item name="Created" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -1301,9 +1285,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3266129" sideWeight="0.49485862" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27416798" sideWeight="0.61566615" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33755943" sideWeight="0.3455344" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.183355" sideWeight="0.5068493" order="3" side_tool="false" content_ui="tabs" />
@@ -1311,8 +1295,8 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33783785" sideWeight="0.44730076" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2375" sideWeight="0.4749467" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20717423" sideWeight="0.4762846" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30675676" sideWeight="0.3862468" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20717423" sideWeight="0.4762846" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3058637" sideWeight="0.3862468" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27120823" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.49292928" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33755943" sideWeight="0.6544656" order="3" side_tool="false" content_ui="tabs" />
@@ -1331,6 +1315,7 @@
       <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31989247" sideWeight="0.6002571" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="z/OS" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.32834852" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27416798" sideWeight="0.61566615" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1485,13 +1470,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/javax/swing/JList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="1693" column="16" lean-forward="false" selection-start-line="1693" selection-start-column="16" selection-end-line="1693" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ftp_plugin/src/com/ftp_plugin/zOSToolWindow.form" />
     <entry file="file://$PROJECT_DIR$/../idea/platform/util/src/com/intellij/util/containers/SoftValueHashMap.java" />
     <entry file="file://$PROJECT_DIR$/../idea/platform/util/src/com/intellij/util/containers/ConcurrentSoftValueHashMap.java" />
@@ -1616,7 +1594,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1630,41 +1607,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/BasicOperand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="41">
-          <caret line="18" column="9" lean-forward="false" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/lang/Byte.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7021">
           <caret line="456" column="22" lean-forward="false" selection-start-line="456" selection-start-column="22" selection-end-line="456" selection-end-column="22" />
-          <folding>
-            <element signature="e#15911#15912#0" expanded="false" />
-            <element signature="e#15939#15940#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Opcode8.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Operand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="52" column="44" lean-forward="false" selection-start-line="52" selection-start-column="44" selection-end-line="52" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Opcode8.java" />
     <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/ByteMask.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1207">
@@ -1673,50 +1623,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Opcode16.java">
+    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Opcode16.java" />
+    <entry file="file://$PROJECT_DIR$/hlasm-plugin/tests/com/hlasm_plugin/tests/OperandsTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="5" lean-forward="true" selection-start-line="4" selection-start-column="21" selection-end-line="7" selection-end-column="5" />
-          <folding />
+        <state relative-caret-position="17">
+          <caret line="17" column="31" lean-forward="false" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Base.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="12" column="26" lean-forward="false" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#280#281#0" expanded="true" />
+            <element signature="e#316#317#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/ImmediateData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="21" column="33" lean-forward="false" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
+        <state relative-caret-position="340">
+          <caret line="22" column="35" lean-forward="false" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#309#310#0" expanded="true" />
+            <element signature="e#354#355#0" expanded="true" />
+            <element signature="e#408#409#0" expanded="true" />
+            <element signature="e#453#454#0" expanded="true" />
+            <element signature="e#511#512#0" expanded="true" />
+            <element signature="e#556#557#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/SignedBinaryIntegerDesignating.java">
+    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/VectorRegister.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Register.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#209#210#0" expanded="true" />
-            <element signature="e#241#242#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/RXB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        <state relative-caret-position="204">
+          <caret line="12" column="36" lean-forward="false" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1725,18 +1674,76 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Unassigned.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        <state relative-caret-position="306">
+          <caret line="20" column="10" lean-forward="false" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/VectorRegister.java">
+    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/SignedBinaryIntegerDesignating.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="52" lean-forward="false" selection-start-line="27" selection-start-column="52" selection-end-line="27" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/RXB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="12" column="25" lean-forward="false" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Register.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#297#298#0" expanded="true" />
+            <element signature="e#337#338#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Opcode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="22" column="28" lean-forward="false" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#298#299#0" expanded="true" />
+            <element signature="e#336#337#0" expanded="true" />
+            <element signature="e#391#392#0" expanded="true" />
+            <element signature="e#429#430#0" expanded="true" />
+            <element signature="e#485#486#0" expanded="true" />
+            <element signature="e#525#526#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Displacement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="40" lean-forward="false" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Length.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="17" column="28" lean-forward="false" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1746,80 +1753,68 @@
     <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Mask.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
-          <caret line="12" column="41" lean-forward="true" selection-start-line="12" selection-start-column="41" selection-end-line="12" selection-end-column="41" />
+          <caret line="12" column="26" lean-forward="false" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#278#279#0" expanded="true" />
-            <element signature="e#326#327#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Base.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="12" column="39" lean-forward="false" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#278#279#0" expanded="true" />
-            <element signature="e#326#327#0" expanded="true" />
+            <element signature="e#282#283#0" expanded="true" />
+            <element signature="e#318#319#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Index.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#281#282#0" expanded="true" />
-            <element signature="e#330#331#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Opcode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="13" column="5" lean-forward="true" selection-start-line="5" selection-start-column="20" selection-end-line="13" selection-end-column="5" />
+        <state relative-caret-position="153">
+          <caret line="12" column="27" lean-forward="false" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Displacement.java">
+    <entry file="file://$PROJECT_DIR$/src/hlasm/Opcodes.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="26" lean-forward="false" selection-start-line="5" selection-start-column="26" selection-end-line="18" selection-end-column="5" />
+        <state relative-caret-position="119">
+          <caret line="8" column="67" lean-forward="true" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Operand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="60" column="50" lean-forward="false" selection-start-line="60" selection-start-column="50" selection-end-line="60" selection-end-column="50" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#Operand#0" expanded="false" />
+            <element signature="docComment;method#getData#0;class#Operand#0" expanded="false" />
+            <element signature="e#568#576#0" expanded="false" />
+            <element signature="docComment;method#getSize#0;class#Operand#0" expanded="false" />
+            <element signature="docComment;method#getBits#0;class#Operand#0" expanded="false" />
+            <element signature="docComment;method#setData#0;class#Operand#0" expanded="false" />
+            <element signature="method#setData#0;class#Operand#0" expanded="false" />
+            <element signature="docComment;method#isEqualsToBits#0;class#Operand#0" expanded="false" />
+            <element signature="method#isEqualsToBits#0;class#Operand#0" expanded="false" />
+            <element signature="docComment;method#Operand#0;class#Operand#0" expanded="false" />
+            <element signature="method#Operand#0;class#Operand#0" expanded="false" />
+            <element signature="docComment;method#Operand#1;class#Operand#0" expanded="false" />
+            <element signature="method#Operand#1;class#Operand#0" expanded="false" />
+            <element signature="docComment;method#getSizeOfOperand#0;class#Operand#0" expanded="false" />
+            <element signature="docComment;method#getName#0;class#Operand#0" expanded="false" />
+            <element signature="docComment;method#isEqual#0;class#Operand#0" expanded="false" />
+            <element signature="method#isEqual#0;class#Operand#0" expanded="false" />
+            <element signature="docComment;method#isEqualTo#0;class#Operand#0" expanded="false" />
+            <element signature="method#isEqualTo#0;class#Operand#0" expanded="false" />
+            <element signature="docComment;method#setDataAdaptor#0;class#Operand#0" expanded="false" />
+            <element signature="method#setDataAdaptor#0;class#Operand#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Length.java">
+    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/BasicOperand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#284#285#0" expanded="true" />
-            <element signature="e#334#335#0" expanded="true" />
-            <element signature="e#380#381#0" expanded="true" />
-            <element signature="e#430#431#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hlasm-plugin/tests/com/hlasm_plugin/tests/OperandsTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-199">
-          <caret line="17" column="31" lean-forward="true" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="311">
+          <caret line="48" column="4" lean-forward="true" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>
