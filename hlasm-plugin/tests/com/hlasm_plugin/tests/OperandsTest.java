@@ -17,7 +17,6 @@ public class OperandsTest extends LightPlatformCodeInsightFixtureTestCase {
         byte[] a = new byte[1];
         a[0] = Byte.parseByte("00000001");
         R1.setData(a);
-        System.out.println((Byte.compare(ByteMask.LastOne(R1.getBits()), a[0]) >= 0));
         System.out.println(Byte.parseByte("00000001") + " " + R1.getData()[0] + "\t" + R1.getBits() + "\t" + R1.getSize());
         OutMessage(R1);
     }
@@ -46,11 +45,32 @@ public class OperandsTest extends LightPlatformCodeInsightFixtureTestCase {
         for (int i = 0; i < 3; i++)
             System.out.println(a[i]);
     }
+
+    public void test_05(){
+        Register Reg = Register.R4();
+        byte[] data = new byte[1];
+        data[0] = 8;
+        Reg.setDataAdaptor(data);
+        OutMessage(Reg);
+        data[0] = -16;
+        OutMessage(Reg);
+        Register Reg2 = Register.R4();
+        Reg2.setDataAdaptor(data);
+        OutMessage(Reg2);
+        System.out.println(Reg.isEqualTo(Reg2));
+        data[0] = 8;
+        Reg2.setData(data);
+        System.out.println(Register.isEqual(Reg,Reg2));
+        Opcode Op = Opcode.Opcode8();
+        System.out.println(Operand.isEqual(Reg,Op));
+        System.out.println(Operand.isEqual(Reg,Reg2));
+    }
     
     private void OutMessage(Operand a)
     {
         for (int i = 0; i < a.getSize(); i++)
             System.out.print(a.getData()[i] + "\t");
-        System.out.println("|\t"  + a.getBits() + "\t" + a.getSize());
+        System.out.println(" | "  + a.getBits() + " | " + a.getSize() 
+                + " | "  + a.getSizeOfOperand() + " | "  + a.getName());
     }
 }
