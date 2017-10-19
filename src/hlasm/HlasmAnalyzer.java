@@ -104,7 +104,7 @@ public class HlasmAnalyzer {
                 if (line.length() > 72) {
                     line = line.substring(0,72);
                 }
-                outputStream.write((line+"\r\n").getBytes());
+                outputStream.write((line+"\r\n").getSize());
             }
 
             client.disconnect();
