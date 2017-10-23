@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="744cf56a-5470-4ba5-907d-28f9f1c635e9" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/ByteMask.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hlasm-plugin/tests/com/hlasm_plugin/tests/OperandsTest.java" afterPath="$PROJECT_DIR$/hlasm-plugin/tests/com/hlasm_plugin/tests/OperandsTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Operand.java" afterPath="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Operand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hlasm/HlasmAnalyzer.java" afterPath="$PROJECT_DIR$/src/hlasm/HlasmAnalyzer.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/EIPINIT.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hlasm-plugin/testdata/test1.asm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/temp.txt" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hlasm-plugin/testdata/test2.asm" afterPath="$PROJECT_DIR$/hlasm-plugin/testdata/test2.asm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hlasm-plugin/testdata/test3.asm" afterPath="$PROJECT_DIR$/hlasm-plugin/testdata/test3.asm" />
     </list>
     <ignored path="hlasm-library-antlr.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,79 +25,108 @@
     <favorites_list name="hlasm-library-antlr" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="BasicOperand.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/BasicOperand.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="362">
-                  <caret line="48" column="4" lean-forward="false" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="4" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="Operand.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Operand.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="233">
-                  <caret line="132" column="45" lean-forward="false" selection-start-line="132" selection-start-column="45" selection-end-line="132" selection-end-column="45" />
-                  <folding>
-                    <element signature="docComment;class#Operand#0" expanded="false" />
-                    <element signature="docComment;method#getData#0;class#Operand#0" expanded="false" />
-                    <element signature="e#568#576#0" expanded="false" />
-                    <element signature="docComment;method#getSize#0;class#Operand#0" expanded="false" />
-                    <element signature="docComment;method#getBits#0;class#Operand#0" expanded="false" />
-                    <element signature="docComment;method#setData#0;class#Operand#0" expanded="false" />
-                    <element signature="method#setData#0;class#Operand#0" expanded="false" />
-                    <element signature="docComment;method#isEqualsToBits#0;class#Operand#0" expanded="false" />
-                    <element signature="method#isEqualsToBits#0;class#Operand#0" expanded="false" />
-                    <element signature="docComment;method#Operand#0;class#Operand#0" expanded="false" />
-                    <element signature="method#Operand#0;class#Operand#0" expanded="false" />
-                    <element signature="docComment;method#Operand#1;class#Operand#0" expanded="false" />
-                    <element signature="method#Operand#1;class#Operand#0" expanded="false" />
-                    <element signature="docComment;method#getSizeOfOperand#0;class#Operand#0" expanded="false" />
-                    <element signature="method#getSizeOfOperand#0;class#Operand#0" expanded="false" />
-                    <element signature="docComment;method#getName#0;class#Operand#0" expanded="false" />
-                    <element signature="docComment;method#isEqual#0;class#Operand#0" expanded="false" />
-                    <element signature="method#isEqual#0;class#Operand#0" expanded="false" />
-                    <element signature="docComment;method#isEqualTo#0;class#Operand#0" expanded="false" />
-                    <element signature="method#isEqualTo#0;class#Operand#0" expanded="false" />
-                    <element signature="docComment;method#setDataAdaptor#0;class#Operand#0" expanded="false" />
-                    <element signature="method#setDataAdaptor#0;class#Operand#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="OperandsTest.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/hlasm-plugin/tests/com/hlasm_plugin/tests/OperandsTest.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="177">
-                  <caret line="65" column="51" lean-forward="false" selection-start-line="65" selection-start-column="51" selection-end-line="65" selection-end-column="51" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Opcodes.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/hlasm/Opcodes.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="119">
-                  <caret line="8" column="67" lean-forward="false" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="67" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="HlasmToolWindowFactory.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ftp_plugin/src/com/ftp_plugin/HlasmToolWindowFactory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="287">
+              <caret line="298" column="36" lean-forward="true" selection-start-line="298" selection-start-column="36" selection-end-line="298" selection-end-column="36" />
+              <folding>
+                <element signature="e#3995#4375#0" expanded="true" />
+                <element signature="e#4374#4375#0" expanded="true" />
+                <element signature="initializer##0;class#HlasmToolWindowFactory#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test2.asm" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hlasm-plugin/testdata/test2.asm">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="16" lean-forward="false" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test3.asm" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hlasm-plugin/testdata/test3.asm">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="205">
+              <caret line="20" column="41" lean-forward="true" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WeakReference.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/lang/ref/WeakReference.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="358">
+              <caret line="55" column="11" lean-forward="false" selection-start-line="55" selection-start-column="11" selection-end-line="55" selection-end-column="11" />
+              <folding>
+                <element signature="e#1456#1457#0" expanded="true" />
+                <element signature="e#1487#1488#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="plugin.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ftp_plugin/resources/META-INF/plugin.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="16" lean-forward="false" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="updatePlugins.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hlasm-plugin/updatePlugins.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="String.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/lang/String.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="973" column="20" lean-forward="false" selection-start-line="973" selection-start-column="14" selection-end-line="973" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Reference.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/lang/ref/Reference.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1700">
+              <caret line="252" column="13" lean-forward="false" selection-start-line="252" selection-start-column="13" selection-end-line="252" selection-end-column="13" />
+              <folding>
+                <element signature="e#9332#9333#0" expanded="true" />
+                <element signature="e#9368#9369#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ContainerUtil.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../idea/platform/util/src/com/intellij/util/containers/ContainerUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="244">
+              <caret line="2410" column="17" lean-forward="false" selection-start-line="2410" selection-start-column="17" selection-end-line="2410" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -169,6 +198,31 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/hlasm-plugin/src/com/hlasm_plugin/stubs/HlasmPsiFileStub.java" />
+        <option value="$PROJECT_DIR$/ftp_plugin/src/com/ftp_plugin/FTPLastSyncIndex.java" />
+        <option value="$PROJECT_DIR$/adaptor/src/org/antlr/jetbrains/adaptor/psi/ScopeNode.java" />
+        <option value="$PROJECT_DIR$/hlasm-plugin/src/com/hlasm_plugin/psi/HlasmPSIFileRoot.java" />
+        <option value="$PROJECT_DIR$/adaptor/src/org/antlr/jetbrains/adaptor/SymtabUtils.java" />
+        <option value="$PROJECT_DIR$/hlasm-plugin/src/com/hlasm_plugin/psi/HlasmMacroIElementType.java" />
+        <option value="$PROJECT_DIR$/hlasm-plugin/src/com/hlasm_plugin/psi/HlasmMacroPsiElement.java" />
+        <option value="$PROJECT_DIR$/ftp_plugin/src/com/ftp_plugin/HlasmForceGetAction.java" />
+        <option value="$PROJECT_DIR$/ftp_plugin/src/com/ftp_plugin/HlasmGetRemotePDSAction.java" />
+        <option value="$PROJECT_DIR$/ftp_plugin/src/config/BuildProcess.java" />
+        <option value="$PROJECT_DIR$/ftp_plugin/src/com/ftp_plugin/HlasmPutRemotePDSAction.java" />
+        <option value="$PROJECT_DIR$/hlasm-plugin/src/com/hlasm_plugin/HlasmSyntaxHighlighter.java" />
+        <option value="$PROJECT_DIR$/hlasm-plugin/src/com/hlasm_plugin/HlasmCompletionContributor.java" />
+        <option value="$PROJECT_DIR$/ftp_plugin/src/config/RemoteHlasmConfiguration.java" />
+        <option value="$PROJECT_DIR$/src/hlasm/HlasmLexer.g4" />
+        <option value="$PROJECT_DIR$/hlasm-plugin/src/com/hlasm_plugin/project/ZOSModuleType.java" />
+        <option value="$PROJECT_DIR$/hlasm-plugin/tests/com/hlasm_plugin/ReparsingTest.java" />
+        <option value="$PROJECT_DIR$/hlasm-plugin/tests/com/hlasm_plugin/tests/ReparsingTest.java" />
+        <option value="$PROJECT_DIR$/hlasm-plugin/src/com/hlasm_plugin/HlasmParserDefenition.java" />
+        <option value="$PROJECT_DIR$/hlasm-plugin/testdata/test1.asm" />
+        <option value="$PROJECT_DIR$/adaptor/src/org/antlr/jetbrains/adaptor/lexer/PSITokenSource.java" />
+        <option value="$PROJECT_DIR$/adaptor/src/org/antlr/jetbrains/adaptor/parser/ErrorStrategyAdaptor.java" />
+        <option value="$PROJECT_DIR$/hlasm-plugin/src/com/hlasm_plugin/psi/RuleLazyIElementType.java" />
+        <option value="$PROJECT_DIR$/hlasm-plugin/src/com/hlasm_plugin/stubs/HlasmStubIndex.java" />
+        <option value="$PROJECT_DIR$/hlasm-plugin/src/com/hlasm_plugin/psi/HlasmIFileElementType.java" />
         <option value="$PROJECT_DIR$/hlasm-plugin/src/com/hlasm_plugin/HlasmToolWindowFactory.java" />
         <option value="$PROJECT_DIR$/jcl-plugin/resources/META-INF/plugin.xml" />
         <option value="$PROJECT_DIR$/ftp_plugin/src/com/ftp_plugin/FTPUpdater.java" />
@@ -192,34 +246,9 @@
         <option value="$PROJECT_DIR$/ftp_plugin/src/com/ftp_plugin/JobResult.java" />
         <option value="$PROJECT_DIR$/ftp_plugin/resources/META-INF/plugin.xml" />
         <option value="$PROJECT_DIR$/hlasm-plugin/updatePlugins.xml" />
+        <option value="$PROJECT_DIR$/ftp_plugin/src/com/ftp_plugin/HlasmToolWindowFactory.java" />
         <option value="$PROJECT_DIR$/hlasm-plugin/testdata/test2.asm" />
         <option value="$PROJECT_DIR$/hlasm-plugin/testdata/test3.asm" />
-        <option value="$PROJECT_DIR$/ftp_plugin/src/com/ftp_plugin/HlasmToolWindowFactory.java" />
-        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Register.java" />
-        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/ByteMask.java" />
-        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Opcode4.java" />
-        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Opcode8.java" />
-        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Opcode16.java" />
-        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/VectorRegister4.java" />
-        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Opcode4.java" />
-        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Register4.java" />
-        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Unassigned4.java" />
-        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/RXB4.java" />
-        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Base.java" />
-        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Displacement.java" />
-        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/ImmediateData.java" />
-        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Index.java" />
-        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Length.java" />
-        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Mask.java" />
-        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Opcode.java" />
-        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Register.java" />
-        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/RXB.java" />
-        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/SignedBinaryIntegerDesignating.java" />
-        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Unassigned.java" />
-        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/VectorRegister.java" />
-        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/BasicOperand.java" />
-        <option value="$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Operand.java" />
-        <option value="$PROJECT_DIR$/hlasm-plugin/tests/com/hlasm_plugin/tests/OperandsTest.java" />
       </list>
     </option>
   </component>
@@ -227,9 +256,10 @@
     <treeState />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-4" />
-    <option name="width" value="893" />
-    <option name="height" value="744" />
+    <option name="x" value="1638" />
+    <option name="y" value="-193" />
+    <option name="width" value="1612" />
+    <option name="height" value="867" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -240,6 +270,15 @@
           </State>
           <State>
             <id>Abstraction issuesJava</id>
+          </State>
+          <State>
+            <id>Android &gt; Lint &gt; Correctness</id>
+          </State>
+          <State>
+            <id>Android &gt; Lint &gt; Security</id>
+          </State>
+          <State>
+            <id>Android Lint for Kotlin</id>
           </State>
           <State>
             <id>Assignment issuesJava</id>
@@ -331,7 +370,7 @@
         </expanded-state>
         <selected-state>
           <State>
-            <id>Ant inspections</id>
+            <id>Android</id>
           </State>
         </selected-state>
       </profile-state>
@@ -353,50 +392,110 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="hlasm-idea-plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hlasm-idea-plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="hlasm-library-antlr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hlasm-library-antlr" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="hlasm-idea-plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hlasm-idea-plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="hlasm-plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="hlasm-library-antlr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hlasm-library-antlr" type="462c0819:PsiDirectoryNode" />
+              <item name="ftp_plugin" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="hlasm-idea-plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hlasm-idea-plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="hlasm-plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="hlasm-library-antlr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hlasm-library-antlr" type="462c0819:PsiDirectoryNode" />
+              <item name="ftp_plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="hlasm-idea-plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hlasm-idea-plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="hlasm-plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="hlasm-library-antlr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hlasm-library-antlr" type="462c0819:PsiDirectoryNode" />
+              <item name="ftp_plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="META-INF" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="hlasm-idea-plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hlasm-idea-plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="hlasm-library-antlr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hlasm-library-antlr" type="462c0819:PsiDirectoryNode" />
+              <item name="ftp_plugin" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hlasm-library-antlr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hlasm-library-antlr" type="462c0819:PsiDirectoryNode" />
+              <item name="ftp_plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ftp_plugin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hlasm-library-antlr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hlasm-library-antlr" type="462c0819:PsiDirectoryNode" />
+              <item name="ftp_plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ftp_plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="HlasmToolWindowFactory" type="e9f4de52:FormNode" />
+            </path>
+            <path>
+              <item name="hlasm-library-antlr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hlasm-library-antlr" type="462c0819:PsiDirectoryNode" />
+              <item name="hlasm-plugin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hlasm-library-antlr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hlasm-library-antlr" type="462c0819:PsiDirectoryNode" />
+              <item name="hlasm-plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="testdata" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hlasm-library-antlr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hlasm-library-antlr" type="462c0819:PsiDirectoryNode" />
+              <item name="hlasm-plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hlasm-library-antlr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hlasm-library-antlr" type="462c0819:PsiDirectoryNode" />
+              <item name="hlasm-plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hlasm-library-antlr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hlasm-library-antlr" type="462c0819:PsiDirectoryNode" />
+              <item name="jcl-plugin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hlasm-library-antlr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hlasm-library-antlr" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hlasm-library-antlr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hlasm-library-antlr" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="hlasm" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hlasm-library-antlr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="PackagesPane" />
-      <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../community" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../idea" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="$PROJECT_DIR$/Hlasm.g4::/auto-gen" value="false" />
@@ -474,8 +573,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.OperandsTest.test_05">
-    <configuration name="OperandsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Plugin.everything">
+    <configuration name="IncrementalReparsingTest.testReparsing" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.hlasm_plugin.tests.*" />
@@ -486,37 +585,12 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.hlasm_plugin.tests" />
-      <option name="MAIN_CLASS_NAME" value="com.hlasm_plugin.tests.OperandsTest" />
-      <option name="METHOD_NAME" value="" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea -Xbootclasspath/p:../out/classes/production/boot -XX:+HeapDumpOnOutOfMemoryError -Xmx512m -XX:MaxPermSize=320m -Didea.system.path=../test-system -Didea.home.path=../ -Didea.config.path=../test-config -Didea.test.group=ALL_EXCLUDE_DEFINED" />
-      <option name="PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-    </configuration>
-    <configuration name="OperandsTest.test_02" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.hlasm_plugin.tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="hlasm-plugin" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.hlasm_plugin.tests" />
-      <option name="MAIN_CLASS_NAME" value="com.hlasm_plugin.tests.OperandsTest" />
-      <option name="METHOD_NAME" value="test_02" />
+      <option name="MAIN_CLASS_NAME" value="com.hlasm_plugin.tests.IncrementalReparsingTest" />
+      <option name="METHOD_NAME" value="testReparsing" />
       <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea -Xbootclasspath/p:../out/classes/production/boot -XX:+HeapDumpOnOutOfMemoryError -Xmx512m -XX:MaxPermSize=320m -Didea.system.path=../test-system -Didea.home.path=../ -Didea.config.path=../test-config -Didea.test.group=ALL_EXCLUDE_DEFINED" />
-      <option name="PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
@@ -524,8 +598,11 @@
       </option>
       <envs />
       <patterns />
+      <method>
+        <option name="Make" enabled="false" />
+      </method>
     </configuration>
-    <configuration name="OperandsTest.test_03" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="IncrementalReparsingTest.testReparsing2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.hlasm_plugin.tests.*" />
@@ -536,58 +613,8 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.hlasm_plugin.tests" />
-      <option name="MAIN_CLASS_NAME" value="com.hlasm_plugin.tests.OperandsTest" />
-      <option name="METHOD_NAME" value="test_03" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea -Xbootclasspath/p:../out/classes/production/boot -XX:+HeapDumpOnOutOfMemoryError -Xmx512m -XX:MaxPermSize=320m -Didea.system.path=../test-system -Didea.home.path=../ -Didea.config.path=../test-config -Didea.test.group=ALL_EXCLUDE_DEFINED" />
-      <option name="PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-    </configuration>
-    <configuration name="OperandsTest.test_04" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.hlasm_plugin.tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="hlasm-plugin" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.hlasm_plugin.tests" />
-      <option name="MAIN_CLASS_NAME" value="com.hlasm_plugin.tests.OperandsTest" />
-      <option name="METHOD_NAME" value="test_04" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea -Xbootclasspath/p:../out/classes/production/boot -XX:+HeapDumpOnOutOfMemoryError -Xmx512m -XX:MaxPermSize=320m -Didea.system.path=../test-system -Didea.home.path=../ -Didea.config.path=../test-config -Didea.test.group=ALL_EXCLUDE_DEFINED" />
-      <option name="PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-    </configuration>
-    <configuration name="OperandsTest.test_05" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.hlasm_plugin.tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="hlasm-plugin" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.hlasm_plugin.tests" />
-      <option name="MAIN_CLASS_NAME" value="com.hlasm_plugin.tests.OperandsTest" />
-      <option name="METHOD_NAME" value="test_05" />
+      <option name="MAIN_CLASS_NAME" value="com.hlasm_plugin.tests.IncrementalReparsingTest" />
+      <option name="METHOD_NAME" value="testReparsing2" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea -Xbootclasspath/p:../out/classes/production/boot -XX:+HeapDumpOnOutOfMemoryError -Xmx512m -XX:MaxPermSize=320m -Didea.system.path=../test-system -Didea.home.path=../ -Didea.config.path=../test-config -Didea.test.group=ALL_EXCLUDE_DEFINED" />
       <option name="PARAMETERS" value="" />
@@ -863,23 +890,17 @@
       <alternative-path path="IntelliJ IDEA Community Edition IC-172.4155.36 (1)" alternative-path-enabled="true" />
       <log_file path="$USER_HOME$/.IdeaIC2016/system/plugins-sandbox/system/log/idea.log" checked="false" skipped="true" show_all="false" alias="IDEA LOG" />
     </configuration>
-    <list size="8">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="JUnit.Unnamed" />
       <item index="1" class="java.lang.String" itemvalue="Plugin.Plugin" />
       <item index="2" class="java.lang.String" itemvalue="Plugin.everything" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.OperandsTest" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.OperandsTest.test_02" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.OperandsTest.test_03" />
-      <item index="6" class="java.lang.String" itemvalue="JUnit.OperandsTest.test_04" />
-      <item index="7" class="java.lang.String" itemvalue="JUnit.OperandsTest.test_05" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.IncrementalReparsingTest.testReparsing" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.IncrementalReparsingTest.testReparsing2" />
     </list>
     <recent_temporary>
-      <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.OperandsTest.test_05" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.OperandsTest.test_04" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.OperandsTest.test_02" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.OperandsTest" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.OperandsTest.test_03" />
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="JUnit.IncrementalReparsingTest.testReparsing2" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.IncrementalReparsingTest.testReparsing" />
       </list>
     </recent_temporary>
   </component>
@@ -890,7 +911,7 @@
     <option name="ACTIVE_ACTIONS" value=",SHOW_NON_PUBLIC,SHOW_INHERITED" />
   </component>
   <component name="SvnConfiguration">
-    <configuration>C:\Users\theni\AppData\Roaming\Subversion</configuration>
+    <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -899,6 +920,13 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1464124151711</updated>
+    </task>
+    <task id="LOCAL-00012" summary="some more enter processing">
+      <created>1469799206104</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1469799206104</updated>
     </task>
     <task id="LOCAL-00013" summary="beginning of support of separate module&#10;fixed JCL parsing&#10;plugin repo">
       <created>1470927264399</created>
@@ -1236,46 +1264,39 @@
       <option name="project" value="LOCAL" />
       <updated>1506613493223</updated>
     </task>
-    <task id="LOCAL-00061" summary="Do not redownload already opened sysout">
-      <created>1508351508375</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1508351508376</updated>
-    </task>
-    <option name="localTasksCounter" value="62" />
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="OperandsTest_test_05 - 2017.10.19 at 16h 31m 17s.xml">
-      <configuration name="OperandsTest.test_05" configurationId="JUnit" />
+    <history-entry file="Unnamed - 2017.09.27 at 17h 34m 04s.xml">
+      <configuration name="Unnamed" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="OperandsTest_test_05 - 2017.10.19 at 17h 01m 05s.xml">
-      <configuration name="OperandsTest.test_05" configurationId="JUnit" />
+    <history-entry file="Unnamed - 2017.09.27 at 17h 38m 41s.xml">
+      <configuration name="Unnamed" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="OperandsTest_test_05 - 2017.10.19 at 17h 02m 15s.xml">
-      <configuration name="OperandsTest.test_05" configurationId="JUnit" />
+    <history-entry file="Unnamed - 2017.09.27 at 18h 41m 59s.xml">
+      <configuration name="Unnamed" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="OperandsTest_test_05 - 2017.10.19 at 17h 02m 44s.xml">
-      <configuration name="OperandsTest.test_05" configurationId="JUnit" />
+    <history-entry file="Unnamed - 2017.09.27 at 18h 43m 07s.xml">
+      <configuration name="Unnamed" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="OperandsTest_test_05 - 2017.10.19 at 17h 03m 48s.xml">
-      <configuration name="OperandsTest.test_05" configurationId="JUnit" />
+    <history-entry file="Unnamed - 2017.09.27 at 18h 44m 07s.xml">
+      <configuration name="Unnamed" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="OperandsTest_test_05 - 2017.10.19 at 17h 06m 07s.xml">
-      <configuration name="OperandsTest.test_05" configurationId="JUnit" />
+    <history-entry file="Unnamed - 2017.09.27 at 18h 58m 51s.xml">
+      <configuration name="Unnamed" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="OperandsTest_test_05 - 2017.10.19 at 17h 06m 47s.xml">
-      <configuration name="OperandsTest.test_05" configurationId="JUnit" />
+    <history-entry file="Unnamed - 2017.09.27 at 19h 09m 43s.xml">
+      <configuration name="Unnamed" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="OperandsTest_test_05 - 2017.10.19 at 17h 07m 24s.xml">
-      <configuration name="OperandsTest.test_05" configurationId="JUnit" />
+    <history-entry file="Unnamed - 2017.09.27 at 19h 11m 42s.xml">
+      <configuration name="Unnamed" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="OperandsTest_test_05 - 2017.10.19 at 17h 12m 23s.xml">
-      <configuration name="OperandsTest.test_05" configurationId="JUnit" />
+    <history-entry file="Unnamed - 2017.09.27 at 19h 12m 23s.xml">
+      <configuration name="Unnamed" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="OperandsTest_test_05 - 2017.10.19 at 17h 14m 35s.xml">
-      <configuration name="OperandsTest.test_05" configurationId="JUnit" />
+    <history-entry file="Unnamed - 2017.09.27 at 19h 16m 44s.xml">
+      <configuration name="Unnamed" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -1288,45 +1309,45 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="1592" y="-308" width="1936" height="1176" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3266129" sideWeight="0.49485862" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27416798" sideWeight="0.61566615" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33755943" sideWeight="0.3455344" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.183355" sideWeight="0.5068493" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32012677" sideWeight="0.70937043" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33783785" sideWeight="0.44730076" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2375" sideWeight="0.4749467" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14275256" sideWeight="0.4762846" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27120823" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.49292928" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33755943" sideWeight="0.6544656" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23264782" sideWeight="0.52371544" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31346154" sideWeight="0.34488273" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="ScratchPad" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38965884" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32115385" sideWeight="0.2867804" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.183355" sideWeight="0.5068493" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29850745" sideWeight="0.49315068" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31989247" sideWeight="0.6002571" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27120823" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.49292928" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33557692" sideWeight="0.85927504" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3266129" sideWeight="0.49485862" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.275" sideWeight="0.12953092" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="PsiViewer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.195629" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32115385" sideWeight="0.71321964" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33783785" sideWeight="0.44730076" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2375" sideWeight="0.4749467" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Jenkins" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15938166" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17430703" sideWeight="0.4762846" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32950193" sideWeight="0.49573562" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30675676" sideWeight="0.3862468" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23264782" sideWeight="0.52371544" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="ScratchPad" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38965884" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293011" sideWeight="0.5411311" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29850745" sideWeight="0.49315068" order="4" side_tool="false" content_ui="combo" />
-      <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31989247" sideWeight="0.6002571" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="z/OS" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.32834852" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="PsiViewer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.195629" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Jenkins" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15938166" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32950193" sideWeight="0.49573562" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3058637" sideWeight="0.3862468" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -1370,11 +1391,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_NEW_TODO" value="false" />
     <ignored-roots>
       <path value="$PROJECT_DIR$/hlasm-plugin/adaptor" />
-      <path value="$PROJECT_DIR$/../jetbrains" />
     </ignored-roots>
     <MESSAGE value="new plugin structure, deploy new plugins" />
     <MESSAGE value="fix hlasm plugin version" />
@@ -1455,7 +1474,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="488" />
+      <option name="time" value="424" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
@@ -1475,19 +1494,254 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ftp_plugin/src/com/ftp_plugin/zOSToolWindow.form" />
-    <entry file="file://$PROJECT_DIR$/../idea/platform/util/src/com/intellij/util/containers/SoftValueHashMap.java" />
-    <entry file="file://$PROJECT_DIR$/../idea/platform/util/src/com/intellij/util/containers/ConcurrentSoftValueHashMap.java" />
-    <entry file="file://$PROJECT_DIR$/../idea/platform/util/src/com/intellij/util/containers/ConcurrentSoftHashMap.java" />
-    <entry file="file://$PROJECT_DIR$/../idea/platform/platform-impl/src/com/intellij/openapi/fileEditor/ex/FileEditorManagerEx.java" />
-    <entry file="file://$PROJECT_DIR$/../idea/platform/platform-api/src/com/intellij/openapi/fileEditor/FileEditorManager.java" />
-    <entry file="file://$PROJECT_DIR$/../idea/platform/util/src/com/intellij/util/containers/ConcurrentRefValueHashMap.java" />
-    <entry file="file://$PROJECT_DIR$/../idea/platform/util/src/com/intellij/util/containers/ConcurrentWeakValueHashMap.java" />
-    <entry file="file://$PROJECT_DIR$/../idea/platform/util/src/com/intellij/util/containers/ContainerUtil.java" />
+    <entry file="jar://$PROJECT_DIR$/libs/antlr-4.7-complete.jar!/org/antlr/v4/runtime/DefaultErrorStrategy.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="272" column="0" lean-forward="false" selection-start-line="257" selection-start-column="0" selection-end-line="272" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/antlr-4.7-complete.jar!/org/antlr/v4/runtime/Parser.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="433" column="29" lean-forward="false" selection-start-line="433" selection-start-column="29" selection-end-line="433" selection-end-column="29" />
+          <folding>
+            <element signature="e#14287#14288#0" expanded="true" />
+            <element signature="e#14319#14320#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/antlr-4.7-complete.jar!/org/antlr/v4/runtime/misc/IntervalSet.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="31" column="32" lean-forward="false" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hlasm/HlasmParser.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="127" column="34" lean-forward="false" selection-start-line="127" selection-start-column="34" selection-end-line="127" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/antlr-4.7-complete.jar!/org/antlr/v4/runtime/atn/ATNState.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="107" column="37" lean-forward="true" selection-start-line="107" selection-start-column="37" selection-end-line="107" selection-end-column="37" />
+          <folding>
+            <element signature="e#3576#3577#0" expanded="true" />
+            <element signature="e#3634#3635#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gen/hlasm/HlasmParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="25" column="71" lean-forward="false" selection-start-line="23" selection-start-column="32" selection-end-line="25" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hlasm-plugin/tests/com/hlasm_plugin/tests/IncrementalReparsingTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="65" column="29" lean-forward="true" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hlasm-plugin/src/com/hlasm_plugin/regex/HlasmRegexLibrary.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="13" column="75" lean-forward="true" selection-start-line="13" selection-start-column="75" selection-end-line="13" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hlasm-plugin/src/com/hlasm_plugin/psi/HlasmStatementsElementType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="545">
+          <caret line="323" column="0" lean-forward="true" selection-start-line="323" selection-start-column="0" selection-end-line="323" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adaptor/src/org/antlr/jetbrains/adaptor/parser/ErrorStrategyAdaptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="18" column="29" lean-forward="false" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adaptor/src/org/antlr/jetbrains/adaptor/parser/SyntaxErrorListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hlasm-plugin/src/com/hlasm_plugin/HlasmANTLRParserAdaptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-442">
+          <caret line="44" column="18" lean-forward="false" selection-start-line="44" selection-start-column="18" selection-end-line="44" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adaptor/src/org/antlr/jetbrains/adaptor/parser/ANTLRParserAdaptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="85" column="32" lean-forward="false" selection-start-line="85" selection-start-column="32" selection-end-line="85" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adaptor/src/org/antlr/jetbrains/adaptor/parser/ANTLRParseTreeToPSIConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-221">
+          <caret line="28" column="13" lean-forward="false" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hlasm-plugin/src/com/hlasm_plugin/HlasmFoldingBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="115" column="46" lean-forward="true" selection-start-line="115" selection-start-column="46" selection-end-line="115" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hlasm-plugin/resources/META-INF/plugin.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="16" lean-forward="false" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/javax/swing/DefaultListModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="54" column="13" lean-forward="false" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/javax/swing/ListModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="42" column="17" lean-forward="false" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/javax/swing/AbstractListModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="48" column="62" lean-forward="false" selection-start-line="48" selection-start-column="62" selection-end-line="48" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/javax/swing/DefaultListCellRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2482">
+          <caret line="90" column="11" lean-forward="false" selection-start-line="90" selection-start-column="11" selection-end-line="90" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/javax/swing/JList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="1693" column="16" lean-forward="false" selection-start-line="1693" selection-start-column="16" selection-end-line="1693" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ftp_plugin/src/com/ftp_plugin/zOSToolWindow.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../idea/platform/util/src/com/intellij/util/containers/SoftValueHashMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="27" column="19" lean-forward="false" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../idea/platform/util/src/com/intellij/util/containers/ConcurrentSoftValueHashMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="29" column="12" lean-forward="false" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../idea/platform/util/src/com/intellij/util/containers/ConcurrentSoftHashMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="31" column="2" lean-forward="false" selection-start-line="31" selection-start-column="2" selection-end-line="31" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../idea/platform/platform-impl/src/com/intellij/openapi/fileEditor/ex/FileEditorManagerEx.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="153" column="22" lean-forward="false" selection-start-line="153" selection-start-column="22" selection-end-line="153" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../idea/platform/platform-api/src/com/intellij/openapi/fileEditor/FileEditorManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="55" column="22" lean-forward="false" selection-start-line="55" selection-start-column="22" selection-end-line="55" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../idea/platform/util/src/com/intellij/util/containers/ConcurrentRefValueHashMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="33" column="15" lean-forward="false" selection-start-line="33" selection-start-column="15" selection-end-line="33" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../idea/platform/util/src/com/intellij/util/containers/ConcurrentWeakValueHashMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="29" column="71" lean-forward="false" selection-start-line="29" selection-start-column="71" selection-end-line="29" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../idea/platform/util/src/com/intellij/util/containers/ContainerUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="2410" column="17" lean-forward="false" selection-start-line="2410" selection-start-column="17" selection-end-line="2410" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/util/Map.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="117" column="39" lean-forward="true" selection-start-line="117" selection-start-column="39" selection-end-line="117" selection-end-column="39" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1495,6 +1749,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1502,6 +1757,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="130" column="17" lean-forward="false" selection-start-line="130" selection-start-column="17" selection-end-line="130" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1509,46 +1765,84 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../idea/platform/util/src/com/intellij/util/containers/SoftHashMap.java" />
+    <entry file="file://$PROJECT_DIR$/../idea/platform/util/src/com/intellij/util/containers/SoftHashMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="33" column="19" lean-forward="false" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/util/WeakHashMap.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="397">
           <caret line="136" column="17" lean-forward="true" selection-start-line="136" selection-start-column="17" selection-end-line="136" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ftp_plugin/src/com/ftp_plugin/JobResult.java" />
-    <entry file="file://$PROJECT_DIR$/hlasm-plugin/testdata/test1.asm" />
-    <entry file="file://$PROJECT_DIR$/convert_opcodes.py">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/lang/ref/Reference.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="1700">
+          <caret line="252" column="13" lean-forward="false" selection-start-line="252" selection-start-column="13" selection-end-line="252" selection-end-column="13" />
+          <folding>
+            <element signature="e#9332#9333#0" expanded="true" />
+            <element signature="e#9368#9369#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EIPINIT.txt" />
-    <entry file="file://$PROJECT_DIR$/temp.txt" />
-    <entry file="file://$PROJECT_DIR$/test.txt">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/lang/String.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="209">
+          <caret line="973" column="20" lean-forward="false" selection-start-line="973" selection-start-column="14" selection-end-line="973" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.properties">
+    <entry file="file://$PROJECT_DIR$/ftp_plugin/src/com/ftp_plugin/JobResult.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="255">
+          <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ftp_plugin/src/com/ftp_plugin/HlasmToolWindowFactory.java">
+    <entry file="file://$PROJECT_DIR$/ftp_plugin/resources/META-INF/plugin.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="797">
-          <caret line="298" column="36" lean-forward="false" selection-start-line="298" selection-start-column="36" selection-end-line="298" selection-end-column="36" />
+        <state relative-caret-position="51">
+          <caret line="3" column="16" lean-forward="false" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hlasm-plugin/updatePlugins.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/lang/ref/WeakReference.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="358">
+          <caret line="55" column="11" lean-forward="false" selection-start-line="55" selection-start-column="11" selection-end-line="55" selection-end-column="11" />
+          <folding>
+            <element signature="e#1456#1457#0" expanded="true" />
+            <element signature="e#1487#1488#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hlasm-plugin/testdata/test1.asm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="14" column="42" lean-forward="false" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
           <folding />
         </state>
       </provider>
@@ -1557,225 +1851,67 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="16" lean-forward="false" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/convert_opcodes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EIPINIT.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/temp.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hlasm-plugin/testdata/test3.asm">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="205">
-          <caret line="20" column="41" lean-forward="false" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/lang/ref/WeakReference.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="55" column="11" lean-forward="false" selection-start-line="55" selection-start-column="11" selection-end-line="55" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ftp_plugin/resources/META-INF/plugin.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="16" lean-forward="false" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/lang/String.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-352">
-          <caret line="973" column="20" lean-forward="false" selection-start-line="973" selection-start-column="14" selection-end-line="973" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/lang/ref/Reference.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="252" column="13" lean-forward="false" selection-start-line="252" selection-start-column="13" selection-end-line="252" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hlasm-plugin/updatePlugins.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/lang/Byte.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7021">
-          <caret line="456" column="22" lean-forward="false" selection-start-line="456" selection-start-column="22" selection-end-line="456" selection-end-column="22" />
-          <folding>
-            <element signature="e#15911#15912#0" expanded="false" />
-            <element signature="e#15939#15940#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Opcode8.java" />
-    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/ByteMask.java" />
-    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Opcode16.java" />
-    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Base.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="12" column="26" lean-forward="false" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/ImmediateData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="22" column="35" lean-forward="false" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/VectorRegister.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="36" lean-forward="false" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Unassigned.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="20" column="10" lean-forward="false" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/SignedBinaryIntegerDesignating.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="52" lean-forward="false" selection-start-line="27" selection-start-column="52" selection-end-line="27" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/RXB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="12" column="25" lean-forward="false" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Register.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#297#298#0" expanded="true" />
-            <element signature="e#337#338#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Opcode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="22" column="28" lean-forward="false" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#298#299#0" expanded="true" />
-            <element signature="e#336#337#0" expanded="true" />
-            <element signature="e#391#392#0" expanded="true" />
-            <element signature="e#429#430#0" expanded="true" />
-            <element signature="e#485#486#0" expanded="true" />
-            <element signature="e#525#526#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Displacement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="40" lean-forward="false" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Length.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="17" column="28" lean-forward="false" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Mask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="12" column="26" lean-forward="false" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Created/Index.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="12" column="27" lean-forward="false" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/hlasm/Opcodes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="8" column="67" lean-forward="false" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="67" />
+          <caret line="20" column="41" lean-forward="true" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/BasicOperand.java">
+    <entry file="file://$PROJECT_DIR$/ftp_plugin/src/com/ftp_plugin/HlasmToolWindowFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="48" column="4" lean-forward="false" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hlasm-plugin/tests/com/hlasm_plugin/tests/IncrementalReparsingTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1335">
-          <caret line="34" column="13" lean-forward="false" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
+        <state relative-caret-position="287">
+          <caret line="298" column="36" lean-forward="true" selection-start-line="298" selection-start-column="36" selection-end-line="298" selection-end-column="36" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#3995#4375#0" expanded="true" />
+            <element signature="e#4374#4375#0" expanded="true" />
+            <element signature="initializer##0;class#HlasmToolWindowFactory#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Paradaimu/hlasm/Operands/Operand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="132" column="45" lean-forward="false" selection-start-line="132" selection-start-column="45" selection-end-line="132" selection-end-column="45" />
-          <folding>
-            <element signature="docComment;class#Operand#0" expanded="false" />
-            <element signature="docComment;method#getData#0;class#Operand#0" expanded="false" />
-            <element signature="e#568#576#0" expanded="false" />
-            <element signature="docComment;method#getSize#0;class#Operand#0" expanded="false" />
-            <element signature="docComment;method#getBits#0;class#Operand#0" expanded="false" />
-            <element signature="docComment;method#setData#0;class#Operand#0" expanded="false" />
-            <element signature="method#setData#0;class#Operand#0" expanded="false" />
-            <element signature="docComment;method#isEqualsToBits#0;class#Operand#0" expanded="false" />
-            <element signature="method#isEqualsToBits#0;class#Operand#0" expanded="false" />
-            <element signature="docComment;method#Operand#0;class#Operand#0" expanded="false" />
-            <element signature="method#Operand#0;class#Operand#0" expanded="false" />
-            <element signature="docComment;method#Operand#1;class#Operand#0" expanded="false" />
-            <element signature="method#Operand#1;class#Operand#0" expanded="false" />
-            <element signature="docComment;method#getSizeOfOperand#0;class#Operand#0" expanded="false" />
-            <element signature="method#getSizeOfOperand#0;class#Operand#0" expanded="false" />
-            <element signature="docComment;method#getName#0;class#Operand#0" expanded="false" />
-            <element signature="docComment;method#isEqual#0;class#Operand#0" expanded="false" />
-            <element signature="method#isEqual#0;class#Operand#0" expanded="false" />
-            <element signature="docComment;method#isEqualTo#0;class#Operand#0" expanded="false" />
-            <element signature="method#isEqualTo#0;class#Operand#0" expanded="false" />
-            <element signature="docComment;method#setDataAdaptor#0;class#Operand#0" expanded="false" />
-            <element signature="method#setDataAdaptor#0;class#Operand#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hlasm-plugin/tests/com/hlasm_plugin/tests/OperandsTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="65" column="51" lean-forward="false" selection-start-line="65" selection-start-column="51" selection-end-line="65" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1819,7 +1955,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>IntelliJ IDEA Community Edition IC-172.3757.52</last-edited>
+          <last-edited>IntelliJ IDEA Community Edition IC-172.4155.36 (1)</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1843,7 +1979,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>antlr-4.5.3</last-edited>
+          <last-edited>antlr-4.7-complete</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1869,7 +2005,7 @@
   <component name="org.intellij.scratchpad.ScratchPadProjectComponent">
     <ScratchPad>
       <Name>Default</Name>
-      <Contents xml:space="preserve">SCFAMFP.S0002601.#STDERR.D170626.S0311284<![CDATA[
+      <Contents xml:space="preserve"><![CDATA[SCFAMFP.S0002601.#STDERR.D170626.S0311284
 SRDFAMFP.S0002701.HCLOG1.D170626.S0311404
 SRDFAMFP.S0002701.SYSDEBUG.D170626.S0311414
 T247001T.J0006705.SYSPRINT.D170626.S0707444
