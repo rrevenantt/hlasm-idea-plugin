@@ -2,7 +2,7 @@
 #  Copyright (C) 2000-2015 Free Software Foundation, Inc.
 #  Contributed by Martin Schwidefsky (schwidefsky@de.ibm.com).
 5a a RX_RRRD "add" g5 esa,zarch
-6a ad RX_FRRD "add normalized (long)" g5 esa,zarch
+6a ad RX_FRRD "d add normalize(long)" g5 esa,zarch
 2a adr RR_FF "add normalized (long)" g5 esa,zarch
 7a ae RX_FRRD "add normalized (short)" g5 esa,zarch
 3a aer RR_FF "add normalized (short)" g5 esa,zarch
@@ -11,7 +11,7 @@
 1e alr RR_RR "add logical" g5 esa,zarch
 fa ap SS_LLRDRD "add decimal" g5 esa,zarch
 1a ar RR_RR "add" g5 esa,zarch
-7e au RX_FRRD "add unnormalized (short)" g5 esa,zarch 
+7e au RX_FRRD "add unnormalized (short)" g5 esa,zarch
 3e aur RR_FF "add unnormalized (short)" g5 esa,zarch
 6e aw RX_FRRD "add unnormalized (long)" g5 esa,zarch
 2e awr RR_FF "add unnormalized (long)" g5 esa,zarch
