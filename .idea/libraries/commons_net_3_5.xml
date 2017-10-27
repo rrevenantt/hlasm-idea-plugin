@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="commons-net-3.5">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/libs/commons-net-3.5.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
