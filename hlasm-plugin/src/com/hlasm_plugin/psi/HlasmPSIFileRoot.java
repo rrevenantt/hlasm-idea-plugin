@@ -4,6 +4,7 @@ import com.hlasm_plugin.HlasmFileType;
 import com.hlasm_plugin.HlasmIcons;
 import com.hlasm_plugin.HlasmLanguage;
 import com.hlasm_plugin.stubs.HlasmPsiFileStub;
+import com.intellij.openapi.util.TextRange;
 import com.intellij.psi.stubs.StubTree;
 import com.intellij.psi.tree.IStubFileElementType;
 import com.map_dump.model.dsect.Dsect;
@@ -18,10 +19,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by anisik on 01.06.2016.
@@ -43,6 +41,10 @@ public class HlasmPSIFileRoot extends PsiFileBase implements ScopeNode {
         super.onContentReload();
     }
 
+    @Override
+    public PsiElement getFirstChild() {
+        return super.getFirstChild();
+    }
 
     @Override
     public void subtreeChanged() {
@@ -60,9 +62,10 @@ public class HlasmPSIFileRoot extends PsiFileBase implements ScopeNode {
         return HlasmIcons.HLASM;
     }
 
-
+    @Override
     public PsiElement getContext(){
-        return super.getContext();
+        //return getParent();r
+        return null;
     }
 
     @Nullable

@@ -50,6 +50,7 @@ public class HlasmIElementTypesFactory extends DefaultIElementTypesFactory {
         iElementTypes.set(HlasmParser.RULE_lines,new HlasmStatementsElementType(ruleNames[HlasmParser.RULE_lines],language,iElementTypes.get(HlasmParser.RULE_lines)));
         iElementTypes.set(HlasmParser.RULE_lines2,iElementTypes.get(HlasmParser.RULE_lines));
         iElementTypes.set(HlasmParser.RULE_macro,new HlasmMacroIElementType());
+        iElementTypes.set(HlasmParser.RULE_argument,new HlasmMacroArgumentStubType());
 //        iElementTypes.set(HlasmParser.RULE_code_chunks,new CodeBlockLazyIElementType(ruleNames[HlasmParser.RULE_code_chunks],language,iElementTypes.get(HlasmParser.RULE_code_chunks)));
 
         return iElementTypes;

@@ -44,16 +44,11 @@ import com.map_dump.model.log.SnapLog;
 import com.map_dump.model.map.MappedDsect;
 import com.sun.deploy.util.ArrayUtil;
 import com.sun.tools.javac.util.ArrayUtils;
-import groovy.lang.ExpandoMetaClass;
-import groovy.lang.GroovyClassLoader;
-import groovy.lang.GroovyObject;
-import groovy.util.Expando;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
 import org.apache.commons.net.ftp.FTPFileEntryParser;
 import org.apache.commons.net.ftp.FTPFileEntryParserImpl;
 import org.apache.commons.net.ftp.parser.DefaultFTPFileEntryParserFactory;
-import org.codehaus.groovy.reflection.MixinInMetaClass;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;

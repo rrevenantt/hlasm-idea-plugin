@@ -8,6 +8,8 @@ import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.psi.search.LocalSearchScope;
 import com.intellij.psi.search.SearchScope;
 import com.intellij.psi.tree.IElementType;
+import com.intellij.psi.util.PsiTreeUtil;
+import com.intellij.psi.util.PsiUtil;
 import com.intellij.util.IncorrectOperationException;
 import org.antlr.jetbrains.adaptor.psi.ANTLRPsiLeafNode;
 import org.jetbrains.annotations.NonNls;
@@ -59,17 +61,19 @@ public class LabelDefTokenPsiElement extends ANTLRPsiLeafNode implements PsiName
     @NotNull
     @Override
     public SearchScope getUseScope() {
+//        return GlobalSearchScope.everythingScope(getProject());
         return GlobalSearchScope.fileScope(getContainingFile());
+//        return super.getUseScope();
     }
 
     @NotNull
     @Override
     public GlobalSearchScope getResolveScope() {
-        return GlobalSearchScope.fileScope(getContainingFile());
+        return GlobalSearchScope.everythingScope(getProject());
     }
 
     @Override
     public PsiElement getContext() {
-        return super.getContext();
+        return PsiTreeUtil.findFirstParent(this,(element)->element instanceof HlasmLinesPsiElement);
     }
 }

@@ -44,7 +44,7 @@ public class IncrementalReparsingTest extends LightPlatformCodeInsightFixtureTes
 
 
     public void testReparsing3() throws Exception{
-        myTestFile = myFixture.configureByFile("test3.asm");
+        myTestFile = myFixture.configureByFile("test4.asm");
 
 //        myFixture.checkHighlighting();
 
@@ -63,6 +63,7 @@ public class IncrementalReparsingTest extends LightPlatformCodeInsightFixtureTes
                 System.out.println("------------------------ next reparse test ---------------------------- "+ myInsertOffset);
 //        delete(5);
                 textStructureBefore = DebugUtil.treeToString(myTestFile.getNode(),false,true);
+//                insert("A");
                 insert("\n");
 //                delete(random.nextInt(50)+1);
                 System.out.println("------------------------ reverting");
@@ -70,9 +71,11 @@ public class IncrementalReparsingTest extends LightPlatformCodeInsightFixtureTes
 //            System.out.println(TreeUtil.findFirstLeaf(myTestFile.getNode()).getText());
                 textStructureAfter = DebugUtil.treeToString(myTestFile.getNode(),false,true);
 //                DocumentCommitThread.getInstance().waitForAllCommits();
+//                time = System.nanoTime();
                 UndoManagerImpl.getInstance(myFixture.getProject()).undo(
                         FileEditorManager.getInstance(myFixture.getProject()).getSelectedEditor(myTestFile.getVirtualFile()));
 
+//                System.out.println("parsing time: " + (System.nanoTime() - time));
                 textStructureAfter2 = DebugUtil.treeToString(myTestFile.getNode(),false,true);
                 result = textStructureAfter + textStructureAfter2 + textStructureBefore;
 //                DocumentCommitThread.getInstance().waitForAllCommits();
@@ -85,7 +88,6 @@ public class IncrementalReparsingTest extends LightPlatformCodeInsightFixtureTes
         }
 
     }
-
 
 
     protected void delete(final int length){
@@ -110,7 +112,9 @@ public class IncrementalReparsingTest extends LightPlatformCodeInsightFixtureTes
 
 
     private void doReparseAndCheck(final String s, final String expectedNewText, final int length) throws IncorrectOperationException {
+        long time = System.currentTimeMillis();
         doReparse(s, length);
+        System.out.println("parsing time: " + (System.currentTimeMillis() - time));
         String foundStructure = DebugUtil.treeToString(myTestFile.getNode(), false);
         System.out.println("--------------------- parse from scratch");
         final PsiFile psiFile = createDummyFile(getName() + "." + myTestFile.getFileType().getDefaultExtension(), expectedNewText);

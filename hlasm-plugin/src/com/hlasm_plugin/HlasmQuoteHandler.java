@@ -6,7 +6,9 @@ import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.editor.highlighter.HighlighterIterator;
 import com.intellij.psi.tree.TokenSet;
+import hlasm.HlasmLexer;
 import hlasm.HlasmParser;
+import org.antlr.jetbrains.adaptor.lexer.PSIElementTypeFactory;
 import org.jetbrains.annotations.Nullable;
 
 /**
@@ -72,6 +74,15 @@ public class HlasmQuoteHandler extends SimpleTokenSetQuoteHandler{//implements Q
         super(HlasmParserDefenition.STRING);
     }
 
+    @Override
+    protected boolean isNonClosedLiteral(HighlighterIterator iterator, CharSequence chars) {
+        return iterator.getTokenType().equals(PSIElementTypeFactory.getTokenIElementTypes(HlasmLanguage.INSTANCE).get(HlasmLexer.STRING_ERROR));
+    }
+
+    @Override
+    public boolean isOpeningQuote(HighlighterIterator iterator, int offset) {
+        return myLiteralTokenSet.contains(iterator.getTokenType());
+    }
 
     /*@Override
     public boolean isClosingQuote(HighlighterIterator iterator, int offset) {

@@ -46,14 +46,14 @@ public class HlasmEditorEnterActionHandler extends EditorWriteActionHandler {
         }
 //        VisualPosition pos = caret.getVisualPosition();
 //        System.out.println("Smart Enter successful caret " + pos.line + pos.column);
-        PsiDocumentManager.getInstance(psiFile.getProject()).commitDocument(editor.getDocument());
-        PsiDocumentManager.getInstance(psiFile.getProject()).performLaterWhenAllCommitted( new Runnable() {
-            @Override
-            public void run() {
-                PsiElement current = psiFile.findElementAt(editor.getCaretModel().getPrimaryCaret().getOffset());
-                editor.getCaretModel().getPrimaryCaret().moveToOffset(current.getTextOffset()+current.getTextLength()-1);
-            }
-        });
+//        PsiDocumentManager.getInstance(psiFile.getProject()).commitDocument(editor.getDocument());
+//        PsiDocumentManager.getInstance(psiFile.getProject()).performLaterWhenAllCommitted( new Runnable() {
+//            @Override
+//            public void run() {
+//                PsiElement current = psiFile.findElementAt(editor.getCaretModel().getPrimaryCaret().getOffset());
+//                editor.getCaretModel().getPrimaryCaret().moveToOffset(current.getTextOffset()+current.getTextLength()-1);
+//            }
+//        });
 
 //        PsiDocumentManager.getInstance(psiFile.getProject()).commitDocument(editor.getDocument());
 

@@ -98,6 +98,12 @@ public interface HlasmParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitExpression(HlasmParser.ExpressionContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link HlasmParser#expression_list}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpression_list(HlasmParser.Expression_listContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link HlasmParser#simple_expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

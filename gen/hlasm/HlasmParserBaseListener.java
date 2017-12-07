@@ -187,6 +187,18 @@ public class HlasmParserBaseListener implements HlasmParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterExpression_list(HlasmParser.Expression_listContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitExpression_list(HlasmParser.Expression_listContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterSimple_expr(HlasmParser.Simple_exprContext ctx) { }
 	/**
 	 * {@inheritDoc}

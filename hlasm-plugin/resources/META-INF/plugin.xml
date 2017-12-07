@@ -1,7 +1,7 @@
 <idea-plugin version="2">
   <id>com.hlasm_plugin</id>
   <name>Hlasm plugin</name>
-  <version>1.2.2</version>
+  <version>1.4.3</version>
   <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
 
   <description><![CDATA[
@@ -52,6 +52,13 @@
     <stubElementTypeHolder class="com.hlasm_plugin.stubs.HlasmStubElementTypeHolder"/>
     <stubIndex implementation="com.hlasm_plugin.stubs.HlasmStubIndex" />
     <!--<xdebugger.debuggerSupport implementation=""-->
+    <annotator language="Hlasm" implementationClass="com.hlasm_plugin.inspections.AssistHlasmAnnotator"/>
+    <backspaceHandlerDelegate implementation="com.hlasm_plugin.HlasmBackspaceHandler" />
+
+    <moduleService serviceInterface="com.hlasm_plugin.project.ZOSProjectService"
+                   serviceImplementation="com.hlasm_plugin.project.ZOSProjectServiceImpl" />
+
+    <!--<annotator language="Hlasm" implementationClass="com.hlasm_plugin.inspections.BRSAnnotator"/>-->
 
 
 

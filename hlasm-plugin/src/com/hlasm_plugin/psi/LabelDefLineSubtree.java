@@ -2,6 +2,9 @@ package com.hlasm_plugin.psi;
 
 import com.hlasm_plugin.HlasmASTFactory;
 import com.hlasm_plugin.HlasmLanguage;
+import com.hlasm_plugin.lang_model.ArgumentPsiElement;
+import com.hlasm_plugin.lang_model.CommandPsiElement;
+import com.hlasm_plugin.lang_model.InstructionFormat;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElement;
@@ -21,10 +24,14 @@ import org.antlr.jetbrains.adaptor.psi.IdentifierDefSubtree;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import static com.intellij.psi.impl.source.tree.TreeUtil.findFirstLeaf;
+
 /**
  * Created by anisik on 12.06.2016.
  */
-public class LabelDefLineSubtree extends IdentifierDefSubtree implements PsiNameIdentifierOwner{
+public class LabelDefLineSubtree extends IdentifierDefSubtree implements PsiNameIdentifierOwner, CommandPsiElement{
+
+
     private String oldName;
 
     public LabelDefLineSubtree(@NotNull ASTNode node, @NotNull IElementType idElementType) {
@@ -60,11 +67,11 @@ public class LabelDefLineSubtree extends IdentifierDefSubtree implements PsiName
 //        super.setName(name);
         ((LeafPsiElement) getNameIdentifier()).replaceWithText(name);
 
-        if (!oldName.equals(name)){
-            ((HlasmPSIFileRoot)this.getContainingFile()).definitions.remove(oldName);
-            ((HlasmPSIFileRoot)this.getContainingFile()).definitions.put(name,this);
-            oldName = name;
-        }
+//        if (!oldName.equals(name)){
+//            ((HlasmPSIFileRoot)this.getContainingFile()).definitions.remove(oldName);
+//            ((HlasmPSIFileRoot)this.getContainingFile()).definitions.put(name,this);
+//            oldName = name;
+//        }
         return this;
     }
 
@@ -73,10 +80,14 @@ public class LabelDefLineSubtree extends IdentifierDefSubtree implements PsiName
         String newName = getName();
         if (oldName == null) {
 //            this.replace(LanguageParserDefinitions.INSTANCE.forLanguage(HlasmLanguage.INSTANCE).createElement(this.getNode()));
+            ((HlasmPSIFileRoot)this.getContainingFile()).definitions.put(newName,this);
+            oldName = newName;
             return;
         }
         if (newName == null) {
             ((HlasmPSIFileRoot)this.getContainingFile()).definitions.remove(oldName);
+            oldName = null;
+            return;
         }
         if (!oldName.equals(newName)){
             ((HlasmPSIFileRoot)this.getContainingFile()).definitions.remove(oldName);
@@ -90,7 +101,9 @@ public class LabelDefLineSubtree extends IdentifierDefSubtree implements PsiName
 //            return null;
         try {
             ASTNode lineChild = TreeUtil.findChildBackward(this.getNode(),(IElementType) PSIElementTypeFactory.getRuleIElementTypes(HlasmLanguage.INSTANCE).get(HlasmParser.RULE_line));
-            return (LeafPsiElement) lineChild.findChildByType((IElementType) PSIElementTypeFactory.getTokenIElementTypes(HlasmLanguage.INSTANCE).get(HlasmLexer.COMMAND)).getPsi();
+//            return (LeafPsiElement) lineChild.findChildByType((IElementType) PSIElementTypeFactory.getTokenIElementTypes(HlasmLanguage.INSTANCE).get(HlasmLexer.COMMAND)).getPsi();
+            return (LeafPsiElement) TreeUtil.skipWhitespaceAndComments(findFirstLeaf(lineChild),true).getPsi();
+
             //return (LeafPsiElement) findChildByType((IElementType) PSIElementTypeFactory.getTokenIElementTypes(HlasmLanguage.INSTANCE).get(HlasmLexer.COMMAND));
 //            if (getName() != null) {
 //                return (LeafPsiElement) this.getChildren()[1];
@@ -102,7 +115,22 @@ public class LabelDefLineSubtree extends IdentifierDefSubtree implements PsiName
             return null;
         }
     }
-    public PsiElement getArguments(){
-        return findChildByType((IElementType) PSIElementTypeFactory.getRuleIElementTypes(HlasmLanguage.INSTANCE).get(HlasmParser.RULE_arguments));
+//    public PsiElement getArguments(){
+//        return findChildByType((IElementType) PSIElementTypeFactory.getRuleIElementTypes(HlasmLanguage.INSTANCE).get(HlasmParser.RULE_arguments));
+//    }
+
+    @Override
+    public String getCommandString() {
+        return getCommand().getText();
+    }
+
+    @Override
+    public ArgumentPsiElement[] getArguments() {
+        return PsiTreeUtil.findChildrenOfType(this,HlasmMacroArgumentPsiElement.class).toArray(HlasmMacroArgumentPsiElement.EMPTYARG);
+    }
+
+    @Override
+    public InstructionFormat getInstructionFormat() {
+        return null;
     }
 }

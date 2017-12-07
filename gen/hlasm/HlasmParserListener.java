@@ -151,6 +151,16 @@ public interface HlasmParserListener extends ParseTreeListener {
 	 */
 	void exitExpression(HlasmParser.ExpressionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link HlasmParser#expression_list}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpression_list(HlasmParser.Expression_listContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HlasmParser#expression_list}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpression_list(HlasmParser.Expression_listContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link HlasmParser#simple_expr}.
 	 * @param ctx the parse tree
 	 */

@@ -149,6 +149,8 @@ public class HlasmParserDefenition implements ParserDefinition {
                 return new HlasmMacroPsiElement(node);
             case HlasmParser.RULE_lines:
                 return new HlasmLinesPsiElement(node);
+            case HlasmParser.RULE_argument:
+                return new HlasmMacroArgumentPsiElement(node);
         }
         /*
         switch (ruleIElementType.getRuleIndex()){

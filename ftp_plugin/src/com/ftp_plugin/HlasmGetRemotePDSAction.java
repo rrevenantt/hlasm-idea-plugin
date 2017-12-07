@@ -172,6 +172,8 @@ public class HlasmGetRemotePDSAction extends AnAction {
                                                     Notifications.Bus.notify(group.createNotification("Error ",
                                                             "something wrong happened while downloading " + file.getName() +
                                                                     "\n Possibly file is locked on target LPAR", NotificationType.ERROR, null));
+
+                                                    return;
                                                 }
                                                 String extention = "asm";
                                                 if (line.startsWith("//")) {
@@ -204,9 +206,9 @@ public class HlasmGetRemotePDSAction extends AnAction {
                                                 OutputStream outputStream = new FileOutputStream(file1.getCanonicalPath());
 //                                                OutputStream outputStream = file1.getOutputStream(null);
                                                 while (line != null) {
-                                                    if (line.length() > 72 && extention.equals("asm")) {
-                                                        line = line.substring(0, 72);
-                                                    }
+//                                                    if (line.length() > 72 && extention.equals("asm")) {
+//                                                        line = line.substring(0, 72);
+//                                                    }
                                                     outputStream.write((line + "\r\n").getBytes());
                                                     line = reader.readLine();
                                                 }

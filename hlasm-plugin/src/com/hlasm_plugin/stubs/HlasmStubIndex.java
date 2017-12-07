@@ -4,6 +4,7 @@ import com.hlasm_plugin.psi.HlasmMacroIElementType;
 import com.hlasm_plugin.psi.HlasmMacroPsiElement;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiElement;
+import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.psi.stubs.StringStubIndexExtension;
 import com.intellij.psi.stubs.StubIndexKey;
 import org.antlr.jetbrains.adaptor.psi.ANTLRPsiNode;
@@ -11,6 +12,8 @@ import org.jetbrains.annotations.NotNull;
 import org.stringtemplate.v4.ST;
 
 import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
 
 /**
  * Created by anisik on 30.06.2017.
@@ -30,7 +33,7 @@ public class HlasmStubIndex extends StringStubIndexExtension<HlasmMacroPsiElemen
 
     @Override
     public int getVersion() {
-        return 6;
+        return 20;
     }
 
     @Override
@@ -50,4 +53,10 @@ public class HlasmStubIndex extends StringStubIndexExtension<HlasmMacroPsiElemen
     }
 
 
+    public Collection<HlasmMacroPsiElement> getSorted(@NotNull String s, @NotNull Project project, @NotNull GlobalSearchScope scope, Comparator<HlasmMacroPsiElement> comparator) {
+        // todo in case it is not list create new sorted one
+        List<HlasmMacroPsiElement> got = (List<HlasmMacroPsiElement>) super.get(s, project, scope);
+        got.sort(comparator);
+        return got;
+    }
 }

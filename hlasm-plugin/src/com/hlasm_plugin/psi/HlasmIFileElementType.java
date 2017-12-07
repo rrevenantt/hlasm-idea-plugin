@@ -25,7 +25,7 @@ public class HlasmIFileElementType extends IStubFileElementType<HlasmPsiFileStub
 
     @Override
     public int getStubVersion() {
-        return 6;
+        return 20;
     }
 
     @Override
@@ -61,11 +61,15 @@ public class HlasmIFileElementType extends IStubFileElementType<HlasmPsiFileStub
                 }
                 StubElement root = createStubForFile(file);
                 if (statement != null) {
+
                     StubElement first = buildStubTreeFor(statement, root);
+
                     ((ObjectStubBase) first).markDangling();
                 }
                 return root;
             }
+
+
         };
     }
 

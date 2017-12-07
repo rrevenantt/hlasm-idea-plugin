@@ -3,12 +3,13 @@ package com.hlasm_plugin;
 import com.intellij.codeInsight.editorActions.smartEnter.SmartEnterProcessor;
 import com.intellij.lang.ASTNode;
 import com.intellij.openapi.editor.Editor;
+import com.intellij.openapi.editor.EditorModificationUtil;
+import com.intellij.openapi.editor.LogicalPosition;
+import com.intellij.openapi.fileEditor.FileDocumentManager;
 import com.intellij.openapi.fileEditor.FileEditorManagerListener;
 import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
 import com.intellij.openapi.project.Project;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.PsiWhiteSpace;
+import com.intellij.psi.*;
 import com.intellij.psi.impl.source.tree.LeafPsiElement;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.psi.util.PsiTreeUtil;
@@ -36,33 +37,45 @@ public class HlasmSmartEnterProcessor extends SmartEnterProcessor {
         if (prevType instanceof TokenIElementType
                 && ((TokenIElementType) prevType).getANTLRTokenType() == HlasmLexer.COMMA
                 && !(PsiTreeUtil.prevLeaf(prev,true) instanceof PsiWhiteSpace)
-                && current.getNode().getElementType() instanceof TokenIElementType
-                && ((TokenIElementType) current.getNode().getElementType()).getANTLRTokenType() == HlasmLexer.ENDLINE){
+                && ((current.getNode().getElementType() instanceof TokenIElementType
+                    && ((TokenIElementType) current.getNode().getElementType()).getANTLRTokenType() == HlasmLexer.ENDLINE)
+                    || current instanceof PsiComment)
+                ){
 
             String text = current.getText();
-            int inLineOffset = current.getTextOffset() -
+//            int inLineOffset = current.getTextOffset() -
+            int inLineOffset = editor.getCaretModel().getOffset() -
                     editor.getDocument().getLineStartOffset(editor.getDocument().getLineNumber(current.getTextOffset()));
 //            System.out.println(inLineOffset + current.getTextLength());
             if (inLineOffset + current.getTextLength() > 73){
                 return false;
             }
-            if (inLineOffset + current.getTextLength() == 73){
-                text = new StringBuilder(text).replace(text.length()-2,text.length()-1,"+")
-                        //.insert(text.length() - 1, "                                                                        +".substring(inLineOffset + current.getTextLength()))
-                        .append("               \n")
-                        .toString();
-            }
-            else {
-                text = new StringBuilder(text)
-                        .insert(text.length() - 1, "                                                                        +".substring(inLineOffset + current.getTextLength())
-                        ).append("               \n")
-                        .toString();
-            }
+//            if (inLineOffset + current.getTextLength() == 73){
+//                text = new StringBuilder(text).replace(text.length()-2,text.length()-1,"+")
+//                        .insert(text.length() - 1, "                                                                        +".substring(inLineOffset + current.getTextLength()))
+//                        .append("               \n")
+//                        .toString();
+//            }
+//            else {
+//                text = new StringBuilder(text)
+//                        .insert(text.length() - 1, "                                                                        +".substring(inLineOffset + current.getTextLength())
+//                        ).append("               \n")
+//                        .toString();
+//            }
+            int currentLine = editor.getDocument().getLineNumber(current.getTextOffset());
+            String insert = "                                                                       +".substring(inLineOffset)+"\n               ";
+            EditorModificationUtil.insertStringAtCaret(editor,insert);
+            PsiDocumentManager.getInstance(project).performLaterWhenAllCommitted(()->{
+                editor.getCaretModel().moveToLogicalPosition(new LogicalPosition(currentLine+1,15));
+            });
 
-
-            int startOffset = current.getTextOffset();
-            ASTNode newLeaf = HlasmASTFactory.leaf((IElementType) PSIElementTypeFactory.getTokenIElementTypes(HlasmLanguage.INSTANCE).get(HlasmLexer.ARG_SEPARATOR),text);
-            ((LeafPsiElement)current).getTreeParent().replaceChild((LeafPsiElement)current,newLeaf);
+//            editor.getCaretModel().getPrimaryCaret().
+//            editor.getCaretModel().moveToOffset(editor.getCaretModel().getOffset()+insert.length());
+//
+//
+//            int startOffset = current.getTextOffset();
+//            ASTNode newLeaf = HlasmASTFactory.leaf((IElementType) PSIElementTypeFactory.getTokenIElementTypes(HlasmLanguage.INSTANCE).get(HlasmLexer.ARG_SEPARATOR),text);
+//            ((LeafPsiElement)current).getTreeParent().replaceChild((LeafPsiElement)current,newLeaf);
 //            PsiElement par = current.getParent();
 //            current.getParent().deleteChildRange(current,current);
 //            newLeaf.

@@ -22,8 +22,8 @@ public class HlasmMacroStubElement extends StubBase<HlasmMacroPsiElement> {
         this.name = name;
     }
 
-    public List<String> arguments = new ArrayList<>();
-
+//    public List<String> arguments = new ArrayList<>();
+//
     public String name = "";
 
 }

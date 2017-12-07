@@ -51,8 +51,11 @@ UNKNOWN_CHAR1 : . -> type(UNKNOWN_CHAR);
 
 mode CMD;
 
+PUSH        : 'PUSH';
+POP         : 'POP';
+PRINT       : 'PRINT';
 EQU         : 'EQU';
-CSECT        : 'CSECT' ;
+CSECT       : 'CSECT' ;
 DSECT       : 'DSECT' ;
 RSECT       : 'RSECT' ;
 DS          : 'DS' ;
@@ -114,13 +117,26 @@ mode EVERYTHING;
   //  [ \t]+  {parenth == 0}? -> mode(ENDLINE),skip
     //;
 
-D0:  // TODO: Temp solution for D'0'
-    ([DL])'\''~[ +\-()\r\n]+ '\''->type(STRING);
+//D0:  // TODO: Temp solution for D'0'
+//    ([DL])'\''~[ +\-()\r\n]+ '\''->type(STRING);
+STRING_DS:   // not full String handler to workaround D' and S'
+    ('D'|'S') '\'' (~['\n\r])*? '\'' -> type(STRING)
+    ;
+
 FIELD_INFO:
     ('L'|'N'|'T'|'K'|'D'|'I'|'O'|'S')'\'';
 
 STRING_QUOTE:
-    NUMBER?([CGXBFHEDLPZAYSVJQR] [AEUHBDQY]? ('L' NUMBER+)?)?'\'' -> more,pushMode(IN_STRING); //.*? '\'';
+    NUMBER?([CGXBFHEDLPZAYSVJQR] [AEUHBDQY]? ('L' NUMBER+)?)?'\'' //-> more,pushMode(IN_STRING)
+    {
+//        if (_input.LA(1) == '\n'){
+//                setType(STRING_ERROR);
+//            }
+//            else {
+                more();
+                pushMode(IN_STRING);
+//            }
+    }; //.*? '\'';
 
 
 ENDLINE1:
@@ -280,12 +296,12 @@ COMMENT_CONT1 : ~[ \r\n]
  	        setType(ERROR);
  	    }
 
-        if (_input.LA(1) == '\n'){
-            setType(ERROR);
-        }
-        else {
+//        if (_input.LA(1) == '\n'){
+//            setType(ERROR);
+//        }
+//        else {
             more();
-        }
+//        }
 
 //        if (getCharPositionInLine() < 15){
 //            more();

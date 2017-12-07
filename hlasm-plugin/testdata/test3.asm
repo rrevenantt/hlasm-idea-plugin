@@ -26,7 +26,7 @@ AAAAAAAAAAAAA1 DS 1A                                            A111111
                AAAAAAAAAAAAAAAAAAA)           AAAAA AA AAA AAAA
         AAAAAAAA   AAA,AAAAAAAAAAAAAAAAAAAA
      AAAAAA    (AAAAAAAA,AAAAAAAAAAAAAA,,A),AAA,                       A
-               (AAA,AAAAAAAAAAAAAAAAA,AA,=A'AAAA'),AAAA                A
+               (AAA,AAAAAAAAAAAAAAAAA,AA,=C'AAAA'),AAAA                A
                (AAAAAAAA,AAAAAAAAAAAAAA,,A),AAA,
                (AA,AAA1111A11AAAAAAAAA+1,
                AAA1111A11AAAAAAAAAAAAA,A)

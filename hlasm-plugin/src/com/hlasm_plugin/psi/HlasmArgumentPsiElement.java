@@ -9,6 +9,7 @@ import org.jetbrains.annotations.NotNull;
  * Created by anisik on 18.06.2017.
  */
 public class HlasmArgumentPsiElement extends ANTLRPsiNode {
+
     public HlasmArgumentPsiElement(@NotNull ASTNode node) {
         super(node);
     }

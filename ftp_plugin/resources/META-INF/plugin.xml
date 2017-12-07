@@ -1,7 +1,7 @@
 <idea-plugin version="2">
   <id>com.ftp_plugin</id>
   <name>FTP plugin</name>
-  <version>1.0.6</version>
+  <version>1.0.8</version>
   <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
 
   <description><![CDATA[

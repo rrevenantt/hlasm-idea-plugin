@@ -1,12 +1,15 @@
 package com.hlasm_plugin.psi;
 
 import com.hlasm_plugin.HlasmASTFactory;
+import com.hlasm_plugin.project.ZOSProjectService;
 import com.hlasm_plugin.stubs.HlasmStubIndex;
 import com.intellij.codeInsight.completion.InsertHandler;
 import com.intellij.codeInsight.completion.InsertionContext;
 import com.intellij.codeInsight.lookup.AutoCompletionPolicy;
 import com.intellij.codeInsight.lookup.LookupElement;
 import com.intellij.codeInsight.lookup.LookupElementBuilder;
+import com.intellij.openapi.module.ModuleServiceManager;
+import com.intellij.openapi.module.ModuleUtilCore;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.TextRange;
 import com.intellij.psi.*;
@@ -34,8 +37,19 @@ public class MacroCallTokenPsiElement extends ANTLRPsiLeafNode implements PsiNam
 
     @Override
     public PsiReference getReference() {
-        Collection<HlasmMacroPsiElement> macros = HlasmStubIndex.INSTANCE.get(
-                getText(),MacroCallTokenPsiElement.this.getProject(),GlobalSearchScope.everythingScope(MacroCallTokenPsiElement.this.getProject()));
+
+        List<String> macroDatasets = ModuleServiceManager.getService(ModuleUtilCore.findModuleForPsiElement(this), ZOSProjectService.class).getMacroConcatenation();
+        Collection<HlasmMacroPsiElement> macros = HlasmStubIndex.INSTANCE.getSorted(
+                getText(), MacroCallTokenPsiElement.this.getProject(),
+                GlobalSearchScope.everythingScope(MacroCallTokenPsiElement.this.getProject()),
+                (o1, o2) -> {
+                    if (o1==o2) return 0;
+                    int a1 = macroDatasets.indexOf(o1.getContainingFile().getParent().getName());
+                    int a2 = macroDatasets.indexOf(o2.getContainingFile().getParent().getName());
+
+                    return a1<a2?-1:1;
+                });
+//                GlobalSearchScope.moduleScope(ModuleUtilCore.findModuleForPsiElement(this)));
 
 
         if (macros.size() == 0) {
@@ -59,20 +73,37 @@ public class MacroCallTokenPsiElement extends ANTLRPsiLeafNode implements PsiNam
 
                         return HlasmStubIndex.INSTANCE.getAllKeysAsArray(MacroCallTokenPsiElement.this.getProject());
                     }
-                }/*);
+
+            }/*);
             }
 
             return defaultAutomomplReferenceMap.get(getProject())*/;
             return cacheReference;
         }
-//        System.out.println("lulxd "+getTextLength() + " " + getText() + " macros size " + macros.size());
-       /* return new PsiReferenceBase.Immediate<MacroCallTokenPsiElement>(this,new TextRange(0,getTextLength()), ((HlasmMacroPsiElement) macros.toArray()[0])){
-            @Override
-            public boolean isReferenceTo(PsiElement element) {
-                System.out.println("check isReferenceTo ");
-                return element == this.resolve();
-            }
-        };*/
+
+
+        if (macroDatasets!= null  && macroDatasets.size() != 0){
+            PsiElement target = macros.iterator().next();
+            return new PsiReferenceBase<MacroCallTokenPsiElement>(this,new TextRange(0,getTextLength())) {
+                @Nullable
+                @Override
+                public PsiElement resolve() {
+                    return target;
+                }
+
+                @NotNull
+                @Override
+                public Object[] getVariants() {
+                    return new Object[0];
+                }
+
+                @Override
+                public boolean isReferenceTo(PsiElement element) {
+                    return element == resolve();
+                }
+            };
+        }
+
         return new PsiPolyVariantReferenceBase<MacroCallTokenPsiElement>(this) {
             @NotNull
             @Override
@@ -86,11 +117,18 @@ public class MacroCallTokenPsiElement extends ANTLRPsiLeafNode implements PsiNam
 //            @Override
             public ResolveResult[] multiResolve(boolean incompleteCode) {
                 Collection<HlasmMacroPsiElement> macros = HlasmStubIndex.INSTANCE.get(
-                        getText(),MacroCallTokenPsiElement.this.getProject(),GlobalSearchScope.everythingScope(MacroCallTokenPsiElement.this.getProject()));
+                        getText(),MacroCallTokenPsiElement.this.getProject(),
+                        GlobalSearchScope.everythingScope(MacroCallTokenPsiElement.this.getProject()));
+//                        GlobalSearchScope.moduleScope(ModuleUtilCore.findModuleForPsiElement(MacroCallTokenPsiElement.this)));
                 ArrayList<PsiElementResolveResult> resolveResults = new ArrayList<>(macros.size());
                 for (HlasmMacroPsiElement element :
                         macros) {
-                    resolveResults.add(new PsiElementResolveResult(element));
+//                    if(macroDatasets == null || macroDatasets.size() == 0)
+                        resolveResults.add(new PsiElementResolveResult(element));
+//                    else if (macroDatasets.contains(element.getContainingFile().getContainingDirectory().getName())){
+//                        resolveResults.add(new PsiElementResolveResult(element));
+//                        break;
+//                    }
 //                    System.out.println("add reference "+element.getGreenStub().name + " file "+element.getContainingFile().getParent());
                 }
                 return resolveResults.toArray(ResolveResult.EMPTY_ARRAY);
@@ -101,23 +139,28 @@ public class MacroCallTokenPsiElement extends ANTLRPsiLeafNode implements PsiNam
                 return new TextRange(0,MacroCallTokenPsiElement.this.getTextLength());
             }
 
-//            @Nullable
-//            @Override
-//            public PsiElement resolve() {
+            @Nullable
+            @Override
+            public PsiElement resolve() {
+                return null;
 //                ResolveResult[] results = multiResolve(false);
 //                return results.length == 0? null : results[0].getElement();
-//            }
+            }
 
             @Override
             public boolean isReferenceTo(PsiElement element) {
-                if (element instanceof MacroCallTokenPsiElement && element.getReference() instanceof PsiPolyVariantReference
-                        ) {
-
-                    ResolveResult[] results = ((PsiPolyVariantReference) element.getReference()).multiResolve(false);
-                    return results.length == 0 ? true : super.isReferenceTo(results[0].getElement());
-
+                if (element instanceof PsiNamedElement){
+                    return  ((PsiNamedElement) element).getName().equals(getElement().getText());
                 }
-                return super.isReferenceTo(element);
+//                if (element instanceof MacroCallTokenPsiElement && element.getReference() instanceof PsiPolyVariantReference
+//                        ) {
+
+//                    ResolveResult[] results = ((PsiPolyVariantReference) element.getReference()).multiResolve(false);
+//                    return results.length != 0 && super.isReferenceTo(results[0].getElement());
+//                    return element.getText().equals(getElement().getText());
+//                }
+                return false;
+//                return super.isReferenceTo(element);
             }
         };
 

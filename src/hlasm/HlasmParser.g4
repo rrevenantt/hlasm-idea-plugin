@@ -108,6 +108,8 @@ line :
 	| ANOP arguments
 	| (LCLA|LCLB|LCLC|GBLC|GBLB|GBLA) arguments
 	| AGO LABEL
+	| (PUSH|POP) LABEL+
+	| PRINT LABEL
 //	| LABEL_DEF? /*{_errHandler.sync(this);}*/ COMMAND
 //	| ENDLINE
 //	| LABEL_DEF
@@ -130,7 +132,7 @@ line :
 //	)? ENDLINE
 //	| EOF
 //	| (LABEL)? SPACES command ENDLINE  //SPACES arguments
-    | {System.out.println("MyInputMismatch "+ getCurrentToken().getStartIndex()); if (true) throw new InputMismatchException(this);}~(ENDLINE|OLD_TOKEN)
+    | {/*System.out.println("MyInputMismatch "+ getCurrentToken().getStartIndex());*/ if (true) throw new InputMismatchException(this);}~(ENDLINE|OLD_TOKEN|MEND|MACRO)
     ;
 
 complex_condition:
@@ -161,13 +163,16 @@ named_argument:
 
 expression:
     simple_expr*
-    | simple_expr? LEFT_ROUND_PAR arguments RIGHT_ROUND_PAR LABEL?
+    | simple_expr? LEFT_ROUND_PAR expression_list RIGHT_ROUND_PAR LABEL?
 //    | simple_expr '(' simple_expr COMMA simple_expr ')'
 //    | '=' simple_expr
     | expression (PLUS|MUL|DIVIDE) expression
     | expression MINUS expression
     ;
 
+expression_list:
+    expression (COMMA expression)*
+    ;
 //subexpression :
 //
 //    ;
@@ -175,11 +180,11 @@ expression:
 simple_expr:
     LABEL
 //    | '='? D0  // TODO: Temp solution for D'0'
-    | FIELD_INFO '='? LABEL
+    | FIELD_INFO
     | NUMBER
     | '*'
     | '='? (LEN_TYPE|LABEL) STRING
-    | '='? LABEL? LEFT_ROUND_PAR arguments RIGHT_ROUND_PAR
+    | '='? LABEL? LEFT_ROUND_PAR expression_list RIGHT_ROUND_PAR
     | STRING
     | LEN_TYPE
     | '='

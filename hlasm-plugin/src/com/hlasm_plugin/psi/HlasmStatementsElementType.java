@@ -1,24 +1,28 @@
 package com.hlasm_plugin.psi;
 
+import com.hlasm_plugin.HlasmFileType;
 import com.hlasm_plugin.HlasmLanguage;
 import com.hlasm_plugin.HlasmParserDefenition;
 import com.hlasm_plugin.regex.HlasmRegexLibrary;
+import com.intellij.extapi.psi.ASTDelegatePsiElement;
 import com.intellij.lang.*;
 import com.intellij.lang.impl.PsiBuilderImpl;
 import com.intellij.lexer.LexerBase;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.openapi.progress.ProcessCanceledException;
+import com.intellij.openapi.progress.*;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Pair;
+import com.intellij.openapi.util.Ref;
 import com.intellij.openapi.util.TextRange;
 import com.intellij.openapi.util.text.StringUtil;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiWhiteSpace;
-import com.intellij.psi.TokenType;
+import com.intellij.psi.*;
+import com.intellij.psi.impl.DocumentCommitThread;
+import com.intellij.psi.impl.PsiFileFactoryImpl;
 import com.intellij.psi.impl.source.DummyHolder;
 import com.intellij.psi.impl.source.PsiFileImpl;
+import com.intellij.psi.impl.source.text.DiffLog;
 import com.intellij.psi.impl.source.tree.*;
 import com.intellij.psi.text.BlockSupport;
 import com.intellij.psi.tree.IElementType;
@@ -28,8 +32,11 @@ import com.intellij.psi.tree.IReparseableElementType;
 import com.intellij.psi.tree.TokenSet;
 import com.intellij.psi.util.PsiTreeUtil;
 import com.intellij.psi.util.PsiUtil;
+import com.intellij.testFramework.LightVirtualFile;
+import com.intellij.util.ArrayUtil;
 import com.intellij.util.ThreeState;
 import com.intellij.util.TripleFunction;
+import com.intellij.util.diff.DiffTree;
 import com.intellij.util.diff.FlyweightCapableTreeStructure;
 import hlasm.HlasmLexer;
 import hlasm.HlasmParser;
@@ -38,7 +45,6 @@ import org.antlr.jetbrains.adaptor.lexer.PSIElementTypeFactory;
 import org.antlr.jetbrains.adaptor.lexer.RuleIElementType;
 import org.antlr.jetbrains.adaptor.lexer.TokenIElementType;
 import org.antlr.jetbrains.adaptor.parser.ANTLRParserAdaptor;
-import org.codehaus.groovy.transform.sc.transformers.RangeExpressionTransformer;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -67,34 +73,130 @@ public class HlasmStatementsElementType extends IReparseableElementType implemen
         return LanguageASTFactory.INSTANCE.forLanguage(this.getLanguage()).createLazy(this, text);
     }
 
+    private static ASTStructure createInterruptibleASTStructure(@NotNull final ASTNode oldRoot, @NotNull final ProgressIndicator indicator) {
+        return new ASTStructure(oldRoot) {
+            @Override
+            public int getChildren(@NotNull ASTNode astNode, @NotNull Ref<ASTNode[]> into) {
+                indicator.checkCanceled();
+                return super.getChildren(astNode, into);
+            }
+        };
+    }
+
     @Override
     public int getRuleIndex() {
         return ruleID.getRuleIndex();
     }
 
     //@Override
-    protected ASTNode doParseContents1(@NotNull ASTNode chameleon, @NotNull PsiElement psi) {
-        if (chameleon.getUserData(BlockSupport.TREE_TO_BE_REPARSED) == null
-                || psi.getContainingFile() instanceof DummyHolder) {
-            System.out.println("no old data to be reparsed");
-            return super.doParseContents(chameleon, psi);
+    protected void doParseContents1(CharSequence oldFullText,CharSequence newText, TreeElement begin, TreeElement end) {
+
+        long time = System.currentTimeMillis();
+
+        PsiFile tempFile = PsiFileFactoryImpl.getInstance(begin.getPsi().getProject()).createFileFromText("temp", HlasmFileType.INSTANCE,newText);
+
+//        ParserDefinition parserDefinition = LanguageParserDefinitions.INSTANCE.forLanguage(getLanguage());
+//        PsiBuilder builder = PsiBuilderFactory.getInstance().createBuilder(parserDefinition,parserDefinition.createLexer(), );
+//        PsiParser parser = parserDefinition.createParser(project);
+//        ASTNode node = parser.parse(this, builder);
+//        return node.getFirstChildNode();
+
+        tempFile.getNode().getFirstChildNode();
+
+
+        TreeElement iter = begin;
+        int count = 0;
+        while (true){
+            count += 1;
+            if (iter == end) break;
+            iter = iter.getTreeNext();
         }
+        final int  countFinal = count;
 
-        ASTNode oldRoot = Pair.getFirst(chameleon.getUserData(BlockSupport.TREE_TO_BE_REPARSED));
-        CharSequence oldText = Pair.getSecond(chameleon.getUserData(BlockSupport.TREE_TO_BE_REPARSED));
-        CharSequence newText = chameleon.getChars();
+        int begIndex = 0;
+        iter = begin.getTreeParent().getFirstChildNode();
+        while (iter != begin){
+            begIndex += 1;
+            iter = iter.getTreeNext();
+        }
+        final int finalBegIndex = begIndex;
 
-        Project project = psi.getProject();
-        Language languageForParser = getLanguageForParser(psi);
-        PsiBuilder builder = PsiBuilderFactory.getInstance().createBuilder(project, chameleon, null, languageForParser, newText);
-//        builder.putUserData(BlockSupportImpl.TREE_TO_BE_REPARSED,chameleon.getUserData(BlockSupportImpl.TREE_TO_BE_REPARSED));
-        ANTLRParserAdaptor parser = (ANTLRParserAdaptor) LanguageParserDefinitions.INSTANCE.forLanguage(languageForParser).createParser(project);
-        parser.oldTree = oldRoot;
-        parser.newText = newText;
-        parser.oldText = oldText;
 
-        ASTNode node = parser.parse(this, builder);
-        return node.getFirstChildNode();
+        DiffLog diffLog = new DiffLog(){
+            @Override
+            public void nodeInserted(@NotNull ASTNode oldParent, @NotNull ASTNode newNode, int pos) {
+//                System.out.println("insert: " + newNode.getText());
+                if (oldParent == begin.getTreeParent()){
+                    super.nodeInserted(oldParent,newNode,pos + finalBegIndex);
+                    return;
+                }
+
+                super.nodeInserted(oldParent, newNode, pos);
+            }
+        };
+
+//        System.out.println("before size: " + count + ", after size: " + tempFile.getNode().getFirstChildNode().getChildren(null).length);
+
+
+        ProgressIndicator indicator = ProgressIndicatorProvider.getGlobalProgressIndicator();
+        if (indicator == null) indicator = new EmptyProgressIndicator();
+
+        DiffTree.diff(new ASTStructure(begin.getTreeParent()){
+                          @Override
+                          public int getChildren(@NotNull ASTNode astNode, @NotNull Ref<ASTNode[]> into) {
+                              ProgressManager.checkCanceled();
+                              if (astNode == begin.getTreeParent()){
+                                  ASTNode[] store = new ASTNode[countFinal];
+
+                                  TreeElement iter = begin;
+                                  int count = 0;
+                                  while (true){
+                                      store[count] = iter;
+                                      count += 1;
+                                      if (iter == end) break;
+                                      iter = iter.getTreeNext();
+                                  }
+                                  into.set(store);
+                                  return countFinal;
+                              }
+
+                              return super.getChildren(astNode, into);
+                          }
+
+                          @Override
+                          public int getStartOffset(@NotNull ASTNode node) {
+//                              if (node == begin.getTreeParent()){
+//                                  return begin.getStartOffsetInParent();
+//                              }
+                              return super.getStartOffset(node);// - begin.getStartOffsetInParent();
+                          }
+
+                          @Override
+                          public int getEndOffset(@NotNull ASTNode node) {
+                              return super.getEndOffset(node) ;//- begin.getStartOffsetInParent();
+                          }
+
+
+                      } , createInterruptibleASTStructure(tempFile.getNode().getFirstChildNode(), indicator),
+                new ASTShallowComparator(indicator){
+                    @NotNull
+                    @Override
+                    public ThreeState deepEqual(@NotNull ASTNode oldNode, @NotNull ASTNode newNode) {
+                        if (oldNode == begin.getTreeParent())
+                            return ThreeState.UNSURE;
+                        return super.deepEqual(oldNode, newNode);
+                    }
+                }, diffLog, oldFullText);
+
+
+        PsiDocumentManager.getInstance(begin.getPsi().getProject()).performLaterWhenAllCommitted(()->{
+            System.out.println(" reparsing time full: " +(System.currentTimeMillis() - time));
+        });
+
+        System.out.println("reparsing time: " + (System.currentTimeMillis() - time));
+
+        throw new BlockSupport.ReparsedSuccessfullyException(diffLog);
+
 
     }
 
@@ -102,7 +204,9 @@ public class HlasmStatementsElementType extends IReparseableElementType implemen
     protected ASTNode doParseContents(@NotNull ASTNode chameleon, @NotNull PsiElement psi) {
 
         if (chameleon.getUserData(BlockSupport.TREE_TO_BE_REPARSED) == null
-            //|| psi.getContainingFile() instanceof DummyHolder
+                || psi.getContainingFile().getVirtualFile() instanceof LightVirtualFile
+                || psi.getTextLength() < 500
+
                 ) {
             System.out.println("no old data to be reparsed");
             return super.doParseContents(chameleon, psi);
@@ -111,6 +215,7 @@ public class HlasmStatementsElementType extends IReparseableElementType implemen
         try {
             TreeElement oldRoot = (TreeElement) Pair.getFirst(chameleon.getUserData(BlockSupport.TREE_TO_BE_REPARSED));
             CharSequence oldFullText = Pair.getSecond(chameleon.getUserData(BlockSupport.TREE_TO_BE_REPARSED));
+            System.out.println("size before: " + oldFullText.length());
             CharSequence oldText = oldRoot.getChars();
             CharSequence newText = chameleon.getChars();
 
@@ -253,6 +358,9 @@ public class HlasmStatementsElementType extends IReparseableElementType implemen
             final ANTLRLexerAdaptor delegate = (ANTLRLexerAdaptor) HlasmParserDefenition.INSTANCE.createLexer(null);
             final int changeTextSize = newText.length() - oldText.length();
             int newForceReparsedTextEnd = endFinal.getStartOffsetInParent() + endFinal.getTextLength() + changeTextSize;
+
+            doParseContents1(oldText,reparsedText,beginFinal,endFinal);
+
             PsiBuilder builder = PsiBuilderFactory.getInstance().createBuilder(
                     project,
                     chameleon,
@@ -397,8 +505,15 @@ public class HlasmStatementsElementType extends IReparseableElementType implemen
 //                    if (lighterASTNode.getStartOffset() < beginFinal.getStartOffset() || lighterASTNode.getEndOffset() > endFinal.getStartOffset()+endFinal.getTextLength() + changeTextSize)
 //                        return ThreeState.YES;
                         TreeElement astNode = (TreeElement) astNode1;
+                        if (//changedRange.contains(lighterASTNode.getStartOffset()) ||
+                                (lighterASTNode.getStartOffset() <= changedRange.getStartOffset() && lighterASTNode.getEndOffset() >= changedRange.getStartOffset())
+                                || (astNode.getStartOffsetInParent()<= changedRange.getStartOffset()  && astNode.getStartOffsetInParent()+astNode.getTextLength() >= changedRange.getStartOffset()) ) {
+                            System.out.println("definite NO "+astNode1.getStartOffset()+","+(astNode1.getStartOffset()+astNode1.getTextLength())+" vs " + lighterASTNode.getStartOffset() + "," + lighterASTNode.getEndOffset());
+                            return ThreeState.NO;
+                        }
                         if (lighterASTNode.getTokenType() instanceof TokenIElementType
-                                && ((TokenIElementType) lighterASTNode.getTokenType()).getANTLRTokenType() == HlasmLexer.OLD_TOKEN)
+                                && ((TokenIElementType) lighterASTNode.getTokenType()).getANTLRTokenType() == HlasmLexer.OLD_TOKEN
+                                )
                             if ((astNode.getStartOffsetInParent() < beginFinal.getStartOffsetInParent()
 //                                      && lighterASTNode.getStartOffset() < beginFinal.getStartOffsetInParent())
                                         && lighterASTNode.getStartOffset() == astNode.getStartOffsetInParent())
@@ -409,11 +524,6 @@ public class HlasmStatementsElementType extends IReparseableElementType implemen
                                 return ThreeState.YES;
 
 //                        if (changedRange.intersects(lighterASTNode.getStartOffset(), lighterASTNode.getEndOffset())) {
-                        if (//changedRange.contains(lighterASTNode.getStartOffset()) ||
-                                (lighterASTNode.getStartOffset() <= changedRange.getStartOffset() && lighterASTNode.getEndOffset() >= changedRange.getStartOffset())) {
-                            System.out.println("definite NO "+astNode1.getStartOffset()+","+(astNode1.getStartOffset()+astNode1.getTextLength())+" vs " + lighterASTNode.getStartOffset() + "," + lighterASTNode.getEndOffset());
-                            return ThreeState.NO;
-                        }
                         return ThreeState.UNSURE;
                     }
                     return ThreeState.UNSURE;

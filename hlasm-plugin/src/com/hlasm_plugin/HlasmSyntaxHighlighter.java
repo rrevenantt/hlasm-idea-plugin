@@ -16,6 +16,8 @@ import org.antlr.jetbrains.adaptor.lexer.TokenIElementType;
 import org.jetbrains.annotations.NotNull;
 
 
+import java.awt.*;
+
 import static com.intellij.openapi.editor.colors.TextAttributesKey.createTextAttributesKey;
 
 /**
@@ -43,6 +45,9 @@ public class HlasmSyntaxHighlighter extends SyntaxHighlighterBase {
     public static final TextAttributesKey COMMA =
             createTextAttributesKey("SAMPLE_COMMA", new TextAttributes(JBColor.YELLOW,
                     null, null, null,0));
+    static TextAttributesKey FIELD_INFO = TextAttributesKey.createTextAttributesKey("hlasm.stringprefix",
+            new TextAttributes(new JBColor(0xddaa66, 0xddaa66),
+                    null, null, null, Font.ITALIC));
 
     static {
 //        PSIElementTypeFactory.iElementTypesFactory = HlasmIElementTypesFactory.INSTANCE;
@@ -124,7 +129,13 @@ public class HlasmSyntaxHighlighter extends SyntaxHighlighterBase {
             case HlasmLexer.SETA:
             case HlasmLexer.SETB:
             case HlasmLexer.SETC:
+            case HlasmLexer.PUSH:
+            case HlasmLexer.POP:
+            case HlasmLexer.PRINT:
                 attrKey = ASM_KWD;
+                break;
+            case HlasmLexer.FIELD_INFO:
+                attrKey = FIELD_INFO;
                 break;
             default:
                 return EMPTY_KEYS;

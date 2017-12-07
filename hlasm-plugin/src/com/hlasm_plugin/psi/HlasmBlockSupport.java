@@ -18,6 +18,10 @@ import hlasm.HlasmParser;
 import org.antlr.jetbrains.adaptor.lexer.RuleIElementType;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.BufferedReader;
+import java.io.Reader;
+import java.nio.CharBuffer;
+
 /**
  * Created by anisik on 17.09.2016.
  */
@@ -93,4 +97,5 @@ public class HlasmBlockSupport extends BlockSupportImpl{
         diffTrees(oldFileNode, diffLog, comparator, treeStructure, indicator, lastCommittedText);
         return diffLog;
     }
+
 }

@@ -46,6 +46,13 @@ public class HlasmMacroIElementType extends IStubElementType<HlasmMacroStubEleme
         return new HlasmMacroStubElement(parentStub,psi.getMacroName().getText());
     }
 
+    /**
+     * We should create stub only for macros with the same name as containing member
+     * This function checks if this condition true
+     *
+     * @param node to check
+     * @return true, if we should create stub for this node
+     */
     @Override
     public boolean shouldCreateStub(ASTNode node) {
         try {

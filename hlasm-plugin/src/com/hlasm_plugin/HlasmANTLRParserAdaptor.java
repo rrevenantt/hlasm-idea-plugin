@@ -115,7 +115,7 @@ public class HlasmANTLRParserAdaptor extends ANTLRParserAdaptor {
     @Override
     public ASTNode parse(IElementType root, PsiBuilder builder) {
         if (root instanceof IFileElementType) {
-            System.out.println("-------Full tree reparse");
+            System.out.println("-------Full tree reparse ");
             //Pair.getFirst(chameleon.getUserData(BlockSupport.TREE_TO_BE_REPARSED))
 
 

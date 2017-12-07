@@ -48,6 +48,17 @@ public class HlasmMacroPsiElement extends StubBasedPsiElementBase<HlasmMacroStub
     }
 
     @Override
+    public int getTextOffset() {
+        PsiElement nameElement = getMacroName();
+        int offset = 0;
+        while (nameElement != this){
+            offset += nameElement.getStartOffsetInParent();
+            nameElement = nameElement.getParent();
+        }
+        return offset;
+    }
+
+    @Override
     public String getName() {
         return getGreenStub() != null ? getGreenStub().name : getNameIdentifier().getText();
     }
