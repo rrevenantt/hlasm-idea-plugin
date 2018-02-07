@@ -22,8 +22,8 @@ public class JclFTPSubmitAction extends AnAction {
     @Override
     public void actionPerformed(AnActionEvent ev) {
         VirtualFile virtualFile = ev.getData(PlatformDataKeys.VIRTUAL_FILE);
-        LogonSettingsComponent settingsComponent = (LogonSettingsComponent)ev.getProject().getComponent("LogonSettingsComponent");
-        if (settingsComponent == null){
+        LogonSettingsComponent settingsComponent = (LogonSettingsComponent) ev.getProject().getComponent("LogonSettingsComponent");
+        if (settingsComponent == null) {
             // create new logon info
             (new LogonSettingsAction()).actionPerformed(ev);
             return;
@@ -35,7 +35,9 @@ public class JclFTPSubmitAction extends AnAction {
 //                ApplicationManagerEx.getApplicationEx().runReadAction(new Runnable() {
 //                    @Override
 //                    public void run() {
-                        FTPClient client = FTPServiceProvider.createJESFTPClient(virtualFile,settingsComponent);
+                FTPClient client = FTPServiceProvider.createJESFTPClient(virtualFile, settingsComponent);
+                try {
+                    try {
                         FTPServiceProvider.submitJob(virtualFile, ev.getProject(), client, new FTPServiceProvider.JobSubmitCallback() {
                             @Override
                             public void progressResult(String info) {
@@ -48,12 +50,17 @@ public class JclFTPSubmitAction extends AnAction {
                                 Notifications.Bus.notify(notification, ev.getProject());
                             }
                         });
-                        try {
-                            client.disconnect();
-                        }
-                        catch (IOException e){
-                            e.printStackTrace();
-                        }
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    client.disconnect();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
 //                    }
 //                });
@@ -64,9 +71,9 @@ public class JclFTPSubmitAction extends AnAction {
     }
 
     @Override
-    public void update(AnActionEvent e){
+    public void update(AnActionEvent e) {
         VirtualFile virtualFile = e.getData(PlatformDataKeys.VIRTUAL_FILE);
         e.getPresentation().setVisible(virtualFile.getExtension() != null && (virtualFile.getExtension().equalsIgnoreCase("jcl")
-                        || virtualFile.getExtension().equalsIgnoreCase("jclt")));
+                || virtualFile.getExtension().equalsIgnoreCase("jclt")));
     }
 }

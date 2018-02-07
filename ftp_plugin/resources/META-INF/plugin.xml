@@ -35,7 +35,8 @@
     <!-- Add your extensions here -->
     <configurationType implementation="config.HlasmConfigurationType"/>
     <fileBasedIndex implementation="com.ftp_plugin.FTPLastSyncIndex" />
-    <toolWindow anchor="right" id="z/OS" factoryClass="com.ftp_plugin.HlasmToolWindowFactory"/>
+    <toolWindow anchor="right" id="JES" factoryClass="com.ftp_plugin.JesToolWindowFactory"/>
+    <toolWindow anchor="right" id="SCLM" factoryClass="com.ftp_plugin.SclmToolWindowFactory"/>
 
   </extensions>
 

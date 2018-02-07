@@ -102,6 +102,8 @@ class BuildProcess extends Process {
                         e.printStackTrace();
                         handler.notifyTextAvailable("Build error\n", ProcessOutputTypes.STDERR);
                         handler.notifyProcessTerminated(1);
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
 
                     handler.notifyTextAvailable("Build finished " + DateFormat.getInstance().format(Calendar.getInstance().getTime())+"\n", ProcessOutputTypes.STDOUT);

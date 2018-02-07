@@ -1,49 +1,21 @@
 package com.ftp_plugin;
 
-import com.hlasm_plugin.psi.HlasmPSIFileRoot;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.TransactionGuardImpl;
-import com.intellij.openapi.components.State;
-import com.intellij.openapi.components.Storage;
-import com.intellij.openapi.editor.Editor;
-import com.intellij.openapi.fileEditor.FileEditor;
 import com.intellij.openapi.fileEditor.FileEditorManager;
-import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
 import com.intellij.openapi.fileTypes.PlainTextFileType;
-import com.intellij.openapi.progress.BackgroundTaskQueue;
-import com.intellij.openapi.progress.impl.CoreProgressManager;
-import com.intellij.openapi.progress.impl.ProgressManagerImpl;
-import com.intellij.openapi.progress.util.BackgroundTaskUtil;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.vfs.VfsUtilCore;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.openapi.vfs.VirtualFileSystem;
-import com.intellij.openapi.vfs.ex.temp.TempFileSystem;
-import com.intellij.openapi.vfs.impl.VirtualFileManagerImpl;
 import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowContentUiType;
 import com.intellij.openapi.wm.ToolWindowFactory;
-import com.intellij.psi.PsiDocumentManager;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.impl.file.impl.FileManagerImpl;
 import com.intellij.testFramework.LightVirtualFile;
-import com.intellij.testFramework.TempFiles;
 import com.intellij.ui.Gray;
-import com.intellij.ui.JBColor;
 import com.intellij.ui.content.ContentFactory;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.uiDesigner.core.Spacer;
-import com.intellij.util.containers.ContainerUtil;
-import com.intellij.util.containers.SoftValueHashMap;
-import com.map_dump.controller.HexStringDumpMapper;
-import com.map_dump.model.dsect.*;
-import com.map_dump.model.dump.ControlBlockDump;
-import com.map_dump.model.log.SnapLog;
-import com.map_dump.model.map.MappedDsect;
-import com.sun.deploy.util.ArrayUtil;
-import com.sun.tools.javac.util.ArrayUtils;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
 import org.apache.commons.net.ftp.FTPFileEntryParser;
@@ -53,29 +25,25 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
-import javax.swing.event.*;
 import java.awt.*;
-import java.awt.event.*;
-import java.awt.image.ColorModel;
-import java.io.*;
-import java.lang.ref.SoftReference;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.lang.ref.WeakReference;
-import java.util.*;
-import java.util.List;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
  * Created by anisik on 26.07.2016.
  */
-public class HlasmToolWindowFactory implements ToolWindowFactory {
+public class JesToolWindowFactory implements ToolWindowFactory {
     //    private Project localCopy;
 //    private HlasmPSIFileRoot localFileRoot = null;
     private JPanel myToolWindowContent;
@@ -104,7 +72,7 @@ public class HlasmToolWindowFactory implements ToolWindowFactory {
     private String currentJobId;
 
 
-    public HlasmToolWindowFactory() {
+    public JesToolWindowFactory() {
     }
 
     {
@@ -128,36 +96,78 @@ public class HlasmToolWindowFactory implements ToolWindowFactory {
         panel1.setLayout(new GridLayoutManager(1, 8, new Insets(0, 0, 0, 0), -1, -1));
         myToolWindowContent.add(panel1, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         final JLabel label1 = new JLabel();
-        label1.setText("LPAR IP");
+        Font label1Font = this.$$$getFont$$$("Consolas", -1, -1, label1.getFont());
+        if (label1Font != null) label1.setFont(label1Font);
+        label1.setText(" LPAR IP");
         panel1.add(label1, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         textLpar = new JTextField();
+        Font textLparFont = this.$$$getFont$$$("Consolas", -1, 12, textLpar.getFont());
+        if (textLparFont != null) textLpar.setFont(textLparFont);
         panel1.add(textLpar, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, 1, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
         textUser = new JTextField();
+        Font textUserFont = this.$$$getFont$$$("Consolas", -1, 12, textUser.getFont());
+        if (textUserFont != null) textUser.setFont(textUserFont);
         panel1.add(textUser, new GridConstraints(0, 3, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
         final JLabel label2 = new JLabel();
+        Font label2Font = this.$$$getFont$$$("Consolas", -1, -1, label2.getFont());
+        if (label2Font != null) label2.setFont(label2Font);
         label2.setText("User");
         panel1.add(label2, new GridConstraints(0, 2, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final JLabel label3 = new JLabel();
+        Font label3Font = this.$$$getFont$$$("Consolas", -1, -1, label3.getFont());
+        if (label3Font != null) label3.setFont(label3Font);
         label3.setText("Password");
         panel1.add(label3, new GridConstraints(0, 4, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         passwordField1 = new JPasswordField();
+        Font passwordField1Font = this.$$$getFont$$$("Consolas", -1, 12, passwordField1.getFont());
+        if (passwordField1Font != null) passwordField1.setFont(passwordField1Font);
         passwordField1.setText("");
         panel1.add(passwordField1, new GridConstraints(0, 5, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
         final Spacer spacer1 = new Spacer();
         panel1.add(spacer1, new GridConstraints(0, 7, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, 1, null, null, null, 0, false));
         refreshButton = new JButton();
+        refreshButton.setFocusable(false);
+        Font refreshButtonFont = this.$$$getFont$$$("Consolas", -1, -1, refreshButton.getFont());
+        if (refreshButtonFont != null) refreshButton.setFont(refreshButtonFont);
         refreshButton.setText("Refresh");
         panel1.add(refreshButton, new GridConstraints(0, 6, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        final JScrollPane scrollPane1 = new JScrollPane();
+        myToolWindowContent.add(scrollPane1, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
         list1 = new JList();
         list1.setEnabled(true);
+        Font list1Font = this.$$$getFont$$$("Consolas", -1, 12, list1.getFont());
+        if (list1Font != null) list1.setFont(list1Font);
         final DefaultListModel defaultListModel1 = new DefaultListModel();
         list1.setModel(defaultListModel1);
         list1.setSelectionMode(0);
-        myToolWindowContent.add(list1, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 105), null, 0, false));
+        scrollPane1.setViewportView(list1);
+        final JScrollPane scrollPane2 = new JScrollPane();
+        myToolWindowContent.add(scrollPane2, new GridConstraints(2, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
         list2 = new JList();
+        Font list2Font = this.$$$getFont$$$("Consolas", -1, 12, list2.getFont());
+        if (list2Font != null) list2.setFont(list2Font);
         list2.setSelectionMode(0);
-        myToolWindowContent.add(list2, new GridConstraints(2, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_GROW, new Dimension(-1, 100), new Dimension(150, 200), new Dimension(-1, 500), 0, false));
+        scrollPane2.setViewportView(list2);
         label2.setLabelFor(textUser);
+    }
+
+    /**
+     * @noinspection ALL
+     */
+    private Font $$$getFont$$$(String fontName, int style, int size, Font currentFont) {
+        if (currentFont == null) return null;
+        String resultName;
+        if (fontName == null) {
+            resultName = currentFont.getName();
+        } else {
+            Font testFont = new Font(fontName, Font.PLAIN, 10);
+            if (testFont.canDisplay('a') && testFont.canDisplay('1')) {
+                resultName = fontName;
+            } else {
+                resultName = currentFont.getName();
+            }
+        }
+        return new Font(resultName, style >= 0 ? style : currentFont.getStyle(), size >= 0 ? size : currentFont.getSize());
     }
 
     /**
@@ -383,7 +393,7 @@ public class HlasmToolWindowFactory implements ToolWindowFactory {
         });
 
 
-        toolWindow.setTitle("z/OS");
+        toolWindow.setTitle("JES");
         toolWindow.setContentUiType(ToolWindowContentUiType.TABBED, null);
         toolWindow.getContentManager().addContent(
                 ContentFactory.SERVICE.getInstance().createContent(myToolWindowContent, "", true));
