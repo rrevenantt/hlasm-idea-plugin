@@ -2,5 +2,5 @@
 <plugins>
     <plugin id="com.hlasm_plugin" url="https://github.com/rrevenantt/hlasm-idea-plugin/blob/master/hlasm-plugin/hlasm-plugin.zip" version="1.4.3"/>
     <plugin id="com.jcl_plugin" url="https://github.com/rrevenantt/hlasm-idea-plugin/blob/master/jcl-plugin/jcl-plugin.zip" version="1.0.1"/>
-    <plugin id="com.ftp_plugin" url="https://github.com/rrevenantt/hlasm-idea-plugin/blob/master/ftp_plugin/ftp_plugin.zip?raw=true" version="1.0.8"/>
+    <plugin id="com.ftp_plugin" url="https://github.com/jedegy/hlasm-idea-plugin/blob/FtpSclmSupport/ftp_plugin/ftp_plugin.zip?raw=true" version="1.0.8"/>
 </plugins>
