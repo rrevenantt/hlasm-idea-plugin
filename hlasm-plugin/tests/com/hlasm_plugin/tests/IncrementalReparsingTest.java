@@ -1,35 +1,21 @@
 package com.hlasm_plugin.tests;
 
-import com.google.protobuf3jarjar.compiler.PluginProtos;
-import com.intellij.icons.AllIcons;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.command.CommandProcessor;
 import com.intellij.openapi.command.impl.UndoManagerImpl;
-import com.intellij.openapi.command.undo.UndoManager;
 import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.fileTypes.FileTypeRegistry;
-import com.intellij.psi.AbstractReparseTestCase;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiFileFactory;
-import com.intellij.psi.PsiManager;
 import com.intellij.psi.impl.DebugUtil;
-import com.intellij.psi.impl.DocumentCommitThread;
-import com.intellij.psi.impl.source.tree.TreeUtil;
 import com.intellij.psi.text.BlockSupport;
-import com.intellij.testFramework.LightPlatformCodeInsightTestCase;
-import com.intellij.testFramework.ParsingTestCase;
 import com.intellij.testFramework.fixtures.LightPlatformCodeInsightFixtureTestCase;
 import com.intellij.util.IncorrectOperationException;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import sun.nio.fs.DefaultFileSystemProvider;
 
-import java.io.File;
-import java.io.FilenameFilter;
-import java.nio.file.FileSystem;
-import java.util.Calendar;
 import java.util.Random;
 
 public class IncrementalReparsingTest extends LightPlatformCodeInsightFixtureTestCase {

@@ -8,7 +8,7 @@ import com.intellij.util.xmlb.XmlSerializerUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@State(name = "LogonSettingsComponent", storages = @Storage(id = "LogonSettings", value = "LogonSettings.xml"))
+@State(name = "LogonSettingsComponent", storages = @Storage(value = "LogonSettings.xml"))
 public class LogonSettingsComponent implements ProjectComponent, PersistentStateComponent<LogonSettingsComponent> {
 
     private String host;

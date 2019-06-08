@@ -1,21 +1,15 @@
 package com.hlasm_plugin.project;
 
-import com.hlasm_plugin.HlasmIcons;
-import com.intellij.facet.FacetManager;
-
 import com.intellij.ide.util.projectWizard.*;
 import com.intellij.openapi.Disposable;
-import com.intellij.openapi.module.*;
+import com.intellij.openapi.module.Module;
+import com.intellij.openapi.module.ModuleServiceManager;
+import com.intellij.openapi.module.ModuleType;
 import com.intellij.openapi.options.ConfigurationException;
-import com.intellij.openapi.project.ModuleListener;
-import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.ModifiableRootModel;
-import com.intellij.openapi.roots.ModuleRootManager;
 import com.intellij.openapi.roots.ui.configuration.ModulesProvider;
 import com.intellij.openapi.util.io.FileUtil;
 import com.intellij.openapi.vfs.LocalFileSystem;
-import com.intellij.ui.AnActionButton;
-import com.intellij.ui.AnActionButtonRunnable;
 import com.intellij.ui.CollectionListModel;
 import com.intellij.ui.ToolbarDecorator;
 import com.intellij.ui.components.JBList;
@@ -23,14 +17,11 @@ import com.intellij.util.ArrayUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import javax.jnlp.ServiceManager;
 import javax.swing.*;
-import javax.swing.border.AbstractBorder;
-import javax.swing.border.Border;
-
 import java.awt.*;
 import java.io.File;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**

@@ -9,18 +9,14 @@ import com.intellij.openapi.util.Couple;
 import com.intellij.openapi.util.Ref;
 import com.intellij.openapi.util.TextRange;
 import com.intellij.psi.PsiFile;
-import com.intellij.psi.impl.source.text.BlockSupportImpl;
-import com.intellij.psi.impl.source.text.DiffLog;
+import com.intellij.psi.impl.BlockSupportImpl;
+import com.intellij.psi.impl.DiffLog;
 import com.intellij.psi.impl.source.tree.ASTShallowComparator;
 import com.intellij.psi.impl.source.tree.ASTStructure;
 import com.intellij.psi.impl.source.tree.TreeElement;
 import hlasm.HlasmParser;
 import org.antlr.jetbrains.adaptor.lexer.RuleIElementType;
 import org.jetbrains.annotations.NotNull;
-
-import java.io.BufferedReader;
-import java.io.Reader;
-import java.nio.CharBuffer;
 
 /**
  * Created by anisik on 17.09.2016.
